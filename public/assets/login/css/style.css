@@ -1,0 +1,50 @@
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+.has-icon .form-control {
+    padding-left: 2.75rem;
+}
+
+.has-icon .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    left: 1.35rem;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 3.3rem;
+    font-size: 23px;
+    text-align: center;
+    pointer-events: none;
+    color: #1F7AE0;
+}
+
+.has-icon .toggle-password {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    left: auto;
+    right: 20px;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 3.3rem;
+    font-size: 23px;
+    text-align: center;
+    color: #1F7AE0;
+    cursor: pointer;
+}
