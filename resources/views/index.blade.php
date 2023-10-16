@@ -120,7 +120,7 @@
                 spaceBetween: 35,
                 centeredSlides: false,
                 loop: true,
-                grabCursor: true,
+                grabCursor: false,
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,

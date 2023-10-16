@@ -18,7 +18,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="portfolio-wrap">
-                                <a href="{{ asset('assets') }}/compro/img/blog/blog-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{{ asset('assets') }}/compro/img/SCM.jpeg" class="img-fluid border-radius-25" style="height:450px;width:auto;"></a>
+                                <a href="{{ asset('assets') }}/compro/img/SCM.jpeg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{{ asset('assets') }}/compro/img/SCM.jpeg" class="img-fluid border-radius-25" style="height:450px;width:auto;"></a>
                             </div>
 
                             <div class="caption d-none">
