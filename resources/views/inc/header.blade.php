@@ -11,10 +11,10 @@
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <li><a class="nav-link scrollto" href="#clients">Clients</a></li>
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                <li class="dropdown"><a href="#"><span>Eng</span> <i class="bi bi-translate"></i> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#hero"><span>Eng</span> <i class="bi bi-translate"></i> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="#">English</a></li>                        
-                        <li><a href="#">Indonesia</a></li>                        
+                        <li><a href="#hero">English</a></li>                        
+                        <li><a href="#hero">Indonesia</a></li>                        
                     </ul>
                 </li>
             </ul>

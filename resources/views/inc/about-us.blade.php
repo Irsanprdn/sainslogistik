@@ -1,4 +1,19 @@
 <section id="about" class="about">
+    <div class="container position-realtive" style="z-index: 300;" data-aos="fade-up">
+
+        <div class="section-title">
+            <h1 class="text-dark font-weight-bold title-question">Why Sains Logistic ?</h1>
+            <p class="title-question-desc">Sains Logistik didirikan pada tahun 2020 dan telah menyatakan diri sebagai solusi rantai pasokan perusahaan yang paling unggul.
+            <ul class="title-question-desc">
+                <li><b>Visi <br>Menjadi perusahaan logistik yang unggul dan di hormati di Indonesia</b> </li>
+                <li> <b>Misi <br>Kejujuran, Kepuasan Pelanggan, dan bermanfaat bagi stake holder dan share holder <br></b>
+                    Kami menyediakan serta menawarkan layanan untuk memenuhi kebutuhan pelanggan dalam rangka menyambut tantangan pasar digital di seluruh wilayah Indonesia Layanan utama kami Sains Storage – Warehousing dan Sains Delivery – Transporting Sains Logistik berkomitmen untuk menyebarkan layanan terbaik kepada pelanggan kami </li>
+
+            </ul>
+            </p>
+        </div>
+    </div>
+
     <div class="nocontainer" data-aos="fade-up">
         <div class="row">
             <div class="col-lg-5 mb-3 offset-1">
