@@ -1,12 +1,12 @@
 <!-- ======= hero Section ======= -->
-<section id="hero" class="d-flex justify-content-center align-items-center">
+<section id="hero" class="d-flex justify-content-center align-items-center" onclick="playPause(this)">
     <!-- The video -->
     <video  loop id="myVideo">
         <source src="{{ asset('assets') }}/uploads/video/COMPANY PROFILE - PT SAINS LOGISTIK INDONESIA.mp4" type="video/mp4">
     </video>
 
     <div class="btn-play-pause">
-        <i class="bi bi-play-circle" onclick="playPause(this)"></i>
+        <i class="bi bi-play-circle" ></i>
     </div>
 
     <div class="content">        

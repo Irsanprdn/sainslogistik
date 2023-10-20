@@ -206,14 +206,15 @@
     }
 
     function playPause(e){
-        if ( $(e).hasClass('bi-play-circle') ) {
+        var btn =  $(e).find('.bi');
+        if ( $(btn).hasClass('bi-play-circle') ) {
             $('#myVideo').trigger('play')
-            $(e).removeClass('bi-play-circle')
-            $(e).addClass('bi-pause-circle')
+            $(btn).removeClass('bi-play-circle')
+            $(btn).addClass('bi-pause-circle')
         }else{
             $('#myVideo').trigger('pause');
-            $(e).removeClass('bi-pause-circle')
-            $(e).addClass('bi-play-circle')
+            $(btn).removeClass('bi-pause-circle')
+            $(btn).addClass('bi-play-circle')
         }
     }
 </script>

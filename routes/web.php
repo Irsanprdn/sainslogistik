@@ -22,7 +22,7 @@ Route::get('/', [Controller::class, 'compro'])->name('compro');
 
 Route::post('/search', [WBSController::class, 'wbs_search'])->name('wbs.search');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('cms_site')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'procLogin'])->name('proc.login');
 
