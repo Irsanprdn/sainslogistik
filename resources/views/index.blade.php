@@ -41,12 +41,12 @@
 
     <main id="main">
 
-        <!-- ======= About Us Section ======= -->
-        @include('inc.about-us')
-        <!-- End About Us Section -->
-
-        <!-- ======= Icon Boxes Section ======= -->
+        <!-- ======= Services Section ======= -->
         @include('inc.services')
+        <!-- End About Us Section -->
+        
+        <!-- ======= About Section ======= -->
+        @include('inc.about-us')
         <!-- End Icon Boxes Section -->
 
         <!-- ======= Video Section ======= -->
@@ -203,6 +203,18 @@
     function clickNext() {
         document.getElementById('btn-next-swiper').click()
         cloneCaptionSliderServices()
+    }
+
+    function playPause(e){
+        if ( $(e).hasClass('bi-play-circle') ) {
+            $('#myVideo').trigger('play')
+            $(e).removeClass('bi-play-circle')
+            $(e).addClass('bi-pause-circle')
+        }else{
+            $('#myVideo').trigger('pause');
+            $(e).removeClass('bi-pause-circle')
+            $(e).addClass('bi-play-circle')
+        }
     }
 </script>
 

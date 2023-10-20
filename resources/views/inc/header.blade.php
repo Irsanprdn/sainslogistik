@@ -1,4 +1,4 @@
-<header id="header" class="fixed-top d-flex align-items-center">
+<header id="header" class="fixed-top d-flex align-items-center shadow">
     <!-- <video src=""></video> -->
     <div class="container d-flex align-items-center justify-content-between">
 
@@ -7,8 +7,8 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <li><a class="nav-link scrollto" href="#clients">Clients</a></li>
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                 <li class="dropdown"><a href="#"><span>Eng</span> <i class="bi bi-translate"></i> <i class="bi bi-chevron-down"></i></a>

@@ -251,7 +251,8 @@ h6 {
 #header {
     background: rgb(255, 255, 255);
     /* background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 184, 0, 0.9) 50%, rgba(255, 202, 0, 1) 100%); */
-    background: linear-gradient(90deg, #FFFFFF 0%, #F5C200 100%);
+    /* background: linear-gradient(90deg, #FFFFFF 0%, #F5C200 100%); */
+    background-color: #fff;
     top: 0;
     z-index: 997;
     height: 70px;
@@ -260,7 +261,8 @@ h6 {
 #header.header-scrolled {
     background: rgb(255, 255, 255);
     /* background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 184, 0, 0.9) 50%, rgba(255, 202, 0, 1) 100%); */
-    background: linear-gradient(90deg, #FFFFFF 0%, #F5C200 100%);
+    /* background: linear-gradient(90deg, #FFFFFF 0%, #F5C200 100%); */
+    background-color: #fff;
     top: 0;
 }
 
@@ -578,7 +580,7 @@ h6 {
 
 #hero:before {
     content: "";
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     position: absolute;
     z-index: 310;
     bottom: 0;
@@ -592,6 +594,26 @@ h6 {
     top: 0;
     left: 0;
     right: 0;
+}
+
+#hero .btn-play-pause {
+    position: absolute;
+    top: 50%;
+    z-index: 350;
+    width: 100%;
+    text-align: center;
+}
+
+#hero .btn-play-pause i {
+    cursor: pointer;
+    font-size: 70px;
+    color: #fff;
+}
+
+#hero .btn-play-pause i:hover {
+    cursor: pointer;
+    font-size: 75px;
+    color: #fff;
 }
 
 #hero h1 {
