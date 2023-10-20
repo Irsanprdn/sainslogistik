@@ -589,6 +589,19 @@ h6 {
     right: 0;
 }
 
+
+/* #hero::after {
+    content: "";
+    position: absolute;
+    z-index: 410;
+    bottom: 0;
+    top: 15%;
+    left: 0;
+    right: 0;
+    border-bottom: 25px solid #F5C200;
+    width: 25%;
+} */
+
 #hero .carousel-container {
     bottom: 0;
     top: 0;
@@ -2873,7 +2886,7 @@ section {
 .content {
     position: absolute;
     bottom: 0;
-    z-index: 350;
+    z-index: 400;
     width: 100%;
     padding: 20px;
     text-align: center;

@@ -28,7 +28,7 @@
     <link href="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=3.8" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=3.9" rel="stylesheet">
 </head>
 
 <body>
@@ -117,10 +117,8 @@
         return new Promise((resolve) => {
             var swiper = new Swiper(".swiper-about-us", {
                 slidesPerView: 1.5,
-                spaceBetween: 35,
-                centeredSlides: false,
+                spaceBetween: 25,                
                 loop: true,
-                grabCursor: false,
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,

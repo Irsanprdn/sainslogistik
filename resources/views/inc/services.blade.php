@@ -1,6 +1,4 @@
 <section id="services" class="services">
-
-
     <img src="{{ asset('assets') }}/compro/img/yellow-hexagonal.png" alt="circle-yellow" class="img-fluid position-absolute yellow-circle" style="top:-100px; right:-100px; z-index:200;width:35%;">
 
     <section id="icon-services" data-aos="fade-up">
