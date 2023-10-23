@@ -93,7 +93,7 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
         </div>
 
     </section><!-- End Hero Section -->
-    <div style="top:-10px; left:0px; z-index:400;width:25%; position:relative; border-bottom: 25px solid #F5C200;">
+    <div style="top:-10px; left:0px; z-index:250;width:25%; position:relative; border-bottom: 25px solid #F5C200;">
     </div>
 </div>
 

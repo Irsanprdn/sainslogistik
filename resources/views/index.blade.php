@@ -28,7 +28,7 @@
     <link href="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=3.9" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.0" rel="stylesheet">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
         <!-- ======= Services Section ======= -->
         @include('inc.services')
         <!-- End About Us Section -->
-        
+
         <!-- ======= About Section ======= -->
         @include('inc.about-us')
         <!-- End Icon Boxes Section -->
@@ -102,9 +102,9 @@
     });
 
     function cloneCaptionSliderServices() {
-        var captionTitle = $('.swiper-slide-active').find('.caption-title').text()   
-        var captionDescription = $('.swiper-slide-active').find('.caption-desc').text()                
-       
+        var captionTitle = $('.swiper-slide-active').find('.caption-title').text()
+        var captionDescription = $('.swiper-slide-active').find('.caption-desc').text()
+
         $('#placeCaptionTitle').text(captionTitle)
         $('#placeCaptionDescription').text(captionDescription)
         var paginationAUS = $('#pagination-aus').html()
@@ -112,58 +112,29 @@
         $('#placePagination').find('#pagination-aus').removeClass('d-none')
     }
 
-    // Create a function that initializes Swiper and returns a Promise
-    function initSwiper() {
-        return new Promise((resolve) => {
-            var swiper = new Swiper(".swiper-about-us", {
-                slidesPerView: 1.5,
-                spaceBetween: 25,                
-                loop: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
-                }
-            });
-        });
-    }
-
-    // Call the initSwiper function to initialize Swiper and wait for it to finish
-    initSwiper().then(function() {
-        // Swiper initialization is complete, you can call another function here
-        anotherFunction();
+    var swiper = new Swiper(".swiper-about-us", {
+        slidesPerView: 1.5,
+        spaceBetween: 25,
+        loop: true,
+        grabCursor:false,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        }
     });
 
-    // Define the function you want to call after Swiper initialization
-    function anotherFunction() {
-        // Your code here
-        let clone = document.getElementById('#pagination-aus').innerHTML
-        console.log(clone)
-        document.getElementById('#place-pagination').innerHTML = 'abs'
-    }
-
     function resetCollapse(e) {
-        if ( $(e).hasClass('bg-base') ) {
-            $('.our-services').removeClass('bg-base') 
-        }else{                       
-            $('.our-services').removeClass('bg-base') 
+        if ($(e).hasClass('bg-base')) {
+            $('.our-services').removeClass('bg-base')
+        } else {
+            $('.our-services').removeClass('bg-base')
             $('.collapseAll').removeClass('show')
             $(e).addClass('bg-base')
         }
-
-        // var elem = document.getElementsByClassName('our-services');
-        // for (var i = 0; i < elem.length; i++) {
-        //     elem[i].classList.remove("bg-base");
-        // }
-        // e.classList.add("bg-base");
-
-        // var elements = document.getElementsByClassName('collapseAll');
-        // for (var i = 0; i < elements.length; i++) {
-        //     elements[i].classList.remove("show");
-        // }
     }
 
 
@@ -203,13 +174,13 @@
         cloneCaptionSliderServices()
     }
 
-    function playPause(e){
-        var btn =  $(e).find('.bi');
-        if ( $(btn).hasClass('bi-play-circle') ) {
+    function playPause(e) {
+        var btn = $(e).find('.bi');
+        if ($(btn).hasClass('bi-play-circle')) {
             $('#myVideo').trigger('play')
             $(btn).removeClass('bi-play-circle')
             $(btn).addClass('bi-pause-circle')
-        }else{
+        } else {
             $('#myVideo').trigger('pause');
             $(btn).removeClass('bi-pause-circle')
             $(btn).addClass('bi-play-circle')
