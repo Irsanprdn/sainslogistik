@@ -2,7 +2,7 @@
     <!-- <video src=""></video> -->
     <div class="container d-flex align-items-center justify-content-between">
 
-        <a href="{{ route('compro') }}" class="logo"><img src="{{ asset('assets') }}/compro/img/Logo-Horizontal.svg" alt="Logo Sains Logistik" class="img-fluid w-100"></a>
+        <a href="{{ route('compro') }}" class="logo"><img src="{{ asset('assets') }}/uploads/logo/{{ $homeLogo->isi_komponen ?? '' }}" alt="Logo Sains Logistik" class="img-fluid w-100"></a>
 
         <nav id="navbar" class="navbar">
             <ul>

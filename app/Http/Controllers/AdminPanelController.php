@@ -25,8 +25,11 @@ class AdminPanelController extends Controller
         $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'walink' ";
         $homeWAlink = collect(DB::select($sql))->first();
 
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'logo' ";
+        $homeLogo = collect(DB::select($sql))->first();
 
-        return view('admin.home', compact('homeTitle', 'homeDescription', 'homeWAlink'));
+
+        return view('admin.home', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo'));
     }
 
     public function home_post(Request $req)

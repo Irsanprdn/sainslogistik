@@ -3,7 +3,7 @@
 @section('content')
 @php
 $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/AIW.png";
-$default = $homeLogo->isi_komponen ?? $defaultFoto;
+$default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET_URL') . "/assets/uploads/logo/".$homeLogo->isi_komponen );
 @endphp
 <div class="container">
     @if (session('error'))
@@ -25,7 +25,7 @@ $default = $homeLogo->isi_komponen ?? $defaultFoto;
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="d-flex justify-content-start">
-                <a href="{{ route('compro') }}" class="logo"><img src="{{ asset('assets') }}/compro/img/Logo-Horizontal.svg" alt="Logo Sains Logistik" class="img-fluid w-100"></a>
+                <a href="{{ route('compro') }}" class="logo"><img src="{{ asset('assets') }}/uploads/logo/{{ $homeLogo->isi_komponen ?? '' }}" alt="Logo Sains Logistik" class="img-fluid w-100"></a>
                 <button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#changeLogo">
                     Change Logo <i class="bi bi-pencil"></i>
                 </button>
@@ -137,7 +137,7 @@ $default = $homeLogo->isi_komponen ?? $defaultFoto;
                 <input type="hidden" value="0" name="id" id="id">
                 <div class="modal-header">
                     <h5 class="modal-title" id="changeLogoLabel">Form Change Logo</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -151,7 +151,7 @@ $default = $homeLogo->isi_komponen ?? $defaultFoto;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close"  onclick="closeModal()">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
@@ -267,10 +267,10 @@ $default = $homeLogo->isi_komponen ?? $defaultFoto;
         }
     }
 
-    function closeModal() {    
-        $('#changeLogo').modal('hide')        
-        var file = "{{ENV('ASSET_URL')}}" + "/assets/compro/img/AIW.png"
-        $('#viewImg').attr('src', file)
-    }
+    // function closeModal() {    
+    //     $('#changeLogo').modal('hide')     
+    //     var defaults = "{{ $default }}";   
+    //     $('#viewImg').attr('src', defaults)
+    // }
 </script>
 @endsection
