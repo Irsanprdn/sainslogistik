@@ -92,7 +92,7 @@
     <script src="{{ asset('assets') }}/compro/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{ asset('assets') }}/compro/js/main.js"></script>
+    <script src="{{ asset('assets') }}/compro/js/main.js?v=1.0"></script>
     <script src="{{ asset('assets') }}/compro/js/jquery.js"></script>
 </body>
 <script>
@@ -115,8 +115,7 @@
     var swiper = new Swiper(".swiper-about-us", {
         slidesPerView: 1.5,
         spaceBetween: 25,
-        loop: true,
-        grabCursor:false,
+        loop: true,        
         pagination: {
             el: ".swiper-pagination",
             clickable: true,

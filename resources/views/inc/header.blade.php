@@ -1,5 +1,4 @@
-<header id="header" class="fixed-top d-flex align-items-center shadow">
-    <!-- <video src=""></video> -->
+<header id="header" class="fixed-top d-flex align-items-center shadow">    
     <div class="container d-flex align-items-center justify-content-between">
 
         <a href="{{ route('compro') }}" class="logo"><img src="{{ asset('assets') }}/uploads/logo/{{ $homeLogo->isi_komponen ?? '' }}" alt="Logo Sains Logistik" class="img-fluid w-100"></a>
