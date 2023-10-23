@@ -1,6 +1,10 @@
 @extends('admin')
 @section('title', 'Home')
 @section('content')
+@php
+$defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/AIW.png";
+$default = $homeLogo->isi_komponen ?? $defaultFoto;
+@endphp
 <div class="container">
     @if (session('error'))
     <div class="alert my-3 alert-danger">{{ session('error') }}
@@ -22,7 +26,7 @@
 
             <div class="d-flex justify-content-start">
                 <a href="{{ route('compro') }}" class="logo"><img src="{{ asset('assets') }}/compro/img/Logo-Horizontal.svg" alt="Logo Sains Logistik" class="img-fluid w-100"></a>
-                <button type="button" class="btn btn-warning text-light">
+                <button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#changeLogo">
                     Change Logo <i class="bi bi-pencil"></i>
                 </button>
             </div>
@@ -65,26 +69,24 @@
         <div class="content">
             <div class="d-flex justify-content-center">
                 <h1 class="text-white">
-                    <input type="text" id="homeTitle" name="homeTitle" value="Spread Excellent Service" class="form-custom form-custom-lg text-light text-center reset-setting font-weight-bold" readonly>
+                    <input type="text" id="homeTitle" name="homeTitle" value="{{ $homeTitle->isi_komponen ?? '' }}" class="form-custom form-custom-lg text-light text-center reset-setting font-weight-bold" readonly>
                 </h1>
-                <button type="button" class="btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#homeTitle')">
+                <button type="button" class="btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#homeTitle')" title="Clik to edit">
                     <i class="bi bi-pencil"></i>
                 </button>
             </div>
             <div class="d-flex justify-content-center">
                 <p class="text-white w-100">
-                    <input type="text" id="descriptionTitle" name="descriptionTitle" value="Tingkatkan efisiensi, kurangi biaya, dan kembangkan bisnis anda dengan berbagai solusi dan teknnologi kami." class="form-custom font-size-20 text-light text-center reset-setting" readonly>
-                    <!-- <textarea name="descriptoinHome" id="descriptoinHome" cols="50" class="form-custom font-size-20 text-light text-center font-weight-bold" readonly>Tingkatkan efisiensi, kurangi biaya, dan kembangkan bisnis anda dengan berbagai solusi dan teknnologi kami.
-                    </textarea> -->
+                    <input type="text" id="descriptionTitle" name="descriptionTitle" value="{{ $homeDescription->isi_komponen ?? '' }}" class="form-custom font-size-20 text-light text-center reset-setting font-weight-bold" readonly>
                 </p>
-                <button type="button" class="btn btn-warning btn-circle text-light" onclick="editText(this,'#descriptionTitle')">
+                <button type="button" class="btn btn-warning btn-circle text-light" onclick="editText(this,'#descriptionTitle')" title="Clik to edit">
                     <i class="bi bi-pencil"></i>
                 </button>
             </div>
             <!-- Use a button to pause/play the video with JavaScript -->
-            <a class="btn btn-lg btn-contact-us btn-primary rounded-lg font-size-20 text-light">Fast Response </a><br>
-            <button type="button" class="btn btn-warning text-light mt-2">
-                Change Hyperlink <i class="bi bi-pencil"></i>
+            <a href="{{ $homeWAlink->isi_komponen ?? '' }}" title="{{ $homeWAlink->isi_komponen ?? '' }}" class="btn btn-lg btn-contact-us btn-primary rounded-lg font-size-20 text-light">Fast Response </a><br>
+            <button type="button" class="btn btn-warning text-light mt-2" data-toggle="modal" data-target="#changeWhatsappLink">
+                Change Whatsapp Link <i class="bi bi-pencil"></i>
             </button>
 
 
@@ -94,6 +96,69 @@
     <div style="top:-10px; left:0px; z-index:400;width:25%; position:relative; border-bottom: 25px solid #F5C200;">
     </div>
 </div>
+
+<!-- MODAL WA LINK -->
+<div class="modal fade" id="changeWhatsappLink" tabindex="-1" role="dialog" aria-labelledby="changeWhatsappLinkLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{{ route('home.post') }}" method="POST" id="formChangeWhatsappLink"> @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changeWhatsappLinkLabel">Form Change Whatsapp Link</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Whatsapp Link </label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="bi bi-whatsapp link"></i>
+                            </span>
+                            <input type="hidden" name="menu" id="menu" value="home">
+                            <input type="hidden" name="komponen" id="komponen" value="walink">
+                            <input type="text" class="form-control" placeholder="Whatsapp Link" aria-label="Whatsapp Link Link" name="text" id="homeLinkWA" value="https://api.whatsapp.com/send?phone=6285777564256">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- MODAL LOGO -->
+<div class="modal fade" id="changeLogo" tabindex="-1" role="dialog" aria-labelledby="changeLogoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{{ route('home.post') }}" enctype="multipart/form-data" method="POST" id="formchangeLogo"> @csrf
+                <input type="hidden" value="0" name="id" id="id">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changeLogoLabel">Form Change Logo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="">Masukan file harus berformat jpg,jpeg,png Max Size( 4 mb )</label>
+                    <input type="hidden" name="menu" id="menu" value="home">
+                    <input type="hidden" name="komponen" id="komponen" value="logo">
+                    <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">
+                    <div id="preview" class="text-center">
+                        <img id="viewImg" src="{{$default}}" alt="Upload Preview" onclick="openFormFile()" style="width: 320px;height:320px;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close"  onclick="closeModal()">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @endsection
 @section('js')
 <script>
@@ -118,12 +183,14 @@
             $('.btn-circle').removeClass('btn-primary')
             $('.btn-circle').addClass('btn-warning')
 
+            $('.btn-circle').attr('title', 'Click to edit')
+
             $(btn).find('.bi').removeClass('bi-pencil')
             $(btn).find('.bi').addClass('bi-save')
 
             $(btn).removeClass('btn-warning')
             $(btn).addClass('btn-primary')
-            
+            $(btn).attr('title', 'Click to save')
 
             $(e).focus()
             $(e).attr('readonly', false);
@@ -141,8 +208,69 @@
             $(btn).addClass('btn-warning')
 
             $('.reset-setting').attr('readonly', true);
+
+            saveText(e)
+        }
+    }
+
+    function saveText(e) {
+        var text = $(e).val()
+        var komponen = (e == '#homeTitle' ? 'title' : 'description')
+        var data = {
+            _token: '{{ csrf_token() }}',
+            menu: 'home',
+            komponen: komponen,
+            text: text
         }
 
+        var urle = "{{  route('home.post') }}";
+        var datae = JSON.stringify(data);
+        postData(urle, datae)
+
+    }
+
+    function postData(urle, datae) {
+        $.ajax({
+            type: 'POST',
+            url: urle,
+            contentType: "application/json",
+            processData: false,
+            data: datae,
+            success: function(response) {
+                console.log(response)
+                if (response.code == 200) {
+                    alert('Berhasil menyimpan')
+                } else {
+                    alert('Gagal menyimpan')
+                }
+            }
+        });
+    }
+
+    function openFormFile() {
+        $('#imgFile').click();
+    }
+
+    function readURL(input) {
+        var defaults = "{{ $default }}";
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#viewImg')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            $('#viewImg').attr('src', defaults);
+        }
+    }
+
+    function closeModal() {    
+        $('#changeLogo').modal('hide')        
+        var file = "{{ENV('ASSET_URL')}}" + "/assets/compro/img/AIW.png"
+        $('#viewImg').attr('src', file)
     }
 </script>
 @endsection

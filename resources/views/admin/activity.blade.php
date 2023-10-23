@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        @php
+        @php    
         $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/activity.png";
         $default = "";
         @endphp

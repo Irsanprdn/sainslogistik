@@ -16,9 +16,15 @@ class Controller extends BaseController
     public function compro()
     {
 
-       
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'title' ";
+        $homeTitle = collect(DB::select($sql))->first();
 
-        return view('index');
+        
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'description' ";
+        $homeDescription = collect(DB::select($sql))->first();
+
+
+        return view('index', compact('homeTitle', 'homeDescription'));
     }
 
 

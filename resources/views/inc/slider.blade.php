@@ -10,8 +10,8 @@
     </div>
 
     <div class="content">        
-        <h1 class="text-center text-white">Spread Excellent Service</h1>
-        <p class="text-center text-white">Tingkatkan efisiensi, kurangi biaya, dan kembangkan bisnis anda dengan berbagai solusi dan teknnologi kami.</p>
+        <h1 class="text-center text-white">{{ $homeTitle->isi_komponen ?? '' }}</h1>
+        <p class="text-center text-white">{{ $homeDescription->isi_komponen ?? '' }}</p>
         <!-- Use a button to pause/play the video with JavaScript -->
         <a class="btn btn-lg btn-contact-us btn-primary rounded-lg font-size-20" >Fast Response</a>
     </div>

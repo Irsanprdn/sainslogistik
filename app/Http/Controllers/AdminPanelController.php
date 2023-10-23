@@ -15,112 +15,42 @@ class AdminPanelController extends Controller
     public function home()
     {
 
-        $sql = " SELECT * FROM cms ";
-        $data = DB::select($sql);
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'title' ";
+        $homeTitle = collect(DB::select($sql))->first();
 
 
-        return view('admin.home', compact('data'));
-    }
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'description' ";
+        $homeDescription = collect(DB::select($sql))->first();
 
-    public function home_edit(Request $req)
-    {
-        $code = 404;
-        $sql = "SELECT * FROM home WHERE is_delete = 'N' AND home_id = '" . $req->id . "' ";
-        $data = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'walink' ";
+        $homeWAlink = collect(DB::select($sql))->first();
 
-        $code =  ($data ?  200 : $code);
 
-        return response()->json([
-            'code' => $code,
-            'data' => $data
-        ]);
+        return view('admin.home', compact('homeTitle', 'homeDescription', 'homeWAlink'));
     }
 
     public function home_post(Request $req)
     {
         $user = auth()->user()->fullname;
         $date = date('Y-m-d H:i:s');
+        $code = 404;
 
-        $validator = Validator::make($req->all(), [
-            'imgFile' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4048',
-        ]);
 
-        if ($validator->fails()) {
-            return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
-        }
+        $save = DB::insert(" INSERT INTO cms (menu,komponen,isi_komponen,updated_by,updated_date) VALUES ('$req->menu','$req->komponen','$req->text','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
 
-        $slide = "";
-        $image = $req->file('imgFile');
-        if ($image != '') {
-
-            $slide = time() . '.' . $image->extension();
-
-            $filePath = public_path('/uploads/slider/');
-            $img = Image::make($image->path());
-            $img->resize(1600, 900, function ($const) {
-                $const->aspectRatio();
-            })->save($filePath . '/' . $slide);
-        } else {
-            $slide = "";
-        }
-
-        if ($req->id == 0) {
-
-            $save = DB::insert(" INSERT INTO home ( slide,idx,status,updated_by,updated_date ) VALUES ( '" . $slide . "', '" . $req->idx . "', '" . $req->status . "', '" . $user . "', '" . $date . "' ) ");
-        } else {
-
-            if ($slide == "") {
-                $save = DB::update(" UPDATE home SET idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $req->id . "' ");
+        if ($req->komponen == 'walink') {
+            if ($save) {
+                return redirect()->route('home')->with('success', 'Data berhasil disave');
             } else {
-                $save = DB::update(" UPDATE home SET slide = '" . $slide . "',idx = '" . $req->idx . "',status = '" . $req->status . "',updated_by = '" . $user . "',updated_date = '" . $date . "' WHERE home_id = '" . $req->id . "' ");
+
+                return redirect()->route('home')->with('error', 'Data gagal disave');
             }
-        }
-
-        if ($save) {
-
-            return redirect()->route('home')->with('success', 'Data berhasil disimpan');
         } else {
+            $code =  ($save ?  200 : $code);
 
-            return redirect()->route('home')->with('error', 'Data gagal disimpan');
-        }
-    }
-
-    public function home_delete($id)
-    {
-
-        $user = auth()->user()->fullname;
-        $date = date('Y-m-d H:i:s');
-        $sqlUpd = DB::update(" UPDATE home SET  is_delete = 'Y', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND home_id = '" . $id . "'  ");
-
-        if ($sqlUpd) {
-            return redirect()->route('home')->with('success', 'Data berhasil dihapus');
-        } else {
-
-            return redirect()->route('home')->with('error', 'Data gagal dihapus');
-        }
-    }
-
-    public function home_socmed_post(Request $req)
-    {
-
-        $user = auth()->user()->fullname;
-        $date = date('Y-m-d H:i:s');
-        $sqlUpd = true;
-
-        $input = $req->all();
-
-        foreach ($input as $key => $value) {
-
-            $sqlUpd = DB::update(" UPDATE basic_data SET  note = '" . $value . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  is_delete = 'N' AND group_id = '999999' AND  data_id = '" . $key . "' ");
-            if (!$sqlUpd) {
-                $sqlUpd = false;
-            }
-        }
-
-        if ($sqlUpd) {
-            return redirect()->route('home')->with('success', 'Data berhasil diubah');
-        } else {
-            return redirect()->route('home')->with('error', 'Data gagal diubah');
+            return response()->json([
+                'code' => $code
+            ]);
         }
     }
 
