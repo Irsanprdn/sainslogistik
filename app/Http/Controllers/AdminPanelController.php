@@ -15,13 +15,11 @@ class AdminPanelController extends Controller
     public function home()
     {
 
-        $sql = "SELECT * FROM home WHERE is_delete = 'N' ORDER BY idx ASC";
+        $sql = " SELECT * FROM cms ";
         $data = DB::select($sql);
 
-        $sql = "SELECT * FROM basic_data WHERE is_delete = 'N' AND  group_id= '999999'  ORDER BY data_id ASC";
-        $dataSosmed = DB::select($sql);
 
-        return view('admin.home', compact('data', 'dataSosmed'));
+        return view('admin.home', compact('data'));
     }
 
     public function home_edit(Request $req)

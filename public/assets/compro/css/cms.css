@@ -1,0 +1,38 @@
+.form-custom {
+    background-color: transparent !important;
+    border: none !important;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: justified;
+    width: 100%;
+}
+
+.form-custom-lg {
+    background-color: transparent !important;
+    border: none !important;
+    font-family: "Open Sans", sans-serif !important;
+    font-size: 70px;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: justified;
+    width: 100%;
+}
+
+.btn-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #fff;
+}
+
+.left-sidebar {
+    width: 160px;
+    z-index: 1999;
+}
+
+#main-wrapper[data-layout="vertical"][data-sidebartype="full"] .page-wrapper {
+    margin-left: 160px;
+}

@@ -22,6 +22,31 @@
     <link href="{{ asset('assets') }}/admin/DataTables/css/dataTables.FixedHeader.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/compro/vendor/bootstrap/css/bootstrap-select.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/plugins/bootstrap/dist/css/bootstrap-datepicker.css" rel="stylesheet">
+
+
+    <!-- FRONT -->
+    <!-- Favicons -->
+    <link href="{{ asset('assets') }}/compro/img/Logo-Sains-Potrait.png" rel="icon">
+    <link href="{{ asset('assets') }}/compro/img/Logo-Sains-Potrait.png" rel="icon">
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{ asset('assets') }}/compro/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/vendor/aos/aos.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=3.9" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/cms.css?v=1.0" rel="stylesheet">
+    <!-- END FRONT -->
 </head>
 
 <body>
@@ -37,12 +62,81 @@
 
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
-        @include('section.sidebar')
+        <nav class="navbar top-navbar navbar-dark d-flex justify-content-end d-md-none" style="height: 6vh;">
+            <div class="navbar-header d-flex justify-content-center pt-3" data-logobg="skin6">
+                <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)">
+                    <i class="ti-menu ti-close" style="font-size: 20px;"></i>
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+        </nav>
+
+        <aside class="left-sidebar p-0" data-sidebarbg="skin6">
+
+            <!-- navbar-expand-md  -->
+            <nav class="navbar top-navbar navbar-dark justify-content-center">
+                <div class="navbar-header d-flex justify-content-center" data-logobg="skin6">
+                    <a class="navbar-brand" href="#">
+                        <b class="logo-icon">
+
+                            <img src="{{ asset('assets') }}/compro/img/Logo-Sains-Potrait.png" width="100" alt="homepage" class="dark-logo" />
+                        </b>
+                    </a>
+
+                </div>
+            </nav>
+
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!-- User Profile-->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('home') }}" aria-expanded="false">
+                                <span class="hide-menu">Home</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('activity') }}" aria-expanded="false">
+
+                                <span class="hide-menu">Service</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('about') }}" aria-expanded="false">
+
+                                <span class="hide-menu">About Us</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('client') }}" aria-expanded="false">
+
+                                <span class="hide-menu">Client</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('contact') }}" aria-expanded="false">
+
+                                <span class="hide-menu">Contact</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('master_data') }}" aria-expanded="false">
+                                <span class="hide-menu">Master Data</span></a>
+                        </li>
+                        <li class="text-center p-20 upgrade-btn mt-5">
+                            <a href="{{ route('logout') }}" class="btn btn-danger text-white mt-4">Logout</a>
+                        </li>
+                    </ul>
+
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
 
         <div class="page-wrapper">
             <div class="page-breadcrumb">
-                <div class="row align-items-center">                    
-                    <div class="col-md-6 col-6">                        
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-6">
                         <div class="d-flex align-items-center ">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">

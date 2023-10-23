@@ -51,6 +51,11 @@ Route::prefix('cms_site')->group(function () {
         });
 
         
+        Route::prefix('client')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'client'])->name('client');
+            Route::post('/post', [AdminPanelController::class, 'client_post'])->name('client.post');
+        });
+        
         Route::prefix('contact')->group(function () {
             Route::get('/', [AdminPanelController::class, 'contact'])->name('contact');
             Route::post('/post', [AdminPanelController::class, 'contact_post'])->name('contact.post');
