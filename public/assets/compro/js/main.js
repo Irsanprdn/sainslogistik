@@ -73,10 +73,8 @@
         }
 
         let elementPos = select(el).offsetTop
-        var ext = (el == '#contact' ? 0 : 630);
-        ext = (el == '#hero' ? 0 : 630);
         window.scrollTo({
-            top: (elementPos + ext) - offset,
+            top: (elementPos) - offset,
             behavior: 'smooth'
         })
     }

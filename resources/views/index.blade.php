@@ -28,7 +28,7 @@
     <link href="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.0" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.1" rel="stylesheet">
 </head>
 
 <body>
@@ -92,7 +92,7 @@
     <script src="{{ asset('assets') }}/compro/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{ asset('assets') }}/compro/js/main.js?v=1.1"></script>
+    <script src="{{ asset('assets') }}/compro/js/main.js?v=1.2"></script>
     <script src="{{ asset('assets') }}/compro/js/jquery.js"></script>
 </body>
 <script>
