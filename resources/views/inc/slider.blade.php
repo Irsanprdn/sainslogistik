@@ -2,7 +2,7 @@
 <section id="hero" class="d-flex justify-content-center align-items-center" onclick="playPause(this)">
     <!-- The video -->
     <video muted loop id="myVideo" >
-        <source src="{{ asset('assets') }}/uploads/video/COMPANY PROFILE - PT SAINS LOGISTIK INDONESIA.mp4" type="video/mp4">
+        <source src="{{ asset('assets') }}/uploads/video/{{ $homeVideo->isi_komponen ?? '' }}" type="video/mp4">
     </video>
 
     <div class="btn-play-pause">

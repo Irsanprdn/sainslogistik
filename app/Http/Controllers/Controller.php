@@ -29,8 +29,12 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'logo' ";
         $homeLogo = collect(DB::select($sql))->first();
 
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'video' ";
+        $homeVideo = collect(DB::select($sql))->first();
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo'));
+
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo'));
     }
 
 

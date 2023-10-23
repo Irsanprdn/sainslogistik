@@ -28,8 +28,11 @@ class AdminPanelController extends Controller
         $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'logo' ";
         $homeLogo = collect(DB::select($sql))->first();
 
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'video' ";
+        $homeVideo = collect(DB::select($sql))->first();
 
-        return view('admin.home', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo'));
+
+        return view('admin.home', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo'));
     }
 
     public function home_post(Request $req)
@@ -50,13 +53,14 @@ class AdminPanelController extends Controller
             }
 
             $fileLoc = "";
-            $buktiRiwayat = $req->file('imgFile');
-            if ($buktiRiwayat != '') {
-                $fileLoc = 'Logo' . time() . '.' . $buktiRiwayat->extension();
+            $imgFile = $req->file('imgFile');
+            
+            if ($imgFile != '') {
+                $fileLoc = 'Logo' . time() . '.' . $imgFile->extension();
 
                 $filePath = public_path('/assets/uploads/logo/');
 
-                $buktiRiwayat->move($filePath, $fileLoc);
+                $imgFile->move($filePath, $fileLoc);
             } else {
                 $fileLoc = "";
             }
@@ -65,9 +69,35 @@ class AdminPanelController extends Controller
         }
         //LOGO
 
+        //IF VIDEO
+        if ($req->komponen == 'video') {
+
+            $validator = Validator::make($req->all(), [
+                'videoFile' => 'mimes:mp4,mov,ogg,3gp,avi,wmv',
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
+            }
+
+            $fileLoc = "";
+            $videoFile = $req->file('videoFile');
+            if ($videoFile != '') {
+                $fileLoc = 'Video' . time() . '.' . $videoFile->extension();
+
+                $filePath = public_path('/assets/uploads/video/');
+                $videoFile->move($filePath, $fileLoc);
+            } else {
+                $fileLoc = "";
+            }
+
+            $text = $req->text ?? $fileLoc;
+        }
+        //VIDEO
+
         $save = DB::insert(" INSERT INTO cms (menu,komponen,isi_komponen,updated_by,updated_date) VALUES ('$req->menu','$req->komponen','$text','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
 
-        if ($req->komponen == 'walink' || $req->komponen == 'logo') {
+        if ($req->komponen == 'walink' || $req->komponen == 'logo' || $req->komponen == 'video') {
             if ($save) {
                 return redirect()->route('home')->with('success', 'Successfully');
             } else {
