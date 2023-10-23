@@ -92,7 +92,7 @@
     <script src="{{ asset('assets') }}/compro/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{ asset('assets') }}/compro/js/main.js?v=1.0"></script>
+    <script src="{{ asset('assets') }}/compro/js/main.js?v=1.1"></script>
     <script src="{{ asset('assets') }}/compro/js/jquery.js"></script>
 </body>
 <script>
