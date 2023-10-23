@@ -112,8 +112,28 @@
 
     function editText(btn, e) {
         if ($(btn).hasClass('btn-warning')) {
+            $('.btn-circle').find('.bi').removeClass('bi-save')    
+            $('.btn-circle').find('.bi').addClass('bi-pencil')  
+
+            $('.btn-circle').removeClass('btn-primary')
             $('.btn-circle').addClass('btn-warning')
+
+            $(btn).find('.bi').removeClass('bi-pencil') 
+            $(btn).find('.bi').addClass('bi-save') 
+
             $(btn).removeClass('btn-warning')
+            $(btn).addClass('btn-primary')
+        }else{
+            $('.btn-circle').find('.bi').removeClass('bi-save')    
+            $('.btn-circle').find('.bi').addClass('bi-pencil')  
+
+            $('.btn-circle').removeClass('btn-primary')
+            $('.btn-circle').addClass('btn-warning')
+
+            $(btn).find('.bi').removeClass('bi-save') 
+            $(btn).find('.bi').addClass('bi-pencil') 
+
+            $(btn).removeClass('btn-primary')
             $(btn).addClass('btn-warning')
         }
         $('.reset-setting').attr('readonly', true);
