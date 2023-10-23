@@ -239,9 +239,9 @@ $default = $homeLogo->isi_komponen ?? $defaultFoto;
             success: function(response) {
                 console.log(response)
                 if (response.code == 200) {
-                    alert('Berhasil menyimpan')
+                    alert('Successfully')
                 } else {
-                    alert('Gagal menyimpan')
+                    alert('Failed')
                 }
             }
         });

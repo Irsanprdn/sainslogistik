@@ -34,16 +34,41 @@ class AdminPanelController extends Controller
         $user = auth()->user()->fullname;
         $date = date('Y-m-d H:i:s');
         $code = 404;
+        $text = $req->text ?? '';
+        //IF LOGO
+        if ($req->komponen == 'logo') {
 
+            $validator = Validator::make($req->all(), [
+                'imgFile' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4048',
+            ]);
 
-        $save = DB::insert(" INSERT INTO cms (menu,komponen,isi_komponen,updated_by,updated_date) VALUES ('$req->menu','$req->komponen','$req->text','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
+            if ($validator->fails()) {
+                return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
+            }
 
-        if ($req->komponen == 'walink') {
-            if ($save) {
-                return redirect()->route('home')->with('success', 'Data berhasil disave');
+            $fileLoc = "";
+            $buktiRiwayat = $req->file('imgFile');
+            if ($buktiRiwayat != '') {
+                $fileLoc = 'Logo' . time() . '.' . $buktiRiwayat->extension();
+
+                $filePath = public_path('/assets/uploads/logo/');
+
+                $buktiRiwayat->move($filePath, $fileLoc);
             } else {
+                $fileLoc = "";
+            }
 
-                return redirect()->route('home')->with('error', 'Data gagal disave');
+            $text = $req->text ?? $fileLoc;
+        }
+        //LOGO
+
+        $save = DB::insert(" INSERT INTO cms (menu,komponen,isi_komponen,updated_by,updated_date) VALUES ('$req->menu','$req->komponen','$text','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
+
+        if ($req->komponen == 'walink' || $req->komponen == 'logo') {
+            if ($save) {
+                return redirect()->route('home')->with('success', 'Successfully');
+            } else {
+                return redirect()->route('home')->with('error', 'Failed');
             }
         } else {
             $code =  ($save ?  200 : $code);
