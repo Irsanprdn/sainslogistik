@@ -24,7 +24,7 @@
 
                 <div class="col-lg-5 col-md-6 footer-links">
                     <h4>
-                        <img src="{{ asset('assets') }}/compro/img/logo-white.png" alt="Logo Sains Logistik" class="img-fluid" width="200">
+                        <img src="{{ asset('assets') }}/uploads/logo/{{ $footerLogo->isi_komponen ?? '' }}" alt="Logo Sains Logistik" class="img-fluid" width="200">
                     </h4>
                     <p class="text-justify mb-4">{{ $footerDescription->isi_komponen ?? '' }}</p>
 
@@ -45,7 +45,7 @@
             </div>
             <div class="d-flex justify-content-start align-items-center">
                 <i class="bi bi-geo-alt-fill font-size-35 text-base"></i>
-                <p class="mb-0 mx-3">Victoria Square VR-09, Jl. Gatot Subroto No.78, Cimone, Kec. Karawaci, Kota Tangerang, Banten</p>
+                <p class="mb-0 mx-3">{{ $footerAddress->isi_komponen ?? '' }}</p>
             </div>
         </div>
     </div>
