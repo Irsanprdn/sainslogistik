@@ -48,13 +48,11 @@ class Controller extends BaseController
         $footerLIlink = collect(DB::select($sql))->first();
 
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription','footerLogo','footerIGlink', 'footerLIlink' ));
-    }
+        $sql = " SELECT * FROM client WHERE status = 'publish' ";
+        $ourClient = DB::select($sql);
 
 
-    public function autoNumber($id)
-    {
-        $id = (int)$id + 1;
-        return sprintf("%06s", $id);
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription','footerLogo','footerIGlink', 'footerLIlink', 'ourClient' ));
     }
+
 }

@@ -78,7 +78,7 @@ class AdminPanelController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
+                return redirect()->route($req->menu ?? $req->menu[0])->with('error', 'Format file atau Ukuran file tidak sesuai');
             }
 
             $fileLoc = "";
@@ -174,7 +174,7 @@ class AdminPanelController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
+            return redirect()->route('client')->with('error', 'Format file atau Ukuran file tidak sesuai');
         }
 
         $clientLogo = "";
