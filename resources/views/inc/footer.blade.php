@@ -57,11 +57,9 @@
                     &copy; Copyright <strong><span class="text-base">2023</span> by Sains Logistik.</strong> All Rights Reserved
                 </div>
                 <div class="col-lg-6 d-flex justify-content-end">
-                    <div class="social-links">
-                        <div class="social-links">
-                            <a title="{{ $footerIGLink->isi_komponen ?? '' }}" href="{{ $footerIGLink->isi_komponen ?? '' }}" class="instagram"><i class="text-light font-size-20 bx bxl-instagram"></i></a>
-                            <a title="{{ $footerLILink->isi_komponen ?? '' }}" href="{{ $footerLILink->isi_komponen ?? '' }}" class="linkedin"><i class="text-light font-size-20 bx bxl-linkedin"></i></a>
-                        </div>
+                    <div class="social-links mr-4">
+                        <a title="{{ $footerIGLink->isi_komponen ?? '' }}" href="{{ $footerIGLink->isi_komponen ?? '' }}" class="instagram"><i class="text-light font-size-20 bx bxl-instagram"></i></a>
+                        <a title="{{ $footerLILink->isi_komponen ?? '' }}" href="{{ $footerLILink->isi_komponen ?? '' }}" class="linkedin"><i class="text-light font-size-20 bx bxl-linkedin"></i></a>
                     </div>
                 </div>
             </div>
