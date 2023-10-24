@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Panel - @yield('title') </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets') }}/compro/img/favicon.png">
-    <!-- Custom CSS -->
-    <link href="{{ asset('assets') }}/admin/plugins/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/img/Logo-Sains-Potrait.png" rel="icon">
+    <link href="{{ asset('assets') }}/compro/img/Logo-Sains-Potrait.png" rel="icon">
     <!-- Custom CSS -->
     <link href="{{ asset('assets') }}/admin/css/style.css?v=1.8" rel="stylesheet">
     <link href="{{ asset('assets') }}/compro/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -23,11 +22,7 @@
     <link href="{{ asset('assets') }}/admin/plugins/bootstrap/dist/css/bootstrap-datepicker.css" rel="stylesheet">
 
 
-    <!-- FRONT -->
-    <!-- Favicons -->
-    <link href="{{ asset('assets') }}/compro/img/Logo-Sains-Potrait.png" rel="icon">
-    <link href="{{ asset('assets') }}/compro/img/Logo-Sains-Potrait.png" rel="icon">
-
+    <!-- FRONT -->   
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -118,9 +113,14 @@
                                 <span class="hide-menu">Contact</span></a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('footer') }}" aria-expanded="false">
+
+                                <span class="hide-menu">Footer</span></a>
+                        </li>
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('master_data') }}" aria-expanded="false">
                                 <span class="hide-menu">Master Data</span></a>
-                        </li>
+                        </li> -->
                         <li class="text-center p-20 upgrade-btn mt-5">
                             <a href="{{ route('logout') }}" class="btn btn-danger text-white mt-4">Logout</a>
                         </li>

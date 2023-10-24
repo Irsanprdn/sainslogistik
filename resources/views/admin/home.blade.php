@@ -77,9 +77,9 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
             </div>
             <div class="d-flex justify-content-center">
                 <p class="text-white w-100">
-                    <input type="text" id="descriptionTitle" name="descriptionTitle" value="{{ $homeDescription->isi_komponen ?? '' }}" class="form-custom font-size-20 text-light text-center reset-setting font-weight-bold" readonly>
+                    <input type="text" id="homeDescription" name="homeDescription" value="{{ $homeDescription->isi_komponen ?? '' }}" class="form-custom font-size-20 text-light text-center reset-setting font-weight-bold" readonly>
                 </p>
-                <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#descriptionTitle')" title="Clik to edit" >
+                <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#homeDescription')" title="Clik to edit" >
                     <i class="bi bi-pencil"></i>
                 </button>
             </div>
@@ -103,7 +103,6 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form action="{{ route('home.post') }}" enctype="multipart/form-data" method="POST" id="formchangeLogo"> @csrf
-                <input type="hidden" value="0" name="id" id="id">
                 <div class="modal-header">
                     <h5 class="modal-title" id="changeLogoLabel">Form Change Logo</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -111,13 +110,14 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label for="">Masukan file harus berformat jpg,jpeg,png Max Size( 4 mb )</label>
+                    <label for="">File input must be format jpg,jpeg,png Max Size( 4 mb )</label>
                     <input type="hidden" name="menu" id="menu" value="home">
                     <input type="hidden" name="komponen" id="komponen" value="logo">
                     <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">
-                    <div id="preview" class="text-center">
+                    <div id="preview" class="text-center cursor-pointer">
                         <img id="viewImg" src="{{$default}}" alt="Upload Preview" onclick="openFormFile()" style="width: 320px;height:320px;">
                     </div>
+                    <p>*Click image for browse file</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
@@ -134,7 +134,6 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form action="{{ route('home.post') }}" enctype="multipart/form-data" method="POST" id="formchangeVideo"> @csrf
-                <input type="hidden" value="0" name="id" id="id">
                 <div class="modal-header">
                     <h5 class="modal-title" id="changeVideoLabel">Form Change Video</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -142,10 +141,10 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label for="">Masukan file harus berformat mp4,mov,ogg,3gp,avi,wmv Max Size( 512 mb )</label>
+                    <label for="">File input must be format mp4,mov,ogg,3gp,avi,wmv Max Size( 128 mb )</label>
                     <input type="hidden" name="menu" id="menu" value="home">
                     <input type="hidden" name="komponen" id="komponen" value="video">
-                    <input type="file" class="form-control" name="videoFile" id="videoFile" onchange="readURL(this)">                    
+                    <input type="file" class="form-control" name="videoFile" id="videoFile" onchange="readURL(this)">                                       
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
@@ -176,7 +175,7 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
                             </span>
                             <input type="hidden" name="menu" id="menu" value="home">
                             <input type="hidden" name="komponen" id="komponen" value="walink">
-                            <input type="text" class="form-control" placeholder="Whatsapp Link" aria-label="Whatsapp Link Link" name="text" id="homeLinkWA" value="https://api.whatsapp.com/send?phone=6285777564256">
+                            <input type="text" class="form-control" placeholder="Whatsapp Link" aria-label="Whatsapp Link Link" name="text" id="homeLinkWA" value="{{ $homeWAlink->isi_komponen ?? '' }}">
                         </div>
                     </div>
                 </div>
@@ -268,7 +267,7 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
             processData: false,
             data: datae,
             success: function(response) {
-                console.log(response)
+                // console.log(response)
                 if (response.code == 200) {
                     alert('Successfully')
                 } else {

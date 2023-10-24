@@ -32,9 +32,12 @@ Route::prefix('cms_site')->group(function () {
         Route::get('/', [AdminPanelController::class, 'home'])->name('home');
         Route::prefix('home')->group(function () {
             Route::get('/', [AdminPanelController::class, 'home'])->name('home');
-            Route::post('/edit', [AdminPanelController::class, 'home_edit'])->name('home.edit');
-            Route::post('/post', [AdminPanelController::class, 'home_post'])->name('home.post');            
-            Route::get('/delete/{id}', [AdminPanelController::class, 'home_delete'])->name('home.delete');
+            Route::post('/post', [AdminPanelController::class, 'home_post'])->name('home.post');       
+        });
+
+        Route::prefix('footer')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'footer'])->name('footer');
+            Route::post('/post', [AdminPanelController::class, 'footer_post'])->name('footer.post');       
         });
 
         Route::prefix('about')->group(function () {

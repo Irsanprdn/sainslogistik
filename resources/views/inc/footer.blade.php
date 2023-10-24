@@ -4,9 +4,9 @@
         <div class="container position-relative">
             <div class="row">
                 <div class="col-lg-6">
-                    <h4 class="text-dark font-size-35 font-weight-bold">Contact us for more 
-                        </h4>
-                        <p class="text-light font-size-35 font-weight-bold">Information</p>
+                    <h4 class="text-dark font-size-35 font-weight-bold">Contact us for more
+                    </h4>
+                    <p class="text-light font-size-35 font-weight-bold">Information</p>
                 </div>
                 <div class="col-lg-6">
                     <form action="" method="post">
@@ -26,7 +26,7 @@
                     <h4>
                         <img src="{{ asset('assets') }}/compro/img/logo-white.png" alt="Logo Sains Logistik" class="img-fluid" width="200">
                     </h4>
-                    <p class="text-justify mb-4">Sains Logistik menyediakan serta menawarkan layanan untuk memenuhi kebutuhan pelanggan dalam rangka menyambut tantangan pasar digital di seluruh wilayah Indonesia. Sains Logistik berkomitmen untuk menyebarkan layanan terbaik kepada pelanggan kami</p>
+                    <p class="text-justify mb-4">{{ $footerDescription->isi_komponen ?? '' }}</p>
 
                 </div>
 
@@ -58,11 +58,10 @@
                 </div>
                 <div class="col-lg-6 d-flex justify-content-end">
                     <div class="social-links">
-                        <a href="#" class="twitter"><i class="text-light font-size-20 bx bxl-twitter"></i></a>
-                        <a href="#" class="facebook"><i class="text-light font-size-20 bx bxl-facebook"></i></a>
-                        <a href="#" class="instagram"><i class="text-light font-size-20 bx bxl-instagram"></i></a>
-                        <a href="#" class="google-plus"><i class="text-light font-size-20 bx bxl-skype"></i></a>
-                        <a href="#" class="linkedin"><i class="text-light font-size-20 bx bxl-linkedin"></i></a>
+                        <div class="social-links">
+                            <a title="{{ $footerIGLink->isi_komponen ?? '' }}" href="{{ $footerIGLink->isi_komponen ?? '' }}" class="instagram"><i class="text-light font-size-20 bx bxl-instagram"></i></a>
+                            <a title="{{ $footerLILink->isi_komponen ?? '' }}" href="{{ $footerLILink->isi_komponen ?? '' }}" class="linkedin"><i class="text-light font-size-20 bx bxl-linkedin"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>

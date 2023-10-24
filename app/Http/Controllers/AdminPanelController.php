@@ -41,6 +41,7 @@ class AdminPanelController extends Controller
         $date = date('Y-m-d H:i:s');
         $code = 404;
         $text = $req->text ?? '';
+
         //IF LOGO
         if ($req->komponen == 'logo') {
 
@@ -54,7 +55,7 @@ class AdminPanelController extends Controller
 
             $fileLoc = "";
             $imgFile = $req->file('imgFile');
-            
+
             if ($imgFile != '') {
                 $fileLoc = 'Logo' . time() . '.' . $imgFile->extension();
 
@@ -95,13 +96,29 @@ class AdminPanelController extends Controller
         }
         //VIDEO
 
+        if (is_array($req->komponen)) {
+
+            if (count($req->komponen) > 1) {
+                for ($i = 0; $i < count($req->komponen); $i++) {
+                    $save = DB::insert(" INSERT INTO cms (menu,komponen,isi_komponen,updated_by,updated_date) VALUES ('" . $req->menu[$i] . "','" . $req->komponen[$i] . "','" . $req->text[$i] . "','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
+                }
+
+                if ($save) {
+                    return redirect()->route($req->menu[0])->with('success', 'Successfully');
+                } else {
+                    return redirect()->route($req->menu[0])->with('error', 'Failed');
+                }
+            }
+        }
+
         $save = DB::insert(" INSERT INTO cms (menu,komponen,isi_komponen,updated_by,updated_date) VALUES ('$req->menu','$req->komponen','$text','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
 
-        if ($req->komponen == 'walink' || $req->komponen == 'logo' || $req->komponen == 'video') {
+
+        if ($req->komponen == 'walink' ||  $req->komponen == 'logo' || $req->komponen == 'video') {
             if ($save) {
-                return redirect()->route('home')->with('success', 'Successfully');
+                return redirect()->route($req->menu)->with('success', 'Successfully');
             } else {
-                return redirect()->route('home')->with('error', 'Failed');
+                return redirect()->route($req->menu)->with('error', 'Failed');
             }
         } else {
             $code =  ($save ?  200 : $code);
@@ -111,6 +128,37 @@ class AdminPanelController extends Controller
             ]);
         }
     }
+
+    //END HOME
+
+
+    //FOOTER
+    public function footer()
+    {
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'logo' ";
+        $footerLogo = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'description' ";
+        $footerDescription = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'address' ";
+        $footerAddress = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'iglink' ";
+        $footerIGlink = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'lilink' ";
+        $footerLIlink = collect(DB::select($sql))->first();
+
+        return view('admin.footer', compact('footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink'));
+    }
+
+
+
+
+
+
 
 
     //ABOUT

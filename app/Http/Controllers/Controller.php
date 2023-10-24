@@ -32,9 +32,23 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'video' ";
         $homeVideo = collect(DB::select($sql))->first();
 
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'logo' ";
+        $footerLogo = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'description' ";
+        $footerDescription = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'address' ";
+        $footerAddress = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'iglink' ";
+        $footerIGlink = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'lilink' ";
+        $footerLIlink = collect(DB::select($sql))->first();
 
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo'));
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription','footerLogo','footerIGlink', 'footerLIlink' ));
     }
 
 
