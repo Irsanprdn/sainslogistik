@@ -53,7 +53,7 @@
     <div class="container border-top">
         <div class="copyright">
             <div class="row">
-                <div class="col-lg-6 text-right">
+                <div class="col-lg-6">
                     &copy; Copyright <strong><span class="text-base">2023</span> by Sains Logistik.</strong> All Rights Reserved
                 </div>
                 <div class="col-lg-6 d-flex justify-content-end">
