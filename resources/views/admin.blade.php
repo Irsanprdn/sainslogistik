@@ -92,7 +92,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('activity') }}" aria-expanded="false">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('service') }}" aria-expanded="false">
 
                                 <span class="hide-menu">Service</span></a>
                         </li>
@@ -117,10 +117,7 @@
 
                                 <span class="hide-menu">Footer</span></a>
                         </li>
-                        <!-- <li class="sidebar-item">
-                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('master_data') }}" aria-expanded="false">
-                                <span class="hide-menu">Master Data</span></a>
-                        </li> -->
+                     
                         <li class="text-center p-20 upgrade-btn mt-5">
                             <a href="{{ route('logout') }}" class="btn btn-danger text-white mt-4">Logout</a>
                         </li>
@@ -185,6 +182,7 @@
     <!--Custom JavaScript -->
     <script src="{{ asset('assets') }}/admin/js/custom.js"></script>
 
+    <script src="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.js"></script>
 
     <script src="{{ asset('assets') }}/admin/plugins/flot/jquery.flot.js"></script>
     <script src="{{ asset('assets') }}/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>

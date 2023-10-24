@@ -35,6 +35,13 @@ Route::prefix('cms_site')->group(function () {
             Route::post('/post', [AdminPanelController::class, 'home_post'])->name('home.post');       
         });
 
+        
+        Route::prefix('client')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'client'])->name('client');
+            Route::post('/post', [AdminPanelController::class, 'client_post'])->name('client.post');
+            Route::get('/delete/{client_id}', [AdminPanelController::class, 'client_delete'])->name('client.delete');
+        });
+
         Route::prefix('footer')->group(function () {
             Route::get('/', [AdminPanelController::class, 'footer'])->name('footer');
             Route::post('/post', [AdminPanelController::class, 'footer_post'])->name('footer.post');       
@@ -45,37 +52,19 @@ Route::prefix('cms_site')->group(function () {
             Route::post('/post', [AdminPanelController::class, 'about_post'])->name('about.post');
         });
 
-        Route::prefix('activity')->group(function () {
-            Route::get('/', [AdminPanelController::class, 'activity'])->name('activity');
-            Route::post('/edit', [AdminPanelController::class, 'activity_edit'])->name('activity.edit');
-            Route::post('/post', [AdminPanelController::class, 'activity_post'])->name('activity.post');
-            Route::get('/delete/{id}', [AdminPanelController::class, 'activity_delete'])->name('activity.delete');
+        Route::prefix('service')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'service'])->name('service');
+            Route::post('/post', [AdminPanelController::class, 'service_post'])->name('service.post');
         });
 
+       
         
-        Route::prefix('client')->group(function () {
-            Route::get('/', [AdminPanelController::class, 'client'])->name('client');
-            Route::post('/post', [AdminPanelController::class, 'client_post'])->name('client.post');
-        });
         
         Route::prefix('linkedin')->group(function () {
             Route::get('/', [AdminPanelController::class, 'linkedin'])->name('linkedin');
             Route::post('/post', [AdminPanelController::class, 'linkedin_post'])->name('linkedin.post');
         });
 
-        Route::prefix('wbs_data')->group(function () {
-            Route::get('/', [WBSController::class, 'wbs_data'])->name('wbs_data');
-            Route::post('/export', [WBSController::class, 'wbs_data_export'])->name('wbs_data.export');
-            Route::get('/input/{id}', [WBSController::class, 'wbs_data_input'])->name('wbs_data.input');
-            Route::post('/post/{id}', [WBSController::class, 'wbs_data_post'])->name('wbs_data.post');
-            Route::get('/delete/{id}', [WBSController::class, 'wbs_data_delete'])->name('wbs_data.delete');
-            Route::post('/import', [WBSController::class, 'wbs_data_import'])->name('wbs_data.import');
-        });
-        Route::prefix('master_data')->group(function () {
-            Route::get('/', [AdminPanelController::class, 'master_data'])->name('master_data');
-            Route::post('/post', [AdminPanelController::class, 'master_data_post'])->name('master_data.post');
-            Route::post('/edit', [AdminPanelController::class, 'master_data_edit'])->name('master_data.edit');
-            Route::get('/delete/{groupId}/{basicId}', [AdminPanelController::class, 'master_data_delete'])->name('master_data.delete');
-        });
+      
     });
 });

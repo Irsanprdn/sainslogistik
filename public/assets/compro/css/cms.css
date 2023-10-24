@@ -36,3 +36,16 @@
 #main-wrapper[data-layout="vertical"][data-sidebartype="full"] .page-wrapper {
     margin-left: 160px;
 }
+
+.sidebar-nav ul .sidebar-item {
+    width: 160px !important;
+}
+
+.swiper-slide .content-custom {
+    position: absolute;
+    bottom: 0;
+    z-index: 400;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
