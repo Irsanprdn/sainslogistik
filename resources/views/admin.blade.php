@@ -108,9 +108,9 @@
                                 <span class="hide-menu">Client</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('contact') }}" aria-expanded="false">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('linkedin') }}" aria-expanded="false">
 
-                                <span class="hide-menu">Contact</span></a>
+                                <span class="hide-menu">Linkedin</span></a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('footer') }}" aria-expanded="false">

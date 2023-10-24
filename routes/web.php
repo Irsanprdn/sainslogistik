@@ -58,9 +58,9 @@ Route::prefix('cms_site')->group(function () {
             Route::post('/post', [AdminPanelController::class, 'client_post'])->name('client.post');
         });
         
-        Route::prefix('contact')->group(function () {
-            Route::get('/', [AdminPanelController::class, 'contact'])->name('contact');
-            Route::post('/post', [AdminPanelController::class, 'contact_post'])->name('contact.post');
+        Route::prefix('linkedin')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'linkedin'])->name('linkedin');
+            Route::post('/post', [AdminPanelController::class, 'linkedin_post'])->name('linkedin.post');
         });
 
         Route::prefix('wbs_data')->group(function () {
