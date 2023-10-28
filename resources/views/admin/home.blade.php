@@ -295,12 +295,6 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
         } else {
             $('#viewImg').attr('src', defaults);
         }
-    }
-
-    // function closeModal() {    
-    //     $('#changeLogo').modal('hide')     
-    //     var defaults = "{{ $default }}";   
-    //     $('#viewImg').attr('src', defaults)
-    // }
+    } 
 </script>
 @endsection

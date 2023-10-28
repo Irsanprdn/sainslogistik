@@ -99,7 +99,13 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('about') }}" aria-expanded="false">
 
-                                <span class="hide-menu">About Us</span>
+                                <span class="hide-menu">About</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('image') }}" aria-expanded="false">
+
+                                <span class="hide-menu">About Image</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -181,7 +187,8 @@
     <script src="{{ asset('assets') }}/admin/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('assets') }}/admin/js/custom.js"></script>
-
+    <!-- tinymce -->
+    <script src="{{ asset('assets') }}/admin/tinymce/tinymce.min.js"></script>
     <script src="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.js"></script>
 
     <script src="{{ asset('assets') }}/admin/plugins/flot/jquery.flot.js"></script>

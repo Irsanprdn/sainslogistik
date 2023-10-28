@@ -8,14 +8,14 @@
         <form action="{{ route('client.post') }}" enctype="multipart/form-data" method="POST" id="formPost">
             @csrf
             <div class="row">
-                <div class="col-md-6 col-12">
+                <div class="col-md-8 col-12">
                     <div class="form-group">
                         <label for="client_name">Client Name</label>
                         <input type="text" name="client_id" class="form-control d-none" id="client_id">
                         <input type="text" name="client_name" class="form-control" id="client_name">
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-4 col-12">
                     <div class="form-group">
                         <label for="status">Status</label>
                         <select name="status" id="status" class="form-control">
@@ -46,45 +46,42 @@
         </form>
     </div>
 </div>
+@if (session('error'))
+<div class="alert my-3 alert-danger">{{ session('error') }}</div>
+@endif
+@if (session('success'))
+<div class="alert my-3 alert-success">{{ session('success') }}</div>
+@endif
 <div class="table-responsive">
-
-    @if (session('error'))
-    <div class="alert my-3 alert-danger">{{ session('error') }}</div>
-    @endif
-    @if (session('success'))
-    <div class="alert my-3 alert-success">{{ session('success') }}</div>
-    @endif
-    <div class="table-responsive">
-        <table id="client-data" class="table table-striped table-hover" style="width:100%">
-            <thead class="bg-base text-light">
-                <tr>
-                    <th>Client Name</th>
-                    <th>Client Logo</th>
-                    <th>Status</th>
-                    <th>Updated By</th>
-                    <th>Updated Date</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach( $data as $d )
-                <tr>
-                    <td class="clientName">{{ $d->client_name ?? ''}}</td>
-                    <td class="clientLogo">
-                        <img src="{{ asset('assets') }}/uploads/clients/{{ $d->client_logo ?? ''}}" alt="{{ $d->client_name ?? ''}}" width="100">
-                    </td>
-                    <td class="clientStatus">{{ $d->status ?? ''}}</td>
-                    <td class="updatedBy">{{ $d->updated_by ?? ''}}</td>
-                    <td class="updatedDate">{{ $d->updated_date ?? '' }}</td>
-                    <td>
-                        <button onclick="getDataEdit(this, '{{ $d->client_id }}')" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </button>
-                        <a data-url="{{ route('client.delete',$d->client_id) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+    <table id="client-data" class="table table-striped table-hover" style="width:100%">
+        <thead class="bg-base text-light">
+            <tr>
+                <th>Client Name</th>
+                <th>Client Logo</th>
+                <th>Status</th>
+                <th>Updated By</th>
+                <th>Updated Date</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach( $data as $d )
+            <tr>
+                <td class="clientName">{{ $d->client_name ?? ''}}</td>
+                <td class="clientLogo">
+                    <img src="{{ asset('assets') }}/uploads/clients/{{ $d->client_logo ?? ''}}" alt="{{ $d->client_name ?? ''}}" width="100">
+                </td>
+                <td class="clientStatus">{{ $d->status ?? ''}}</td>
+                <td class="updatedBy">{{ $d->updated_by ?? ''}}</td>
+                <td class="updatedDate">{{ $d->updated_date ?? '' }}</td>
+                <td>
+                    <button onclick="getDataEdit(this, '{{ $d->client_id }}')" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </button>
+                    <a data-url="{{ route('client.delete',$d->client_id) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 
 <div id="btn-add" class="d-none">
@@ -118,8 +115,8 @@
         }
     }
 
-    function getDataEdit(e,clientId) {
-        
+    function getDataEdit(e, clientId) {
+
         var clientName = $(e).parent().parent().find('.clientName').text()
         var clientLogo = $(e).parent().parent().find('.clientLogo').children().attr('src');
         var clientStatus = $(e).parent().parent().find('.clientStatus').text();
@@ -129,10 +126,11 @@
         } else {
             $('#grup').attr('readonly', true)
             $('#btn-tambah').click()
-            
+            $("#collapseTambahData").scrollTop();
+
             $('#client_id').val(clientId)
             $('#client_name').val(clientName)
-            $('#viewImg').attr('src',clientLogo)
+            $('#viewImg').attr('src', clientLogo)
             $('#status').val(clientStatus)
         }
     }

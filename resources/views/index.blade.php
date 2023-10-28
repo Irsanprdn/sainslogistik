@@ -106,7 +106,7 @@
         var captionDescription = $('.swiper-slide-active').find('.caption-desc').text()
 
         $('#placeCaptionTitle').text(captionTitle)
-        $('#placeCaptionDescription').text(captionDescription)
+        $('#placeCaptionDescription').html(captionDescription)
         var paginationAUS = $('#pagination-aus').html()
         $('#placePagination').html(paginationAUS)
         $('#placePagination').find('#pagination-aus').removeClass('d-none')

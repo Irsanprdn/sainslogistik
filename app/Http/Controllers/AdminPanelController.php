@@ -131,7 +131,7 @@ class AdminPanelController extends Controller
 
     //END HOME
 
-    //FOOTERjz  \ \ khuy
+    //FOOTER
     public function footer()
     {
 
@@ -151,6 +151,103 @@ class AdminPanelController extends Controller
         $footerLIlink = collect(DB::select($sql))->first();
 
         return view('admin.footer', compact('footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink'));
+    }
+
+    public function service()
+    {
+
+        $sql = " SELECT * FROM image WHERE menu = 'service' ";
+        $data = DB::select($sql);
+
+        return view('admin.service', compact('data'));
+    }
+
+    public function about()
+    {
+
+        $sql = " SELECT * FROM cms WHERE menu = 'about' and komponen = 'title' ";
+        $aboutTitle = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'about' and komponen = 'description' ";
+        $aboutDescription = collect(DB::select($sql))->first();
+
+        return view('admin.about', compact('aboutTitle', 'aboutDescription'));
+    }
+
+    public function image()
+    {
+
+        $sql = " SELECT * FROM image WHERE menu = 'image' ";
+        $data = DB::select($sql);
+
+        return view('admin.image', compact('data'));
+    }
+
+    public function image_post(Request $req)
+    {
+
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+
+        $validator = Validator::make($req->all(), [
+            'imgFile' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route($req->menu)->with('error', 'Format file atau Ukuran file tidak sesuai');
+        }
+
+        $image = "";
+        $imgFile = $req->file('imgFile');
+
+        if ($imgFile != '') {
+            $image = 'Image' . time() . '.' . $imgFile->extension();
+
+            $filePath = public_path('/assets/uploads/image/');
+
+            $imgFile->move($filePath, $image);
+        } else {
+            $image = "";
+        }
+
+        if ($req->image_id != '') {
+            if ($image != '') {
+                $sqlUpd = DB::update(" UPDATE image SET  image_title = '" . $req->image_title . "', image = '" . $image . "', status = '" . $req->status . "', menu = '" . $req->menu . "', image_description = '" . $req->image_description . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_id = '" . $req->image_id . "' ");
+            } else {
+                $sqlUpd = DB::update(" UPDATE image SET  image_title = '" . $req->image_title . "',  status = '" . $req->status . "', menu = '" . $req->menu . "', image_description = '" . $req->image_description . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_id = '" . $req->image_id . "' ");
+            }
+            if ($sqlUpd) {
+                return redirect()->route($req->menu)->with('success', 'Successfully');
+            } else {
+
+                return redirect()->route($req->menu)->with('error', 'Failed');
+            }
+        }
+
+
+
+        $sqlIns = DB::insert(" INSERT INTO image (  image_title, image, status, menu, image_description,  updated_by, updated_date ) VALUES ( '" . $req->image_title . "' , '" . $image . "', '" . $req->status . "', '" . $req->menu . "' , '" . $req->image_description . "' , '" . $user . "', '" . $date . "' ) ");
+
+        if ($sqlIns) {
+            return redirect()->route($req->menu)->with('success', 'Successfully');
+        } else {
+
+            return redirect()->route($req->menu)->with('error', 'Failed');
+        }
+    }
+
+    public function image_delete($image_id, $menu)
+    {
+
+        $sqlDel = DB::update(" DELETE FROM image WHERE image_id = '" . $image_id . "' ");
+
+        if ($sqlDel) {
+
+            return redirect()->route($menu)->with('success', 'Successfully');
+        } else {
+
+            return redirect()->route($menu)->with('error', 'Failed');
+        }
     }
 
 

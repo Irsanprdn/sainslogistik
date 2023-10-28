@@ -47,12 +47,22 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'lilink' ";
         $footerLIlink = collect(DB::select($sql))->first();
 
-
         $sql = " SELECT * FROM client WHERE status = 'publish' ";
         $ourClient = DB::select($sql);
 
+        $sql = " SELECT * FROM cms WHERE menu = 'about' and komponen = 'title' ";
+        $aboutTitle = collect(DB::select($sql))->first();
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription','footerLogo','footerIGlink', 'footerLIlink', 'ourClient' ));
+        $sql = " SELECT * FROM cms WHERE menu = 'about' and komponen = 'description' ";
+        $aboutDescription = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM image WHERE menu = 'image' ";
+        $aboutSlide = DB::select($sql);
+
+        $sql = " SELECT * FROM image WHERE menu = 'service' ";
+        $dataService = DB::select($sql);
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription','footerLogo','footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide','dataService' ));
     }
 
 }
