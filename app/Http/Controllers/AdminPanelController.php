@@ -15,24 +15,35 @@ class AdminPanelController extends Controller
     public function home()
     {
 
-        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'title' ";
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND  menu = 'home' and komponen = 'title' ORDER BY updated_date DESC ";
         $homeTitle = collect(DB::select($sql))->first();
 
 
-        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'description' ";
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND  menu = 'home' and komponen = 'description' ORDER BY updated_date DESC ";
         $homeDescription = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'walink' ";
+
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'home' and komponen = 'title' ORDER BY updated_date DESC ";
+        $homeTitleen = collect(DB::select($sql))->first();
+
+
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'home' and komponen = 'description' ORDER BY updated_date DESC ";
+        $homeDescriptionen = collect(DB::select($sql))->first();
+
+
+
+
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'walink' ORDER BY updated_date DESC ";
         $homeWAlink = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'logo' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'logo' ORDER BY updated_date DESC ";
         $homeLogo = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'video' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'video' ORDER BY updated_date DESC ";
         $homeVideo = collect(DB::select($sql))->first();
 
 
-        return view('admin.home', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo'));
+        return view('admin.home', compact('homeTitle', 'homeDescription', 'homeTitleen', 'homeDescriptionen', 'homeWAlink', 'homeLogo', 'homeVideo'));
     }
 
     public function home_post(Request $req)
@@ -100,7 +111,7 @@ class AdminPanelController extends Controller
 
             if (count($req->komponen) > 1) {
                 for ($i = 0; $i < count($req->komponen); $i++) {
-                    $save = DB::insert(" INSERT INTO cms (menu,komponen,isi_komponen,updated_by,updated_date) VALUES ('" . $req->menu[$i] . "','" . $req->komponen[$i] . "','" . $req->text[$i] . "','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
+                    $save = DB::insert(" INSERT INTO cms (menu,komponen,language,isi_komponen,updated_by,updated_date) VALUES ('" . $req->menu[$i] . "','" . $req->komponen[$i] . "','" . $req->language[$i] . "','" . $req->text[$i] . "','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),language = VALUES(language),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
                 }
 
                 if ($save) {
@@ -111,7 +122,7 @@ class AdminPanelController extends Controller
             }
         }
 
-        $save = DB::insert(" INSERT INTO cms (menu,komponen,isi_komponen,updated_by,updated_date) VALUES ('$req->menu','$req->komponen','$text','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
+        $save = DB::insert(" INSERT INTO cms (menu,komponen,language,isi_komponen,updated_by,updated_date) VALUES ('$req->menu','$req->komponen','$req->language','$text','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
 
 
         if ($req->komponen == 'walink' ||  $req->komponen == 'logo' || $req->komponen == 'video') {
@@ -135,28 +146,31 @@ class AdminPanelController extends Controller
     public function footer()
     {
 
-        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'logo' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'logo' ORDER BY updated_date DESC ";
         $footerLogo = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'description' ";
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'footer' and komponen = 'description' ORDER BY updated_date DESC ";
         $footerDescription = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'address' ";
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'footer' and komponen = 'description' ORDER BY updated_date DESC ";
+        $footerDescriptionen = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'address' ORDER BY updated_date DESC ";
         $footerAddress = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'iglink' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'iglink' ORDER BY updated_date DESC ";
         $footerIGlink = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'lilink' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'lilink' ORDER BY updated_date DESC ";
         $footerLIlink = collect(DB::select($sql))->first();
 
-        return view('admin.footer', compact('footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink'));
+        return view('admin.footer', compact('footerAddress', 'footerDescription','footerDescriptionen', 'footerLogo', 'footerIGlink', 'footerLIlink'));
     }
 
     public function service()
     {
 
-        $sql = " SELECT * FROM image WHERE menu = 'service' ";
+        $sql = " SELECT * FROM image WHERE menu = 'service' ORDER BY updated_date,language DESC ";
         $data = DB::select($sql);
 
         return view('admin.service', compact('data'));
@@ -165,19 +179,25 @@ class AdminPanelController extends Controller
     public function about()
     {
 
-        $sql = " SELECT * FROM cms WHERE menu = 'about' and komponen = 'title' ";
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'about' and komponen = 'title' ORDER BY updated_date DESC ";
         $aboutTitle = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE menu = 'about' and komponen = 'description' ";
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'about' and komponen = 'description' ORDER BY updated_date DESC ";
         $aboutDescription = collect(DB::select($sql))->first();
 
-        return view('admin.about', compact('aboutTitle', 'aboutDescription'));
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'about' and komponen = 'title' ORDER BY updated_date DESC ";
+        $aboutTitleEN = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'about' and komponen = 'description' ORDER BY updated_date DESC ";
+        $aboutDescriptionEN = collect(DB::select($sql))->first();
+
+        return view('admin.about', compact('aboutTitle', 'aboutDescription','aboutTitleEN', 'aboutDescriptionEN'));
     }
 
     public function image()
     {
 
-        $sql = " SELECT * FROM image WHERE menu = 'image' ";
+        $sql = " SELECT * FROM image WHERE menu = 'image' ORDER BY updated_date,language DESC ";
         $data = DB::select($sql);
 
         return view('admin.image', compact('data'));
@@ -212,9 +232,9 @@ class AdminPanelController extends Controller
 
         if ($req->image_id != '') {
             if ($image != '') {
-                $sqlUpd = DB::update(" UPDATE image SET  image_title = '" . $req->image_title . "', image = '" . $image . "', status = '" . $req->status . "', menu = '" . $req->menu . "', image_description = '" . $req->image_description . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_id = '" . $req->image_id . "' ");
+                $sqlUpd = DB::update(" UPDATE image SET  image_title = '" . $req->image_title . "', image = '" . $image . "', status = '" . $req->status . "', language = '" . $req->language . "',  menu = '" . $req->menu . "', image_description = '" . $req->image_description . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_id = '" . $req->image_id . "' ");
             } else {
-                $sqlUpd = DB::update(" UPDATE image SET  image_title = '" . $req->image_title . "',  status = '" . $req->status . "', menu = '" . $req->menu . "', image_description = '" . $req->image_description . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_id = '" . $req->image_id . "' ");
+                $sqlUpd = DB::update(" UPDATE image SET  image_title = '" . $req->image_title . "',  status = '" . $req->status . "', language = '" . $req->language . "',  menu = '" . $req->menu . "', image_description = '" . $req->image_description . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_id = '" . $req->image_id . "' ");
             }
             if ($sqlUpd) {
                 return redirect()->route($req->menu)->with('success', 'Successfully');
@@ -226,7 +246,7 @@ class AdminPanelController extends Controller
 
 
 
-        $sqlIns = DB::insert(" INSERT INTO image (  image_title, image, status, menu, image_description,  updated_by, updated_date ) VALUES ( '" . $req->image_title . "' , '" . $image . "', '" . $req->status . "', '" . $req->menu . "' , '" . $req->image_description . "' , '" . $user . "', '" . $date . "' ) ");
+        $sqlIns = DB::insert(" INSERT INTO image (  image_title, image, status, language,menu, image_description,  updated_by, updated_date ) VALUES ( '" . $req->image_title . "' , '" . $image . "', '" . $req->status . "', '" . $req->language . "','" . $req->menu . "' , '" . $req->image_description . "' , '" . $user . "', '" . $date . "' ) ");
 
         if ($sqlIns) {
             return redirect()->route($req->menu)->with('success', 'Successfully');
@@ -254,7 +274,7 @@ class AdminPanelController extends Controller
     //MASTER DATA
     public function client()
     {
-        $sql = "SELECT * FROM client  ORDER BY client_id DESC";
+        $sql = "SELECT * FROM client  ORDER BY client_id DESCORDER BY updated_date DESC ";
         $data = DB::select($sql);
 
         return view('admin.client', compact('data'));

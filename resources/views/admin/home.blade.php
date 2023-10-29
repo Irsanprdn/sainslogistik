@@ -3,7 +3,7 @@
 @section('content')
 @php
 $defaultFoto = ENV('ASSET_URL') . "/assets/compro/img/AIW.png";
-$default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET_URL') . "/assets/uploads/logo/".$homeLogo->isi_komponen );
+$default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSET_URL') . "/assets/uploads/logo/".$homeLogo->isi_komponen );
 @endphp
 <div class="container">
     @if (session('error'))
@@ -67,21 +67,54 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
         </div>
 
         <div class="content">
-            <div class="d-flex justify-content-center">
-                <h1 class="text-white">
-                    <input type="text" id="homeTitle" name="homeTitle" value="{{ $homeTitle->isi_komponen ?? '' }}" class="form-custom form-custom-lg text-light text-center reset-setting font-weight-bold" readonly>
-                </h1>
-                <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#homeTitle')" title="Clik to edit">
-                    <i class="bi bi-pencil"></i>
-                </button>
-            </div>
-            <div class="d-flex justify-content-center">
-                <p class="text-white w-100">
-                    <input type="text" id="homeDescription" name="homeDescription" value="{{ $homeDescription->isi_komponen ?? '' }}" class="form-custom font-size-20 text-light text-center reset-setting font-weight-bold" readonly>
-                </p>
-                <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#homeDescription')" title="Clik to edit" >
-                    <i class="bi bi-pencil"></i>
-                </button>
+            <div class="card">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="id-tab" data-bs-toggle="tab" data-bs-target="#id" type="button" role="tab" aria-controls="id" aria-selected="true">Indonesia</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="en-tab" data-bs-toggle="tab" data-bs-target="#en" type="button" role="tab" aria-controls="en" aria-selected="false">English</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="id" role="tabpanel" aria-labelledby="id-tab">
+                        <div class="d-flex justify-content-center">
+                            <h1 class="text-white">
+                                <input type="text" id="homeTitle" data-lang="id" name="homeTitle" value="{{ $homeTitle->isi_komponen ?? '' }}" class="form-custom form-custom-lg text-dark text-center reset-setting font-weight-bold" readonly>
+                            </h1>
+                            <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#homeTitle')" title="Clik to edit">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p class="text-white w-100">
+                                <input type="text" id="homeDescription" data-lang="id" name="homeDescription" value="{{ $homeDescription->isi_komponen ?? '' }}" class="form-custom font-size-20 text-dark text-center reset-setting font-weight-bold" readonly>
+                            </p>
+                            <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#homeDescription')" title="Clik to edit">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="en-tab">
+                        <div class="d-flex justify-content-center">
+                            <h1 class="text-white">
+                                <input type="text" id="homeTitleen" data-lang="en" name="homeTitle" value="{{ $homeTitleen->isi_komponen ?? '' }}" class="form-custom form-custom-lg text-dark text-center reset-setting font-weight-bold" readonly>
+                            </h1>
+                            <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#homeTitleen')" title="Clik to edit">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p class="text-white w-100">
+                                <input type="text" id="homeDescriptionen" data-lang="en" name="homeDescription" value="{{ $homeDescriptionen->isi_komponen ?? '' }}" class="form-custom font-size-20 text-dark text-center reset-setting font-weight-bold" readonly>
+                            </p>
+                            <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#homeDescriptionen')" title="Clik to edit">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Use a button to pause/play the video with JavaScript -->
             <a href="{{ $homeWAlink->isi_komponen ?? '' }}" title="{{ $homeWAlink->isi_komponen ?? '' }}" class="btn btn-lg btn-contact-us btn-primary rounded-lg font-size-20 text-light">Fast Response </a><br>
@@ -144,7 +177,7 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
                     <label for="">File input must be format mp4,mov,ogg,3gp,avi,wmv Max Size( 128 mb )</label>
                     <input type="hidden" name="menu" id="menu" value="home">
                     <input type="hidden" name="komponen" id="komponen" value="video">
-                    <input type="file" class="form-control" name="videoFile" id="videoFile" onchange="readURL(this)">                                       
+                    <input type="file" class="form-control" name="videoFile" id="videoFile" onchange="readURL(this)">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
@@ -245,11 +278,18 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
 
     function saveText(e) {
         var text = $(e).val()
-        var komponen = (e == '#homeTitle' ? 'title' : 'description')
+        var lang = $(e).attr('data-lang')
+        var komponen = "";
+            if ( lang == 'id' ) {
+                komponen = (e == '#homeTitle' ? 'title' : 'description')            
+            }else{
+                komponen = (e == '#homeTitleen' ? 'title' : 'description')
+            }
         var data = {
             _token: '{{ csrf_token() }}',
             menu: 'home',
             komponen: komponen,
+            language: lang,
             text: text
         }
 
@@ -295,6 +335,6 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto :  ENV('ASSET
         } else {
             $('#viewImg').attr('src', defaults);
         }
-    } 
+    }
 </script>
 @endsection

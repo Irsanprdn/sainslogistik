@@ -17,10 +17,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', [Controller::class, 'compro'])->name('compro');
 
-Route::post('/search', [WBSController::class, 'wbs_search'])->name('wbs.search');
+Route::get('/{language}', [Controller::class, 'comproLanguage'])->name('compro.language');
 
 Route::prefix('cms_site')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');

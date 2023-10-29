@@ -62,7 +62,67 @@ class Controller extends BaseController
         $sql = " SELECT * FROM image WHERE menu = 'service' ";
         $dataService = DB::select($sql);
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription','footerLogo','footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide','dataService' ));
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService'));
     }
 
+    public function comproLanguage($language)
+    {
+
+        if ($language == 'cms_site') {
+            return redirect()->route('login');
+        }
+
+        if ($language == 'en' || $language == 'id') {
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'home' and komponen = 'title' ORDER BY updated_date DESC ";
+            $homeTitle = collect(DB::select($sql))->first();
+
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'home' and komponen = 'description' ORDER BY updated_date DESC ";
+            $homeDescription = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'home' and komponen = 'walink' ORDER BY updated_date DESC ";
+            $homeWAlink = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'home' and komponen = 'logo' ORDER BY updated_date DESC ";
+            $homeLogo = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'home' and komponen = 'video' ORDER BY updated_date DESC ";
+            $homeVideo = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'footer' and komponen = 'logo' ORDER BY updated_date DESC ";
+            $footerLogo = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'footer' and komponen = 'description' ORDER BY updated_date DESC ";
+            $footerDescription = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'footer' and komponen = 'address' ORDER BY updated_date DESC ";
+            $footerAddress = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'footer' and komponen = 'iglink' ORDER BY updated_date DESC ";
+            $footerIGlink = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'footer' and komponen = 'lilink' ORDER BY updated_date DESC ";
+            $footerLIlink = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'about' and komponen = 'title' ORDER BY updated_date DESC ";
+            $aboutTitle = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM cms WHERE  menu = 'about' and komponen = 'description' ORDER BY updated_date DESC ";
+            $aboutDescription = collect(DB::select($sql))->first();
+
+            $sql = " SELECT * FROM client WHERE status = 'publish' ORDER BY updated_date DESC ";
+            $ourClient = DB::select($sql);
+
+            $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'image' ORDER BY updated_date,language DESC ";
+            $aboutSlide = DB::select($sql);
+
+            $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'service' ORDER BY updated_date,language DESC ";
+            $dataService = DB::select($sql);
+
+            return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService'));
+        }else{
+            return redirect()->route('compro');
+        }
+    }
 }

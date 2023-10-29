@@ -2,13 +2,22 @@
 @section('title', 'Service')
 @section('content')
 
-
 <div class="collapse" id="collapseTambahData">
     <div class="card card-body">
         <form action="{{ route('image.post') }}" enctype="multipart/form-data" method="POST" id="formPost">
             @csrf
             <div class="row">
-                <div class="col-md-10 col-12">
+                <div class="col-md-2 col-12">
+                    <div class="form-group">
+                        <label for="language">Language</label>
+                        <select name="language" id="language" class="form-control">
+                            <option value="">Choose Language</option>
+                            <option value="EN">English</option>
+                            <option value="ID">Indonesia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-8 col-12">
                     <div class="form-group">
                         <label for="image_title">Service Title</label>
                         <input type="text" name="image_id" class="form-control d-none" id="image_id">
@@ -68,6 +77,7 @@
                 <th>Service Description</th>
                 <th>Service</th>
                 <th>Status</th>
+                <th>Language</th>
                 <th>Updated By</th>
                 <th>Updated Date</th>
                 <th>Aksi</th>
@@ -82,6 +92,7 @@
                     <img src="{{ asset('assets') }}/uploads/image/{{ $d->image ?? ''}}" alt="{{ $d->image_title ?? ''}}" width="100">
                 </td>
                 <td class="imageStatus">{{ $d->status ?? ''}}</td>
+                <td class="language">{{ $d->language ?? ''}}</td>
                 <td class="updatedBy">{{ $d->updated_by ?? ''}}</td>
                 <td class="updatedDate">{{ $d->updated_date ?? '' }}</td>
                 <td>
@@ -118,12 +129,12 @@
     tinymce.init({
         selector: '#mytextarea',
         promotion: false,
-        menubar: false,       
+        menubar: false,
         toolbar: ' undo redo | formatselect | ' +
             'bold italic backcolor | alignleft aligncenter ' +
             'alignright alignjustify | bullist numlist outdent indent | ' +
             'removeformat | help',
-        content_style: 'body { font-family: "Open Sans", sans-serif;font-size: 16px;}',       
+        content_style: 'body { font-family: "Open Sans", sans-serif;font-size: 16px;}',
     });
 
     function confirmDelete(e) {
@@ -142,6 +153,7 @@
         var imageDescription = $(e).parent().parent().find('.imageDescription').text()
         var image = $(e).parent().parent().find('.image').children().attr('src');
         var imageStatus = $(e).parent().parent().find('.imageStatus').text();
+        var language = $(e).parent().parent().find('.language').text();
         if ($('#collapseTambahData').hasClass('show')) {
             resetForm();
             $('#btn-tambah').click()
@@ -153,6 +165,7 @@
             $('#image_id').val(imageId)
             tinymce.get("mytextarea").setContent(imageDescription);
             $('#menu').val(menu)
+            $('#language').val(language)
             $('#image_title').val(imageTitle)
             $('#viewImg').attr('src', image)
             $('#status').val(imageStatus)

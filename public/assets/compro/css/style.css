@@ -457,7 +457,7 @@ h6 {
 */
 
 .mobile-nav-toggle {
-    color: #fff;
+    color: #054a85 !important;
     font-size: 28px;
     cursor: pointer;
     display: none;
@@ -2416,7 +2416,7 @@ section {
     line-height: 1;
 }
 
-#footer .footer-top .footer-links ul li {
+#footer .footer-top .footer-links .sosmed {
     padding: 10px 0;
     display: flex;
     align-items: center;

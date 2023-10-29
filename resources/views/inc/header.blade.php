@@ -12,8 +12,8 @@
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                 <li class="dropdown"><a href="#hero"><span>Eng</span> <i class="bi bi-translate"></i> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="#hero">English</a></li>                        
-                        <li><a href="#hero">Indonesia</a></li>                        
+                        <li><a href="{{ route('compro.language','en') }}">English</a></li>                        
+                        <li><a href="{{ route('compro.language','id') }}">Indonesia</a></li>                        
                     </ul>
                 </li>
             </ul>

@@ -26,7 +26,7 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-6 col-md-6 footer-links">
+                    <div class="col-lg-10 footer-links">
                         <div class="d-flex justify-content-start">
 
                             <img src="{{ asset('assets') }}/uploads/logo/{{ $footerLogo->isi_komponen ?? '' }}" alt="Logo Sains Logistik" class="img-fluid" width="200">
@@ -35,25 +35,46 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
                                 Change Logo <i class="bi bi-pencil"></i>
                             </button>
                         </div>
-                        <div class="d-flex justify-content-start">
-                            <textarea id="footerDescription" name="footerDescription" rows="7" class="form-custom text-light reset-setting" readonly>{{ $footerDescription->isi_komponen ?? '' }}
-                            </textarea>
-                            <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#footerDescription')" title="Clik to edit">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                        </div>
 
+                        <div class="card mt-3">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="id-tab" data-bs-toggle="tab" data-bs-target="#id" type="button" role="tab" aria-controls="id" aria-selected="true">Indonesia</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="en-tab" data-bs-toggle="tab" data-bs-target="#en" type="button" role="tab" aria-controls="en" aria-selected="false">English</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="id" role="tabpanel" aria-labelledby="id-tab">
+                                    <div class="d-flex justify-content-start">
+                                        <textarea id="footerDescription" data-lang="id" name="footerDescription" rows="7" class="form-custom text-dark reset-setting" readonly>{{ $footerDescription->isi_komponen ?? '' }}</textarea>
+                                        <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#footerDescription')" title="Clik to edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="en-tab">
+                                    <div class="d-flex justify-content-start"><textarea id="footerDescriptionen" data-lang="en" name="footerDescription" rows="7" class="form-custom text-dark reset-setting" readonly>{{ $footerDescriptionen->isi_komponen ?? '' }}
+                                        </textarea>
+                                        <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#footerDescriptionen')" title="Clik to edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
-                    <div class="col-lg-2 offset-lg-4 col-md-6 footer-links">
+                    <div class="col-lg-2 footer-links">
                         <h4 class="text-base">Company</h4>
                         <ul>
-                            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                            <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                            <li><a class="nav-link scrollto" href="#about">About</a></li>
-                            <li><a class="nav-link scrollto" href="#clients">Clients</a></li>
-                            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                            <li class="sosmed"><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                            <li class="sosmed"><a class="nav-link scrollto" href="#services">Services</a></li>
+                            <li class="sosmed"><a class="nav-link scrollto" href="#about">About</a></li>
+                            <li class="sosmed"><a class="nav-link scrollto" href="#clients">Clients</a></li>
+                            <li class="sosmed"><a class="nav-link scrollto" href="#contact">Contact</a></li>
                         </ul>
                     </div>
 
@@ -208,11 +229,20 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
 
     function saveText(e) {
         var text = $(e).val()
-        var komponen = (e == '#footerDescription' ? 'description' : 'address')
+        var lang = $(e).attr('data-lang')
+
+        var komponen = "";
+            if ( lang == 'id' ) {
+                komponen = (e == '#footerDescription' ? 'description' : 'address')            
+            }else{
+                komponen = (e == '#footerDescriptionen' ? 'description' : 'address')
+            }
+
         var data = {
             _token: '{{ csrf_token() }}',
             menu: 'footer',
             komponen: komponen,
+            language: lang,
             text: text
         }
 
