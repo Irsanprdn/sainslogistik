@@ -31,8 +31,6 @@ class AdminPanelController extends Controller
         $homeDescriptionen = collect(DB::select($sql))->first();
 
 
-
-
         $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'walink' ORDER BY updated_date DESC ";
         $homeWAlink = collect(DB::select($sql))->first();
 
