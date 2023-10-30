@@ -23,28 +23,28 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'home' and komponen = 'description' ";
         $homeDescription = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'home' and komponen = 'walink' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'walink' ";
         $homeWAlink = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'home' and komponen = 'logo' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'logo' ";
         $homeLogo = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'home' and komponen = 'video' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'home' and komponen = 'video' ";
         $homeVideo = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'footer' and komponen = 'logo' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'logo' ";
         $footerLogo = collect(DB::select($sql))->first();
 
         $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'footer' and komponen = 'description' ";
         $footerDescription = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'footer' and komponen = 'address' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'address' ";
         $footerAddress = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'footer' and komponen = 'iglink' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'iglink' ";
         $footerIGlink = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'footer' and komponen = 'lilink' ";
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'lilink' ";
         $footerLIlink = collect(DB::select($sql))->first();
 
         $sql = " SELECT * FROM client WHERE status = 'publish' ";
