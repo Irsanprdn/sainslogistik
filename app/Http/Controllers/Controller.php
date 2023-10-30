@@ -19,7 +19,6 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'home' and komponen = 'title' ";
         $homeTitle = collect(DB::select($sql))->first();
 
-
         $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'home' and komponen = 'description' ";
         $homeDescription = collect(DB::select($sql))->first();
 
@@ -81,28 +80,28 @@ class Controller extends BaseController
             $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'home' and komponen = 'description' ORDER BY updated_date DESC ";
             $homeDescription = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'home' and komponen = 'walink' ORDER BY updated_date DESC ";
+            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'home' and komponen = 'walink' ORDER BY updated_date DESC ";
             $homeWAlink = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'home' and komponen = 'logo' ORDER BY updated_date DESC ";
+            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'home' and komponen = 'logo' ORDER BY updated_date DESC ";
             $homeLogo = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'home' and komponen = 'video' ORDER BY updated_date DESC ";
+            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'home' and komponen = 'video' ORDER BY updated_date DESC ";
             $homeVideo = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'footer' and komponen = 'logo' ORDER BY updated_date DESC ";
+            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'logo' ORDER BY updated_date DESC ";
             $footerLogo = collect(DB::select($sql))->first();
 
             $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'footer' and komponen = 'description' ORDER BY updated_date DESC ";
             $footerDescription = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'footer' and komponen = 'address' ORDER BY updated_date DESC ";
+            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'address' ORDER BY updated_date DESC ";
             $footerAddress = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'footer' and komponen = 'iglink' ORDER BY updated_date DESC ";
+            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'iglink' ORDER BY updated_date DESC ";
             $footerIGlink = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'footer' and komponen = 'lilink' ORDER BY updated_date DESC ";
+            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'lilink' ORDER BY updated_date DESC ";
             $footerLIlink = collect(DB::select($sql))->first();
 
             $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'about' and komponen = 'title' ORDER BY updated_date DESC ";
