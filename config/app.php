@@ -179,7 +179,9 @@ return [
 
      
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+
+        Laravel\Socialite\SocialiteServiceProvider::class
     ],
 
     /*
@@ -196,7 +198,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // ...
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class
     ])->toArray(),
 
 ];

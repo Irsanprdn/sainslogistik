@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '68fa503f2f0b24a01fd888058ee812c592d03b0b',
+        'reference' => '06ad33d10106838f7c9f78c904cbc115bc957e80',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -419,12 +419,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '68fa503f2f0b24a01fd888058ee812c592d03b0b',
+            'reference' => '06ad33d10106838f7c9f78c904cbc115bc957e80',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -452,6 +452,15 @@
             'install_path' => __DIR__ . '/../laravel/serializable-closure',
             'aliases' => array(),
             'reference' => 'e5a3057a5591e1cfe8183034b0203921abe2c902',
+            'dev_requirement' => false,
+        ),
+        'laravel/socialite' => array(
+            'pretty_version' => 'v5.10.0',
+            'version' => '5.10.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/socialite',
+            'aliases' => array(),
+            'reference' => 'f376b6eda9084899e37ac08bafd64a95edf9c6c0',
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(
@@ -506,6 +515,15 @@
             'install_path' => __DIR__ . '/../league/mime-type-detection',
             'aliases' => array(),
             'reference' => 'a6dfb1194a2946fcdc1f38219445234f65b35c96',
+            'dev_requirement' => false,
+        ),
+        'league/oauth1-client' => array(
+            'pretty_version' => 'v1.10.1',
+            'version' => '1.10.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../league/oauth1-client',
+            'aliases' => array(),
+            'reference' => 'd6365b901b5c287dd41f143033315e2f777e1167',
             'dev_requirement' => false,
         ),
         'maatwebsite/excel' => array(

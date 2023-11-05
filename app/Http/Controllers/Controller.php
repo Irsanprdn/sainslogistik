@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\WBS;
 use DB;
+use Illuminate\Support\Facades\App;
 
 class Controller extends BaseController
 {
@@ -67,61 +68,64 @@ class Controller extends BaseController
     public function comproLanguage($language)
     {
 
+
+
+        if (!in_array($language, ['en', 'id', 'cms_site'])) {           
+            return redirect()->route('compro');
+        }
+
         if ($language == 'cms_site') {
             return redirect()->route('login');
         }
 
-        if ($language == 'en' || $language == 'id') {
+        App::setLocale($language);
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'home' and komponen = 'title'  ";
-            $homeTitle = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'home' and komponen = 'title'  ";
+        $homeTitle = collect(DB::select($sql))->first();
 
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'home' and komponen = 'description'  ";
-            $homeDescription = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'home' and komponen = 'description'  ";
+        $homeDescription = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'home' and komponen = 'walink'  ";
-            $homeWAlink = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'home' and komponen = 'walink'  ";
+        $homeWAlink = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'home' and komponen = 'logo'  ";
-            $homeLogo = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'home' and komponen = 'logo'  ";
+        $homeLogo = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'home' and komponen = 'video'  ";
-            $homeVideo = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'home' and komponen = 'video'  ";
+        $homeVideo = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'logo'  ";
-            $footerLogo = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'logo'  ";
+        $footerLogo = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'footer' and komponen = 'description'  ";
-            $footerDescription = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'footer' and komponen = 'description'  ";
+        $footerDescription = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'address'  ";
-            $footerAddress = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'address'  ";
+        $footerAddress = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'iglink'  ";
-            $footerIGlink = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'iglink'  ";
+        $footerIGlink = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'lilink'  ";
-            $footerLIlink = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'lilink'  ";
+        $footerLIlink = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'about' and komponen = 'title'  ";
-            $aboutTitle = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'about' and komponen = 'title'  ";
+        $aboutTitle = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'about' and komponen = 'description'  ";
-            $aboutDescription = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'about' and komponen = 'description'  ";
+        $aboutDescription = collect(DB::select($sql))->first();
 
-            $sql = " SELECT * FROM client WHERE status = 'publish'  ";
-            $ourClient = DB::select($sql);
+        $sql = " SELECT * FROM client WHERE status = 'publish'  ";
+        $ourClient = DB::select($sql);
 
-            $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'image' ";
-            $aboutSlide = DB::select($sql);
+        $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'image' ";
+        $aboutSlide = DB::select($sql);
 
-            $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'service' ";
-            $dataService = DB::select($sql);
+        $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'service' ";
+        $dataService = DB::select($sql);
 
-            return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService'));
-        }else{
-            return redirect()->route('compro');
-        }
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService'));
     }
 }

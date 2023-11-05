@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\WBSController;
+use App\Http\Controllers\LinkedinController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -62,3 +62,7 @@ Route::prefix('cms_site')->group(function () {
         });
     });
 });
+
+
+Route::get('/auth/linkedin',  [LinkedinController::class, 'redirectToLinkedIn']);
+Route::get('/auth/linkedin/callback', [LinkedinController::class, 'handleLinkedInCallback']);
