@@ -286,7 +286,7 @@ class AdminPanelController extends Controller
         $date = date('Y-m-d H:i:s');
 
 
-        $sqlIns = DB::insert(" INSERT INTO image (  image_title, embed, status, menu,   updated_by, updated_date ) VALUES ( '" . $req->image_title . "' ,'" . $req->urlEmbed . "' ,  '" . $req->status . "', '" . $req->menu . "' , '" . $user . "', '" . $date . "' ) ");
+        $sqlIns = DB::insert(" INSERT INTO image (  image_title, embed, status, menu,   updated_by, updated_date ) VALUES ( '" . $req->image_title . "' ,'" . $req->urlEmbed . "' ,  'Publish', '" . $req->menu . "' , '" . $user . "', '" . $date . "' ) ");
 
 
         if ($sqlIns) {

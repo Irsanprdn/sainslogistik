@@ -16,7 +16,7 @@
                         <input type="text" name="image_title" class="form-control" id="image_title" >
                     </div>
                 </div>   
-                <div class="col-md-10 col-12">
+                <div class="col-md-12 col-12">
                     <div class="form-group">
                         <label for="image_title">Embed Linkedin</label>
                         <input type="text" name="image_id" class="form-control d-none" id="image_id">
@@ -25,17 +25,7 @@
                         <input type="hidden" name="urlEmbed" id="urlEmbed">
                         <div class="d-none" id="placingEmbed"></div>
                     </div>
-                </div>    
-                <div class="col-md-2 col-12">
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control">
-                            <option value="">Choose Status</option>
-                            <option value="Draft">Draft</option>
-                            <option value="Publish">Publish</option>
-                        </select>
-                    </div>
-                </div>            
+                </div>                               
                 <div class="col-md-12">
                     <p class="text-right mt-3 pb-0 mb-0">
                         <button class="btn btn-sm btn-secondary" type="button" onclick="resetForm()"><i class="bi bi-arrow-clockwise"></i> Reset Form</button>
@@ -58,8 +48,7 @@
             <tr>
                 <th>Linkedin Title</th>
                 <th>Linkedin Description</th>
-                <th>Image</th>
-                <th>Status</th>                
+                <th>Image</th>          
                 <th>Updated By</th>
                 <th>Updated Date</th>
                 <th>Aksi</th>
@@ -72,8 +61,7 @@
                 <td class="imageDescription">{!! $d->image_description ?? '' !!}</td>
                 <td class="image">                
                     <img src="{{ $d->image ?? ''}}" alt="{{ $d->image_title ?? ''}}" width="100">
-                </td>
-                <td class="imageStatus">{{ $d->status ?? ''}}</td>                
+                </td>              
                 <td class="updatedBy">{{ $d->updated_by ?? ''}}</td>
                 <td class="updatedDate">{{ $d->updated_date ?? '' }}</td>
                 <td>                

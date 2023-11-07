@@ -62,7 +62,7 @@ class Controller extends BaseController
         $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'service' AND status = 'Publish' ";
         $dataService = DB::select($sql);
 
-        $sql = " SELECT * FROM image WHERE menu = 'linkedin' AND status = 'Publish' ";
+        $sql = " SELECT * FROM image WHERE menu = 'linkedin'  ";
         $dataLinkedin = DB::select($sql);
 
         return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin'));
