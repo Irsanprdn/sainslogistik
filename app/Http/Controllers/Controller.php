@@ -62,7 +62,10 @@ class Controller extends BaseController
         $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'service' ";
         $dataService = DB::select($sql);
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService'));
+        $sql = " SELECT * FROM image WHERE menu = 'linkedin' ";
+        $dataLinkedin = DB::select($sql);
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin'));
     }
 
     public function comproLanguage($language)

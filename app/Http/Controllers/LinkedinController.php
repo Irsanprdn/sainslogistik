@@ -16,7 +16,7 @@ class LinkedinController extends Controller
     {
         $query = http_build_query([
             'response_type' => 'code',
-            'client_id' => '8605jv9vbl0rrl',
+            'client_id' => '86ykme3lqipefb',
             'redirect_uri' => 'http://localhost/sainslogistik/auth/linkedin/callback',
             'scope' => 'profile',
             'state' => bin2hex(random_bytes(5)),
@@ -32,14 +32,14 @@ class LinkedinController extends Controller
         $response = Http::asForm()->post('https://www.linkedin.com/oauth/v2/accessToken', [
             'grant_type' => 'authorization_code',
             'code' => $code,
+            'client_id' => '86ykme3lqipefb',
+            'client_secret' => 'YtnpTankWJx6c0kp',
             'redirect_uri' => 'http://localhost/sainslogistik/auth/linkedin/callback',
-            'client_id' => '8605jv9vbl0rrl',
-            'client_secret' => 'TXNBPiPYbULgMEFB',
         ]);
-        // dd($response);
-        $access_token = $response['access_token'] ?? '';
 
-        $response = Http::withToken($access_token)->get('https://api.linkedin.com/v2/me');
+        // dd($response['scope']);
+        $access_token = $response['access_token'] ?? '';        
+        $response = Http::withToken($access_token)->get('https://api.linkedin.com/v2/posts');
 
         $posts = $response->json();
 

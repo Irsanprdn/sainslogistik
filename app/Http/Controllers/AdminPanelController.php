@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Image;
 use Validator;
+use GuzzleHttp\Client;
+use DOMDocument;
+use DOMXPath;
 
 class AdminPanelController extends Controller
 {
@@ -162,7 +165,7 @@ class AdminPanelController extends Controller
         $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'lilink' ORDER BY updated_date DESC ";
         $footerLIlink = collect(DB::select($sql))->first();
 
-        return view('admin.footer', compact('footerAddress', 'footerDescription','footerDescriptionen', 'footerLogo', 'footerIGlink', 'footerLIlink'));
+        return view('admin.footer', compact('footerAddress', 'footerDescription', 'footerDescriptionen', 'footerLogo', 'footerIGlink', 'footerLIlink'));
     }
 
     public function service()
@@ -189,7 +192,7 @@ class AdminPanelController extends Controller
         $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'about' and komponen = 'description' ORDER BY updated_date DESC ";
         $aboutDescriptionEN = collect(DB::select($sql))->first();
 
-        return view('admin.about', compact('aboutTitle', 'aboutDescription','aboutTitleEN', 'aboutDescriptionEN'));
+        return view('admin.about', compact('aboutTitle', 'aboutDescription', 'aboutTitleEN', 'aboutDescriptionEN'));
     }
 
     public function image()
@@ -268,11 +271,84 @@ class AdminPanelController extends Controller
         }
     }
 
+    //MASTER DATA
+    public function linkedin()
+    {
+        $sql = " SELECT * FROM image WHERE menu = 'linkedin' ORDER BY updated_date,language DESC ";
+        $data = DB::select($sql);
+
+        return view('admin.linkedin', compact('data'));
+    }
+
+    public function linkedin_post(Request $req)
+    {
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+
+
+        $sqlIns = DB::insert(" INSERT INTO image (  image_title, embed, status, menu,   updated_by, updated_date ) VALUES ( '" . $req->image_title . "' ,'" . $req->urlEmbed . "' ,  '" . $req->status . "', '" . $req->menu . "' , '" . $user . "', '" . $date . "' ) ");
+
+
+        if ($sqlIns) {
+            $this->scrapping($req->urlEmbed, $req->image_title);
+            return redirect()->route('linkedin')->with('success', 'Successfully');
+        } else {
+            return redirect()->route('linkedin')->with('error', 'Failed');
+        }
+    }
+
+
+    public function scrapping($url,$title)
+    {   
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+
+
+        $client = new Client();
+
+        $response = $client->request('GET', $url);
+        $html = (string) $response->getBody();
+
+        // Use DOMDocument to parse the HTML
+        $dom = new DOMDocument();
+        @$dom->loadHTML($html); // Use '@' to suppress warnings for invalid HTML
+
+        $xpath = new DOMXPath($dom);
+
+        // Get elements with the class "example-class"
+        $elements = $xpath->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' attributed-text-segment-list__content ')]");
+
+        $matchingElements = "";
+
+        foreach ($elements as $element) {
+            $matchingElements .= $element->nodeValue;
+        }
+
+        // Get elements with the class "example-class"
+        $elements = $xpath->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' lazy-load ')]");
+
+        $matchingElementsImg = "";
+
+        foreach ($elements as $element) {
+            $matchingElementsImg .= $element->getAttribute('data-delayed-url');
+        }
+      
+
+        DB::update(" UPDATE image SET  image = '" . $matchingElementsImg . "',  image_description = '" . $matchingElements . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_title = '" . $title . "' ");
+
+        // if ($sqlUpd) {
+        //     return redirect()->route('linkedin')->with('success', 'Successfully');
+        // } else {
+
+        //     return redirect()->route('linkedin')->with('error', 'Failed');
+        // }
+    }
+
 
     //MASTER DATA
     public function client()
     {
-        $sql = "SELECT * FROM client  ORDER BY client_id DESCORDER BY updated_date DESC ";
+        $sql = "SELECT * FROM client  ORDER BY client_id DESC ";
         $data = DB::select($sql);
 
         return view('admin.client', compact('data'));

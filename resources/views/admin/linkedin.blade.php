@@ -1,31 +1,31 @@
- @extends('admin')
-@section('title', 'About Image')
+@extends('admin')
+@section('title', 'Linkedin')
 @section('content')
 
 
 <div class="collapse" id="collapseTambahData">
     <div class="card card-body">
-        <form action="{{ route('image.post') }}" enctype="multipart/form-data" method="POST" id="formPost">
+        <form action="{{ route('linkedin.post') }}" enctype="multipart/form-data" method="POST" id="formPost">
             @csrf
-            <div class="row">
-                <div class="col-md-2 col-12">
+            <div class="row">                
+                <div class="col-md-12 col-12">
                     <div class="form-group">
-                        <label for="language">Language</label>
-                        <select name="language" id="language" class="form-control">
-                            <option value="">Choose Language</option>
-                            <option value="EN">English</option>
-                            <option value="ID">Indonesia</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-8 col-12">
-                    <div class="form-group">
-                        <label for="image_title">Image Title</label>
+                        <label for="image_title">Title</label>
                         <input type="text" name="image_id" class="form-control d-none" id="image_id">
-                        <input type="text" name="menu" value="image" class="form-control d-none" id="menu">
-                        <input type="text" name="image_title" class="form-control" id="image_title">
+                        <input type="text" name="menu" value="linkedin" class="form-control d-none" id="menu">
+                        <input type="text" name="image_title" class="form-control" id="image_title" >
                     </div>
-                </div>
+                </div>   
+                <div class="col-md-10 col-12">
+                    <div class="form-group">
+                        <label for="image_title">Embed Linkedin</label>
+                        <input type="text" name="image_id" class="form-control d-none" id="image_id">
+                        <input type="text" name="menu" value="linkedin" class="form-control d-none" id="menu">
+                        <input type="text" name="embed" class="form-control" id="embed" onblur="getURLFromEmbed(this)">
+                        <input type="hidden" name="urlEmbed" id="urlEmbed">
+                        <div class="d-none" id="placingEmbed"></div>
+                    </div>
+                </div>    
                 <div class="col-md-2 col-12">
                     <div class="form-group">
                         <label for="status">Status</label>
@@ -35,25 +35,7 @@
                             <option value="Publish">Publish</option>
                         </select>
                     </div>
-                </div>
-                <div class="col-md-12 col-12">
-                    <div class="form-group">
-                        <label for="image_description">Image Description</label>
-                        <textarea id="mytextarea" name="image_description">
-                        </textarea>
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="image">Image</label>
-                        <input type="file" class="form-control" name="imgFile" id="imgFile" onchange="readURL(this)">
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div id="preview" class="text-center">
-                        <img id="viewImg" alt="Upload Preview" style="width: 115px;height:115px;">
-                    </div>
-                </div>
+                </div>            
                 <div class="col-md-12">
                     <p class="text-right mt-3 pb-0 mb-0">
                         <button class="btn btn-sm btn-secondary" type="button" onclick="resetForm()"><i class="bi bi-arrow-clockwise"></i> Reset Form</button>
@@ -74,11 +56,10 @@
     <table id="image-data" class="table table-striped table-hover" style="width:100%">
         <thead class="bg-base text-light">
             <tr>
-                <th>Image Title</th>
-                <th>Image Description</th>
+                <th>Linkedin Title</th>
+                <th>Linkedin Description</th>
                 <th>Image</th>
-                <th>Status</th>
-                <th>Language</th>
+                <th>Status</th>                
                 <th>Updated By</th>
                 <th>Updated Date</th>
                 <th>Aksi</th>
@@ -89,16 +70,14 @@
             <tr>
                 <td class="imageTitle">{{ $d->image_title ?? ''}}</td>
                 <td class="imageDescription">{!! $d->image_description ?? '' !!}</td>
-                <td class="image">
-                    <img src="{{ asset('assets') }}/uploads/image/{{ $d->image ?? ''}}" alt="{{ $d->image_title ?? ''}}" width="100">
+                <td class="image">                
+                    <img src="{{ $d->image ?? ''}}" alt="{{ $d->image_title ?? ''}}" width="100">
                 </td>
-                <td class="imageStatus">{{ $d->status ?? ''}}</td>
-                <td class="language">{{ $d->language ?? ''}}</td>
+                <td class="imageStatus">{{ $d->status ?? ''}}</td>                
                 <td class="updatedBy">{{ $d->updated_by ?? ''}}</td>
                 <td class="updatedDate">{{ $d->updated_date ?? '' }}</td>
-                <td>
-                    <button onclick="getDataEdit(this, '{{ $d->image_id }}', '{{ $d->menu }}')" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </button>
-                    <a data-url="{{ route('image.delete',[$d->image_id, 'image']) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
+                <td>                
+                    <a data-url="{{ route('image.delete',[$d->image_id, 'linkedin']) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
                 </td>
             </tr>
             @endforeach
@@ -130,12 +109,12 @@
     tinymce.init({
         selector: '#mytextarea',
         promotion: false,
-        menubar: false,       
+        menubar: false,
         toolbar: ' undo redo | formatselect | ' +
             'bold italic backcolor | alignleft aligncenter ' +
             'alignright alignjustify | bullist numlist outdent indent | ' +
             'removeformat | help',
-        content_style: 'body { font-family: "Open Sans", sans-serif;font-size: 16px;}',       
+        content_style: 'body { font-family: "Open Sans", sans-serif;font-size: 16px;}',
     });
 
     function confirmDelete(e) {
@@ -146,6 +125,14 @@
             // Do nothing!
             Alert('Hapus telah dibatalkan')
         }
+    }
+
+    function getURLFromEmbed(e){
+        var embed = $(e).val()
+        $('#placingEmbed').html(embed)
+        var urlEmbed = $('#placingEmbed').children().attr('src')
+        $('#urlEmbed').val(urlEmbed)
+        
     }
 
     function getDataEdit(e, imageId, menu) {

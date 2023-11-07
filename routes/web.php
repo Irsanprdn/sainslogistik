@@ -43,18 +43,13 @@ Route::prefix('cms_site')->group(function () {
 
         Route::get('/footer', [AdminPanelController::class, 'footer'])->name('footer');
         Route::get('/about', [AdminPanelController::class, 'about'])->name('about');
+        Route::get('/service', [AdminPanelController::class, 'service'])->name('service');
 
         Route::prefix('image')->group(function () {
             Route::get('/', [AdminPanelController::class, 'image'])->name('image');
             Route::post('/post', [AdminPanelController::class, 'image_post'])->name('image.post');
             Route::get('/delete/{image_id}/{menu}', [AdminPanelController::class, 'image_delete'])->name('image.delete');
         });
-
-        Route::prefix('service')->group(function () {
-            Route::get('/', [AdminPanelController::class, 'service'])->name('service');
-            Route::post('/post', [AdminPanelController::class, 'service_post'])->name('service.post');
-        });
-
 
         Route::prefix('linkedin')->group(function () {
             Route::get('/', [AdminPanelController::class, 'linkedin'])->name('linkedin');

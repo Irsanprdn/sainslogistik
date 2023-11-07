@@ -568,6 +568,13 @@ class ComposerStaticInita70f0d64249c1047cd89ccc0bc03edb9
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'Sunra\\PhpSimple\\HtmlDomParser' => 
+            array (
+                0 => __DIR__ . '/..' . '/sunra/php-simple-html-dom-parser/Src',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 
@@ -586,6 +593,7 @@ class ComposerStaticInita70f0d64249c1047cd89ccc0bc03edb9
         'App\\Http\\Controllers\\AdminPanelController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminPanelController.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\LinkedinController' => __DIR__ . '/../..' . '/app/Http/Controllers/LinkedinController.php',
         'App\\Http\\Controllers\\WBSController' => __DIR__ . '/../..' . '/app/Http/Controllers/WBSController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -5972,6 +5980,7 @@ class ComposerStaticInita70f0d64249c1047cd89ccc0bc03edb9
         'Spatie\\LaravelIgnition\\Views\\BladeSourceMapCompiler' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/BladeSourceMapCompiler.php',
         'Spatie\\LaravelIgnition\\Views\\ViewExceptionMapper' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/ViewExceptionMapper.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'Sunra\\PhpSimple\\HtmlDomParser' => __DIR__ . '/..' . '/sunra/php-simple-html-dom-parser/Src/Sunra/PhpSimple/HtmlDomParser.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',
         'Symfony\\Component\\Console\\CI\\GithubActionReporter' => __DIR__ . '/..' . '/symfony/console/CI/GithubActionReporter.php',

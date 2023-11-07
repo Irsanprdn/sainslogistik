@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '06ad33d10106838f7c9f78c904cbc115bc957e80',
+        'reference' => '2e419b54cbec11817124c43335cd31f3634b6a40',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -424,7 +424,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '06ad33d10106838f7c9f78c904cbc115bc957e80',
+            'reference' => '2e419b54cbec11817124c43335cd31f3634b6a40',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -1066,6 +1066,15 @@
             'aliases' => array(),
             'reference' => '1a2b4bd3d48c72526c0ba417687e5c56b5cf49bc',
             'dev_requirement' => true,
+        ),
+        'sunra/php-simple-html-dom-parser' => array(
+            'pretty_version' => 'v1.5.2',
+            'version' => '1.5.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../sunra/php-simple-html-dom-parser',
+            'aliases' => array(),
+            'reference' => '75b9b1cb64502d8f8c04dc11b5906b969af247c6',
+            'dev_requirement' => false,
         ),
         'symfony/console' => array(
             'pretty_version' => 'v6.3.2',
