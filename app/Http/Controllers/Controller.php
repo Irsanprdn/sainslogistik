@@ -56,13 +56,13 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'about' and komponen = 'description' ";
         $aboutDescription = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'image' ";
+        $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'image' AND status = 'Publish' ";
         $aboutSlide = DB::select($sql);
 
-        $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'service' ";
+        $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'service' AND status = 'Publish' ";
         $dataService = DB::select($sql);
 
-        $sql = " SELECT * FROM image WHERE menu = 'linkedin' ";
+        $sql = " SELECT * FROM image WHERE menu = 'linkedin' AND status = 'Publish' ";
         $dataLinkedin = DB::select($sql);
 
         return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin'));

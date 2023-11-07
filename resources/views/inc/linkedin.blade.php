@@ -26,9 +26,9 @@
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="{{ $dl->image }}" alt="{{ $dl->image_title }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $dl->image_title }}</h5>
+                            <h3 class="card-title">{{ $dl->image_title }}</h3>
                             <p class="card-text text-truncate" >{{ $dl->image_description }}</p>
-                            <h6 class="text-base mb-0 mt-5" posit><a target="_blank" href="{{ $dl->embed }}" title="More Details">Lihat Selengkapnya</a></h6>
+                            <h6 class="text-base mb-0 mt-3" posit><a target="_blank" href="{{ $dl->embed }}" title="More Details">Lihat Selengkapnya</a></h6>
                         </div>
                     </div>
                     @endforeach
