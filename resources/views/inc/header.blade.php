@@ -5,15 +5,15 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#clients">Clients</a></li>
-                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                <li class="dropdown"><a href="#hero"><span>Eng</span> <i class="bi bi-translate"></i> <i class="bi bi-chevron-down"></i></a>
+                <li><a class="nav-link scrollto active" href="#hero">{{ __('website.menu0') }}</a></li>
+                <li><a class="nav-link scrollto" href="#services">{{ __('website.menu1') }}</a></li>
+                <li><a class="nav-link scrollto" href="#about">{{ __('website.menu2') }}</a></li>
+                <li><a class="nav-link scrollto" href="#clients">{{ __('website.menu3') }}</a></li>
+                <li><a class="nav-link scrollto" href="#contact">{{ __('website.menu4') }}</a></li>
+                <li class="dropdown"><a href="#hero"><span>{{ __('website.menu5') }}</span> <i class="bi bi-translate"></i> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="{{ route('compro.language','en') }}">English</a></li>                        
                         <li><a href="{{ route('compro.language','id') }}">Indonesia</a></li>                        
+                        <li><a href="{{ route('compro.language','en') }}">English</a></li>                        
                     </ul>
                 </li>
             </ul>

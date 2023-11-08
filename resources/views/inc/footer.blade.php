@@ -4,9 +4,9 @@
         <div class="container position-relative">
             <div class="row">
                 <div class="col-lg-6">
-                    <h4 class="text-dark font-size-35 font-weight-bold">Contact us for more
+                    <h4 class="text-dark font-size-35 font-weight-bold">{{ __('website.textContact1') }}
                     </h4>
-                    <p class="text-light font-size-35 font-weight-bold">Information</p>
+                    <p class="text-light font-size-35 font-weight-bold">{{ __('website.textContact2') }}</p>
                 </div>
                 <div class="col-lg-6">
                     <form action="" method="post">
@@ -34,11 +34,11 @@
                 <div class="col-lg-2 offset-lg-5 col-md-6 footer-links">
                     <h4 class="text-base">Company</h4>
                     <ul>
-                        <li class="sosmed"><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                        <li class="sosmed"><a class="nav-link scrollto" href="#services">Services</a></li>
-                        <li class="sosmed"><a class="nav-link scrollto" href="#about">About</a></li>
-                        <li class="sosmed"><a class="nav-link scrollto" href="#clients">Clients</a></li>
-                        <li class="sosmed"><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                        <li class="sosmed"><a class="nav-link scrollto active" href="#hero">{{ __('website.menu0') }}</a></li>
+                        <li class="sosmed"><a class="nav-link scrollto" href="#services">{{ __('website.menu1') }}</a></li>
+                        <li class="sosmed"><a class="nav-link scrollto" href="#about">{{ __('website.menu2') }}</a></li>
+                        <li class="sosmed"><a class="nav-link scrollto" href="#clients">{{ __('website.menu3') }}</a></li>
+                        <li class="sosmed"><a class="nav-link scrollto" href="#contact">{{ __('website.menu4') }}</a></li>
                     </ul>
                 </div>
 

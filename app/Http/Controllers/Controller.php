@@ -123,12 +123,16 @@ class Controller extends BaseController
         $sql = " SELECT * FROM client WHERE status = 'publish'  ";
         $ourClient = DB::select($sql);
 
-        $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'image' ";
+        $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'image' AND status = 'Publish'";
         $aboutSlide = DB::select($sql);
 
-        $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'service' ";
+        $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'service' AND status = 'Publish'";
         $dataService = DB::select($sql);
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService'));
+        $sql = " SELECT * FROM image WHERE menu = 'linkedin'  ";
+        $dataLinkedin = DB::select($sql);
+
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService','dataLinkedin'));
     }
 }
