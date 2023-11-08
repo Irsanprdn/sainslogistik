@@ -16,8 +16,8 @@ class LinkedinController extends Controller
     {
         $query = http_build_query([
             'response_type' => 'code',
-            'client_id' => '86ykme3lqipefb',
-            'redirect_uri' => 'http://localhost/sainslogistik/auth/linkedin/callback',
+            'client_id' => '',
+            'redirect_uri' => '',
             'scope' => 'profile',
             'state' => bin2hex(random_bytes(5)),
         ]);
@@ -32,9 +32,9 @@ class LinkedinController extends Controller
         $response = Http::asForm()->post('https://www.linkedin.com/oauth/v2/accessToken', [
             'grant_type' => 'authorization_code',
             'code' => $code,
-            'client_id' => '86ykme3lqipefb',
-            'client_secret' => 'YtnpTankWJx6c0kp',
-            'redirect_uri' => 'http://localhost/sainslogistik/auth/linkedin/callback',
+            'client_id' => '',
+            'client_secret' => '',
+            'redirect_uri' => '',
         ]);
 
         // dd($response['scope']);
