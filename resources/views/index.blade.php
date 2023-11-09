@@ -148,18 +148,18 @@
             // when window width is >= 320px
             320: {
                 slidesPerView: 1.2,
-                spaceBetween: 10
+                spaceBetween: 15
             },
             // when window width is >= 480px
             480: {
-                slidesPerView: 2.2,
+                slidesPerView: 2.4,
                 spaceBetween: 20
             },
             // when window width is >= 640px
             640: {
-                slidesPerView: 3.5,
-                spaceBetween: 15
-            }
+                slidesPerView: 3.6,
+                spaceBetween: 25
+            }            
         }
     });
 
