@@ -143,7 +143,7 @@ $default = ((($homeLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSET_
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label for="">File input must be format jpg,jpeg,png Max Size( 4 mb )</label>
+                    <label for="">File input must be format jpg,jpeg,png Max Size( 2 mb )</label>
                     <input type="hidden" name="menu" id="menu" value="home">
                     <input type="hidden" name="komponen" id="komponen" value="logo">
                     <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">

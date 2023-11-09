@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-6 col-12">
                     <div class="form-group">
-                        <label for="logoClient">Client Logo</label>
+                        <label for="logoClient">Client Logo <span style="font-size: 13px;">* File input must be format jpg,jpeg,png Max Size( 2 mb )</span></label>
                         <input type="file" class="form-control" name="imgFile" id="imgFile" onchange="readURL(this)">
                     </div>
                 </div>
