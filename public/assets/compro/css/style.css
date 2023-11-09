@@ -2869,11 +2869,14 @@ section {
     }
     .icon-boxes,
     #icon-services {
-        /* padding: 40px 100px; */
+        padding: 10px 0px;
         width: 95%;
         margin: 0px 10px 0px 10px;
         position: relative;
         z-index: 300;
+    }
+    #about {
+        padding: 10px 0px;
     }
 }
 
