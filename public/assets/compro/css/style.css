@@ -2878,6 +2878,9 @@ section {
     #about {
         padding: 10px 0px;
     }
+    #services {
+        padding: 40px 0px 0px 0px;
+    }
 }
 
 #video-dua {
