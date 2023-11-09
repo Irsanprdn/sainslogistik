@@ -6,14 +6,14 @@
             <div class="d-flex justify-content-center">
 
                 <div class="card shadow card-icon">
-                    <div class="card-body py-0 px-5">
+                    <div class="card-body py-0 px-md-5">
                         <div class="row d-flex justify-content-start">
-                            <div class="col-md-4 py-4-5 px-0">
+                            <div class="col-md-4 py-4-5 px-3">
                                 <h1 class="font-weight-bold our-services-text">Our Services</h1>
                                 <p class="our-services-desc">Kami menyediakan serta menawarkan layanan untuk memenuhi kebutuhan pelanggan</p>
                             </div>
                             @foreach( $dataService as $ds )
-                            <div class="col-md py-4-5 px-0 our-services cursor-pointer text-center" data-bs-toggle="collapse" onclick="resetCollapse(this)" href="#collapse{{ str_replace(' ','',($ds->image_title ?? '')) }}" role="button" aria-controls="collapse{{ str_replace(' ', '',($ds->image_title ?? '')) }}">
+                            <div class="col-md col-4 py-4-5 px-0 our-services cursor-pointer text-center" data-bs-toggle="collapse" onclick="resetCollapse(this)" href="#collapse{{ str_replace(' ','',($ds->image_title ?? '')) }}" role="button" aria-controls="collapse{{ str_replace(' ', '',($ds->image_title ?? '')) }}">
                                 <div class="border-start">
                                     <div class="icon">
                                         <img src="{{ asset('assets') }}/uploads/image/{{ $ds->image ?? '' }}" height="70" width="75" alt="Icon {{ $ds->image_title }}" data-type="storage">

@@ -17,7 +17,7 @@
                     </ul>
                 </li>
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
+            <i class="bi bi-list mobile-nav-toggle bg-white rounded-circle"></i>
         </nav><!-- .navbar -->
 
     </div>

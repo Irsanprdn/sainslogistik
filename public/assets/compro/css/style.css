@@ -2870,8 +2870,8 @@ section {
     .icon-boxes,
     #icon-services {
         /* padding: 40px 100px; */
-        width: 70%;
-        margin: 0px 65px 0px 65px;
+        width: 95%;
+        margin: 0px 10px 0px 10px;
         position: relative;
         z-index: 300;
     }
