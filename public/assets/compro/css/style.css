@@ -2951,7 +2951,7 @@ section {
 
 #placeCaptionDescription {
     max-height: 225px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #placeCaptionDescription p {
