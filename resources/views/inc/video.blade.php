@@ -1,4 +1,4 @@
-<!-- <section id="video" class="video">
+<section id="video" class="video">
 
     <img src="{{ asset('assets') }}/compro/img/yellow-hexagonal.png" alt="circle-yellow" class="img-fluid position-absolute yellow-circle" style="bottom: -135px;left: -165px;rotate: 120deg;z-index: 200;width: 45%;">
 
@@ -7,4 +7,4 @@
         </video>
 
     </div>
-</section> -->
+</section>

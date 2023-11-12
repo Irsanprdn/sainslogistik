@@ -28,7 +28,7 @@
     <link href="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.5" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.6" rel="stylesheet">
 </head>
 
 <body>
@@ -48,10 +48,6 @@
         <!-- ======= About Section ======= -->
         @include('inc.about-us')
         <!-- End Icon Boxes Section -->
-
-        <!-- ======= Video Section ======= -->
-        @include('inc.video')
-        <!-- End Video Section -->
 
         <!-- ======= Video Section ======= -->
         @include('inc.linkedin')
@@ -115,7 +111,8 @@
     var swiper = new Swiper(".swiper-about-us", {
         slidesPerView: 1.5,
         spaceBetween: 25,
-        loop: true,        
+        loop: true,
+        grabCursor: false,
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
@@ -148,18 +145,35 @@
             // when window width is >= 320px
             320: {
                 slidesPerView: 1.2,
-                spaceBetween: 25
+                spaceBetween: 15
             },
             // when window width is >= 480px
             480: {
-                slidesPerView: 2.4,
+                slidesPerView: 1.6,
                 spaceBetween: 20
+            },         
+            768: {
+                slidesPerView: 2.2,
+                spaceBetween: 25,
             },
-            // when window width is >= 640px
-            640: {
-                slidesPerView: 3.6,
-                spaceBetween: 25
-            }            
+            1024: {
+                slidesPerView: 2.8,
+                spaceBetween: 25,
+            },
+            1280: {
+                slidesPerView: 3.4,
+                spaceBetween: 25,
+            },
+            1600: {
+                slidesPerView: 4,
+                spaceBetween: 25,
+            },
+            1900: {
+                slidesPerView: 4.2,
+                spaceBetween: 25,
+            },
+
+
         }
     });
 

@@ -1,4 +1,4 @@
-<section id="clients" class="clients">
+<section id="clients" class="clients" data-aos="fade-up">
     <div class="section-title text-center">
         <h1 class="text-dark text-capitalize">Our Clients<span class="text-base font-size-35">.</span></h1>
     </div>
