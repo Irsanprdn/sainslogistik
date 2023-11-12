@@ -95,6 +95,7 @@
     var baseUrl = "{{ asset('assets') }}";
     $(document).ready(function() {
         cloneCaptionSliderServices()
+
     });
 
     function cloneCaptionSliderServices() {
@@ -151,7 +152,7 @@
             480: {
                 slidesPerView: 1.6,
                 spaceBetween: 20
-            },         
+            },
             768: {
                 slidesPerView: 2.2,
                 spaceBetween: 25,
@@ -198,6 +199,10 @@
             $(btn).removeClass('bi-pause-circle')
             $(btn).addClass('bi-play-circle')
         }
+    }
+
+    function triggerClone(event) {        
+        cloneCaptionSliderServices()
     }
 </script>
 
