@@ -10,7 +10,12 @@
                 <li><a class="nav-link scrollto" href="#about">{{ __('website.menu2') }}</a></li>
                 <li><a class="nav-link scrollto" href="#clients">{{ __('website.menu3') }}</a></li>
                 <li><a class="nav-link scrollto" href="#contact">{{ __('website.menu4') }}</a></li>
-                <li class="dropdown"><a href="#hero"><span>{{ __('website.menu5') }}</span> <i class="bi bi-translate"></i> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown">
+                    <a href="#hero" class="d-flex justify-content-start">
+                        <span>{{ __('website.menu5') }}</span> 
+                        <i class="bi bi-translate"></i> 
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
                     <ul>
                         <li><a href="{{ route('compro.language','id') }}" class="mx-2 d-flex justify-content-between">
                              <span>ID</span> 
