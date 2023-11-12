@@ -12,7 +12,7 @@
                     @foreach( $dataLinkedin as $dl )                    
                     <div class="swiper-slide">
                         <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{{ $dl->image }}" alt="{{ $dl->image_title }}" style="height: 300px;">
+                            <img class="card-img-top" src="{{ $dl->image }}" alt="{{ $dl->image_title }}" style="height: 325px;">
                             <div class="card-body">
                                 <h5 class="card-title text-truncate">{{ $dl->image_title }}</h5>
                                 <p class="card-text text-truncate">{{ $dl->image_description }}</p>

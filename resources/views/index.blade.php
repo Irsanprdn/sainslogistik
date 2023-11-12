@@ -150,12 +150,12 @@
             // when window width is >= 320px
             320: {
                 slidesPerView: 1.2,
-                spaceBetween: 15
+                spaceBetween: 25
             },
             // when window width is >= 480px
             480: {
                 slidesPerView: 1.6,
-                spaceBetween: 20
+                spaceBetween: 25
             },
             768: {
                 slidesPerView: 2.2,
