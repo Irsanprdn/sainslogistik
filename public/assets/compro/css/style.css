@@ -2949,19 +2949,12 @@ section {
     border: none;
 }
 
-#placeCaptionDescription {
+
+/* #placeCaptionDescription {
     max-height: 225px;
     overflow-y: auto;
 }
-
-#placeCaptionDescription p {
-    /* Properti tambahan untuk penataan dan tampilan teks */
-    /* white-space: nowrap; */
-    /* Menghindari teks melompat ke baris baru */
-    overflow: hidden;
-    /* Menghindari tampilan teks yang melebihi batas */
-    text-overflow: ellipsis;
-}
+*/
 
 
 /* last code */
