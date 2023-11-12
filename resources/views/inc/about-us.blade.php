@@ -25,7 +25,7 @@
                 <div class="swiper swiper-about-us">
                     <div class="swiper-wrapper" >
                         @foreach( $aboutSlide as $as )
-                        <div class="swiper-slide" onmouseover="triggerClone()">
+                        <div class="swiper-slide" >
                             <div class="portfolio-wrap">
                                 <a href="{{ asset('assets') }}/uploads/image/{{ $as->image }}"  target="_blank" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{{ asset('assets') }}/uploads/image/{{ $as->image }}" class="img-fluid border-radius-25" style="height:450px;width:auto;" ></a>
                             </div>

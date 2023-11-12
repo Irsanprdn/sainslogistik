@@ -109,7 +109,7 @@
         $('#placePagination').find('#pagination-aus').removeClass('d-none')
     }
 
-    var swiper = new Swiper(".swiper-about-us", {
+    var swiperAbout = new Swiper(".swiper-about-us", {
         slidesPerView: 1.5,
         spaceBetween: 25,
         loop: true,
@@ -121,7 +121,11 @@
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev"
-        }
+        },
+    });
+
+    swiperAbout.on('transitionEnd', function() {
+        cloneCaptionSliderServices()
     });
 
     function resetCollapse(e) {
@@ -199,11 +203,7 @@
             $(btn).removeClass('bi-pause-circle')
             $(btn).addClass('bi-play-circle')
         }
-    }
-
-    function triggerClone(event) {        
-        cloneCaptionSliderServices()
-    }
+    }  
 </script>
 
 </html>
