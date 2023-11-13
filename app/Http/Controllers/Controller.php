@@ -56,13 +56,13 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'about' and komponen = 'description' ";
         $aboutDescription = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'image' AND status = 'Publish' ";
+        $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'image' AND status = 'Publish' ORDER BY idx ASC";
         $aboutSlide = DB::select($sql);
 
-        $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'service' AND status = 'Publish' ";
+        $sql = " SELECT * FROM image WHERE language = 'id' AND menu = 'service' AND status = 'Publish' ORDER BY idx ASC";
         $dataService = DB::select($sql);
 
-        $sql = " SELECT * FROM image WHERE menu = 'linkedin'  ";
+        $sql = " SELECT * FROM image WHERE menu = 'linkedin' ORDER BY idx ASC ";
         $dataLinkedin = DB::select($sql);
 
         return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin'));
@@ -70,8 +70,6 @@ class Controller extends BaseController
 
     public function comproLanguage($language)
     {
-
-
 
         if (!in_array($language, ['en', 'id', 'cms_site'])) {           
             return redirect()->route('compro');
@@ -126,10 +124,10 @@ class Controller extends BaseController
         $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'image' AND status = 'Publish'";
         $aboutSlide = DB::select($sql);
 
-        $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'service' AND status = 'Publish'";
+        $sql = " SELECT * FROM image WHERE status = 'publish' AND language = '$language' AND menu = 'service' AND status = 'Publish' ORDER BY idx ASC ";
         $dataService = DB::select($sql);
 
-        $sql = " SELECT * FROM image WHERE menu = 'linkedin'  ";
+        $sql = " SELECT * FROM image WHERE menu = 'linkedin' ORDER BY idx ASC  ";
         $dataLinkedin = DB::select($sql);
 
 

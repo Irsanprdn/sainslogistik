@@ -15,6 +15,7 @@
     <link href="{{ asset('assets') }}/compro/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/DataTables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/DataTables/datatables.min.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/admin/DataTables/rowReOrder.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/DataTables/Responsive/css/responsive.datatables.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/DataTables/FixedHeader/css/fixedHeader.datatables.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/admin/DataTables/css/dataTables.responsive.css" rel="stylesheet">
@@ -173,6 +174,7 @@
     <!-- datatales -->
     <script src="{{ asset('assets') }}/admin/DataTables/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('assets') }}/admin/DataTables/datatables.min.js"></script>
+    <script src="{{ asset('assets') }}/admin/DataTables/rowReOrder.js"></script>
     <script src="{{ asset('assets') }}/admin/DataTables/Responsive/js/responsive.datatables.min.js"></script>
     <script src="{{ asset('assets') }}/admin/DataTables/fixedHeader/js/fixedHeader.datatables.min.js"></script>
     <script src="{{ asset('assets') }}/admin/DataTables/js/dataTables.responsive.js"></script>

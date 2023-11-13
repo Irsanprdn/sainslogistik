@@ -49,3 +49,7 @@
     padding: 20px;
     text-align: center;
 }
+
+.cursor-grab {
+    cursor: grab;
+}

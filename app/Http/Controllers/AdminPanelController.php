@@ -171,25 +171,28 @@ class AdminPanelController extends Controller
     public function service()
     {
 
-        $sql = " SELECT * FROM image WHERE menu = 'service' ORDER BY updated_date,language DESC ";
-        $data = DB::select($sql);
+        $sqlId = " SELECT * FROM image WHERE menu = 'service' AND language = 'ID' ORDER BY idx ASC ";
+        $dataId = DB::select($sqlId);
 
-        return view('admin.service', compact('data'));
+        $sqlEn = " SELECT * FROM image WHERE menu = 'service' AND language = 'EN' ORDER BY idx ASC ";
+        $dataEn = DB::select($sqlEn);
+
+        return view('admin.service', compact('dataId', 'dataEn'));
     }
 
     public function about()
     {
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'about' and komponen = 'title' ORDER BY updated_date DESC ";
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'about' and komponen = 'title' ";
         $aboutTitle = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'about' and komponen = 'description' ORDER BY updated_date DESC ";
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'about' and komponen = 'description' ";
         $aboutDescription = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'about' and komponen = 'title' ORDER BY updated_date DESC ";
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'about' and komponen = 'title' ";
         $aboutTitleEN = collect(DB::select($sql))->first();
 
-        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'about' and komponen = 'description' ORDER BY updated_date DESC ";
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'about' and komponen = 'description' ";
         $aboutDescriptionEN = collect(DB::select($sql))->first();
 
         return view('admin.about', compact('aboutTitle', 'aboutDescription', 'aboutTitleEN', 'aboutDescriptionEN'));
@@ -197,11 +200,14 @@ class AdminPanelController extends Controller
 
     public function image()
     {
+        $sqlId = " SELECT * FROM image WHERE menu = 'image' AND language = 'ID' ORDER BY idx ASC ";
+        $dataId = DB::select($sqlId);
 
-        $sql = " SELECT * FROM image WHERE menu = 'image' ORDER BY updated_date,language DESC ";
-        $data = DB::select($sql);
+        $sqlEn = " SELECT * FROM image WHERE menu = 'image' AND language = 'EN' ORDER BY idx ASC ";
+        $dataEn = DB::select($sqlEn);
 
-        return view('admin.image', compact('data'));
+
+        return view('admin.image', compact('dataId', 'dataEn'));
     }
 
     public function image_post(Request $req)
@@ -257,6 +263,27 @@ class AdminPanelController extends Controller
         }
     }
 
+    public function image_order(Request $req)
+    {
+        $user = auth()->user()->fullname;
+        $date = date('Y-m-d H:i:s');
+        $code = 404;
+        $countData = count($req->roworder);
+
+        for ($i = 0; $i < $countData; $i++) {
+            $roworderArr = explode('-', $req->roworder[$i]);
+            $id = $roworderArr[0];
+            $idx = $roworderArr[1];
+            $sqlUpd = DB::update(" UPDATE image SET  idx = '" . $idx . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_id = '" . $id . "' AND language = '".$req->lang."' ");
+        }
+
+        $code =  ($sqlUpd ?  200 : $code);
+
+        return response()->json([
+            'code' => $code
+        ]);
+    }
+
     public function image_delete($image_id, $menu)
     {
 
@@ -298,8 +325,8 @@ class AdminPanelController extends Controller
     }
 
 
-    public function scrapping($url,$title)
-    {   
+    public function scrapping($url, $title)
+    {
         $user = auth()->user()->fullname;
         $date = date('Y-m-d H:i:s');
 
@@ -332,7 +359,7 @@ class AdminPanelController extends Controller
         foreach ($elements as $element) {
             $matchingElementsImg .= $element->getAttribute('data-delayed-url');
         }
-      
+
 
         DB::update(" UPDATE image SET  image = '" . $matchingElementsImg . "',  image_description = '" . $matchingElements . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_title = '" . $title . "' ");
 

@@ -69,40 +69,99 @@
 @if (session('success'))
 <div class="alert my-3 alert-success">{{ session('success') }}</div>
 @endif
-<div class="table-responsive">
-    <table id="service-data" class="table table-striped table-hover" style="width:100%">
-        <thead class="bg-base text-light">
-            <tr>
-                <th>Service Title</th>
-                <th>Service Description</th>
-                <th>Service</th>
-                <th>Status</th>
-                <th>Language</th>
-                <th>Updated By</th>
-                <th>Updated Date</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach( $data as $d )
-            <tr>
-                <td class="imageTitle">{{ $d->image_title ?? ''}}</td>
-                <td class="imageDescription">{!! $d->image_description ?? '' !!}</td>
-                <td class="image">
-                    <img src="{{ asset('assets') }}/uploads/image/{{ $d->image ?? ''}}" alt="{{ $d->image_title ?? ''}}" width="100">
-                </td>
-                <td class="imageStatus">{{ $d->status ?? ''}}</td>
-                <td class="language">{{ $d->language ?? ''}}</td>
-                <td class="updatedBy">{{ $d->updated_by ?? ''}}</td>
-                <td class="updatedDate">{{ $d->updated_date ?? '' }}</td>
-                <td>
-                    <button onclick="getDataEdit(this, '{{ $d->image_id }}', '{{ $d->menu }}')" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </button>
-                    <a data-url="{{ route('image.delete',[$d->image_id,'service']) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="id-tab" data-bs-toggle="tab" data-bs-target="#id" type="button" role="tab" aria-controls="id" aria-selected="true">Indonesia</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="en-tab" data-bs-toggle="tab" data-bs-target="#en" type="button" role="tab" aria-controls="en" aria-selected="false">English</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="id" role="tabpanel" aria-labelledby="id-tab">
+        <!-- <div class="table-responsive"> -->
+            <table id="service-data-id" class="table table-striped table-hover" style="width:100%">
+                <thead class="bg-base text-light">
+                    <tr>
+                        <th>Order <br><span style="font-size: 12px;">( Drag To Change )</span></th>
+                        <th>Service Title</th>
+                        <th>Service Description</th>
+                        <th>Service</th>
+                        <th>Status</th>
+                        <th>Language</th>
+                        <th>Updated By</th>
+                        <th>Updated Date</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                    $no_id = 1;
+                    @endphp
+                    @foreach( $dataId as $d )
+                    <tr class="content-{{ strtolower($d->language ?? '')}} content-lang">
+                        <td class="idx text-center cursor-grab" data-id="{{ $d->image_id }}">{{ ( $d->language == 'ID' ? $no_id++ : $no_en++ )  }}</td>
+                        <td class="imageTitle">{{ $d->image_title ?? ''}}</td>
+                        <td class="imageDescription">{!! $d->image_description ?? '' !!}</td>
+                        <td class="image">
+                            <img src="{{ asset('assets') }}/uploads/image/{{ $d->image ?? ''}}" alt="{{ $d->image_title ?? ''}}" width="100">
+                        </td>
+                        <td class="imageStatus">{{ $d->status ?? ''}}</td>
+                        <td class="language">{{ $d->language ?? ''}}</td>
+                        <td class="updatedBy">{{ $d->updated_by ?? ''}}</td>
+                        <td class="updatedDate">{{ $d->updated_date ?? '' }}</td>
+                        <td>
+                            <button onclick="getDataEdit(this, '{{ $d->image_id }}', '{{ $d->menu }}')" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </button>
+                            <a data-url="{{ route('image.delete',[$d->image_id,'service']) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        <!-- </div> -->
+    </div>
+    <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="en-tab">
+        <div class="table-responsive">
+            <table id="service-data-en" class="table table-striped table-hover" style="width:100%">
+                <thead class="bg-base text-light">
+                    <tr>
+                        <th>Order <br><span style="font-size: 12px;">( Drag To Change )</span></th>
+                        <th>Service Title</th>
+                        <th>Service Description</th>
+                        <th>Service</th>
+                        <th>Status</th>
+                        <th>Language</th>
+                        <th>Updated By</th>
+                        <th>Updated Date</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                    $no_en = 1;
+                    @endphp
+                    @foreach( $dataEn as $d )
+                    <tr class="content-{{ strtolower($d->language ?? '')}} content-lang">
+                        <td class="idx text-center cursor-grab" data-id="{{ $d->image_id }}">{{ ( $d->language == 'ID' ? $no_id++ : $no_en++ )  }}</td>
+                        <td class="imageTitle">{{ $d->image_title ?? ''}}</td>
+                        <td class="imageDescription">{!! $d->image_description ?? '' !!}</td>
+                        <td class="image">
+                            <img src="{{ asset('assets') }}/uploads/image/{{ $d->image ?? ''}}" alt="{{ $d->image_title ?? ''}}" width="100">
+                        </td>
+                        <td class="imageStatus">{{ $d->status ?? ''}}</td>
+                        <td class="language">{{ $d->language ?? ''}}</td>
+                        <td class="updatedBy">{{ $d->updated_by ?? ''}}</td>
+                        <td class="updatedDate">{{ $d->updated_date ?? '' }}</td>
+                        <td>
+                            <button onclick="getDataEdit(this, '{{ $d->image_id }}', '{{ $d->menu }}')" type="button" class="btn btn-sm btn-warning mx-1" title="Ubah"><i class="bi bi-pencil"></i> </button>
+                            <a data-url="{{ route('image.delete',[$d->image_id,'service']) }}" onclick="confirmDelete(this)" type="button" class="btn btn-sm btn-danger mx-1" title="Hapus"><i class="bi bi-trash"></i> </button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <div id="btn-add" class="d-none">
@@ -111,19 +170,111 @@
 @endsection
 @section('js')
 <script>
-    new DataTable('#service-data', {
+    var dataTableId = new DataTable('#service-data-id', {
         fixedHeader: true,
         paging: false,
         scrollCollapse: true,
         scrollX: true,
         scrollY: 350,
         bLengthChange: true,
+        rowReorder: true,
         bInfo: false,
         "initComplete": function(settings, json) {
-            $('#service-data_wrapper').children().children().first().append($('#btn-add').html())
-            $('#service-data_wrapper').find('#btn-add').removeClass('d-none')
-            $('#service-data_wrapper').children().children().children().attr('id', 'btn-tambah')
+            $('#service-data-id_wrapper').children().children().first().append($('#btn-add').html())
+            $('#service-data-id_wrapper').find('#btn-add').removeClass('d-none')
+            $('#service-data-id_wrapper').children().children().children().attr('id', 'btn-tambah')
         }
+    });
+
+    var dataTableEn = new DataTable('#service-data-en', {
+        fixedHeader: true,
+        paging: false,
+        scrollCollapse: true,
+        scrollX: true,
+        scrollY: 350,
+        bLengthChange: true,
+        rowReorder: true,
+        bInfo: false,
+        "initComplete": function(settings, json) {
+            $('#service-data-en_wrapper').children().children().first().append($('#btn-add').html())
+            $('#service-data-en_wrapper').find('#btn-add').removeClass('d-none')
+            $('#service-data-en_wrapper').children().children().children().attr('id', 'btn-tambah')
+        }
+    });
+
+
+    dataTableId.on('order.dt', function() {
+        // Your custom logic after reordering rows goes here     
+        var rowOrderArray = [];
+        $('#service-data-id tbody tr').each(function() {
+            var rowOrder = $(this).find('.idx')
+            var rowOrderId = rowOrder.attr('data-id')
+            var rowOrderIdx = rowOrder.text()
+            rowOrderArray.push(rowOrderId + '-' + rowOrderIdx)
+        })
+        console.log(rowOrderArray)
+
+        var data = {
+            _token: '{{ csrf_token() }}',
+            roworder: rowOrderArray,
+            lang: 'ID',
+            menu: 'service',
+        }
+
+        var urle = "{{  route('image.order') }}";
+        var datae = JSON.stringify(data);
+        $.ajax({
+            type: 'POST',
+            url: urle,
+            contentType: "application/json",
+            processData: false,
+            data: datae,
+            success: function(response) {
+                // console.log(response)
+                // if (response.code == 200) {
+                //     alert('Successfully')
+                // } else {
+                //     alert('Failed')
+                // }
+            }
+        });
+    });
+
+    dataTableEn.on('order.dt', function() {
+        // Your custom logic after reordering rows goes here     
+        var rowOrderArray = [];
+        $('#service-data-en tbody tr').each(function() {
+            var rowOrder = $(this).find('.idx')
+            var rowOrderId = rowOrder.attr('data-id')
+            var rowOrderIdx = rowOrder.text()
+            rowOrderArray.push(rowOrderId + '-' + rowOrderIdx)
+        })
+        console.log(rowOrderArray)
+
+        var data = {
+            _token: '{{ csrf_token() }}',
+            roworder: rowOrderArray,
+            lang: 'EN',
+            menu: 'service',
+        }
+
+        var urle = "{{  route('image.order') }}";
+        var datae = JSON.stringify(data);
+        $.ajax({
+            type: 'POST',
+            url: urle,
+            contentType: "application/json",
+            processData: false,
+            data: datae,
+            success: function(response) {
+                // console.log(response)
+                // if (response.code == 200) {
+                //     alert('Successfully')
+                // } else {
+                //     alert('Failed')
+                // }
+            }
+        });
     });
 
     tinymce.init({

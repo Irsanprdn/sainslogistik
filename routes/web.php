@@ -48,6 +48,7 @@ Route::prefix('cms_site')->group(function () {
         Route::prefix('image')->group(function () {
             Route::get('/', [AdminPanelController::class, 'image'])->name('image');
             Route::post('/post', [AdminPanelController::class, 'image_post'])->name('image.post');
+            Route::post('/order', [AdminPanelController::class, 'image_order'])->name('image.order');
             Route::get('/delete/{image_id}/{menu}', [AdminPanelController::class, 'image_delete'])->name('image.delete');
         });
 
