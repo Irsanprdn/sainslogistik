@@ -176,6 +176,7 @@
          scrollX: true,
          scrollY: 350,
          autoWidth: true,
+         rowReorder: true,
          bLengthChange: true,
          bInfo: false,
          "initComplete": function(settings, json) {
@@ -192,6 +193,7 @@
          scrollX: true,
          scrollY: 350,
          autoWidth: true,
+         rowReorder: true,
          bLengthChange: true,
          bInfo: false,
          "initComplete": function(settings, json) {
