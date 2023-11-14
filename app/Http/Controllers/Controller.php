@@ -77,8 +77,11 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'linkedinmedia' and komponen = 'description' ";
         $linkedinmediaDescription = collect(DB::select($sql))->first();
 
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'aboutimage' and komponen = 'title' ";
+        $aboutimageTitle = collect(DB::select($sql))->first();
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin', 'ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription'));
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin', 'ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription', 'aboutimageTitle'));
     }
 
     public function comproLanguage($language)
@@ -155,7 +158,10 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'linkedinmedia' and komponen = 'description' ";
         $linkedinmediaDescription = collect(DB::select($sql))->first();
 
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'aboutimage' and komponen = 'title' ";
+        $aboutimageTitle = collect(DB::select($sql))->first();
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService','dataLinkedin','ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription'));
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService','dataLinkedin','ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription', 'aboutimageTitle'));
     }
 }

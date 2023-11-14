@@ -54,6 +54,12 @@ Route::prefix('cms_site')->group(function () {
             Route::get('/delete/{image_id}/{menu}', [AdminPanelController::class, 'image_delete'])->name('image.delete');
         });
 
+        Route::prefix('subscriber')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'subscriber'])->name('subscriber');
+            Route::post('/post', [AdminPanelController::class, 'subscriber_post'])->name('subscriber.post');
+            Route::get('/delete/{subscriber_id}/{menu}', [AdminPanelController::class, 'subscriber_delete'])->name('subscriber.delete');
+        });
+
         Route::prefix('linkedin')->group(function () {
             Route::get('/', [AdminPanelController::class, 'linkedin'])->name('linkedin');
             Route::post('/post', [AdminPanelController::class, 'linkedin_post'])->name('linkedin.post');
@@ -62,5 +68,3 @@ Route::prefix('cms_site')->group(function () {
 });
 
 
-Route::get('/auth/linkedin',  [LinkedinController::class, 'redirectToLinkedIn']);
-Route::get('/auth/linkedin/callback', [LinkedinController::class, 'handleLinkedInCallback']);

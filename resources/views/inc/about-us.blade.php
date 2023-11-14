@@ -10,7 +10,7 @@
     <div class="container" data-aos="fade-up">
         <div class="row">
             <div class="col-lg-5 mb-3">
-                <h4 class="border-bottom border-warning our-services-yellow-text">{{ __('website.textAbout') }}</h4>
+                <h4 class="border-bottom border-warning our-services-yellow-text">{{ $aboutimageTitle->isi_komponen ?? '' }}</h4>
                 <h1 class="text-dark font-weight-bold font-size-50" id="placeCaptionTitle"></h1>
                 <p class="text-justify" id="placeCaptionDescription">
                     
