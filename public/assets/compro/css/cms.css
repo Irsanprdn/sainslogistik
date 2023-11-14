@@ -53,3 +53,7 @@
 .cursor-grab {
     cursor: grab;
 }
+
+section {
+    padding: 0px !important;
+}

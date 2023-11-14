@@ -198,8 +198,51 @@ class AdminPanelController extends Controller
         return view('admin.about', compact('aboutTitle', 'aboutDescription', 'aboutTitleEN', 'aboutDescriptionEN'));
     }
 
+    public function ourservice()
+    {
+
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'ourservice' and komponen = 'title' ";
+        $ourserviceTitle = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'ourservice' and komponen = 'description' ";
+        $ourserviceDescription = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'ourservice' and komponen = 'title' ";
+        $ourserviceTitleEN = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'ourservice' and komponen = 'description' ";
+        $ourserviceDescriptionEN = collect(DB::select($sql))->first();
+
+        return view('admin.ourservice', compact('ourserviceTitle', 'ourserviceDescription', 'ourserviceTitleEN', 'ourserviceDescriptionEN'));
+    }
+
+    public function linkedinmedia()
+    {
+
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'linkedinmedia' and komponen = 'title' ";
+        $linkedinmediaTitle = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'linkedinmedia' and komponen = 'description' ";
+        $linkedinmediaDescription = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'linkedinmedia' and komponen = 'title' ";
+        $linkedinmediaTitleEN = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'linkedinmedia' and komponen = 'description' ";
+        $linkedinmediaDescriptionEN = collect(DB::select($sql))->first();
+
+        return view('admin.linkedinmedia', compact('linkedinmediaTitle', 'linkedinmediaDescription', 'linkedinmediaTitleEN', 'linkedinmediaDescriptionEN'));
+    }
+
     public function image()
     {
+
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'aboutimage' and komponen = 'title' ";
+        $aboutimageTitle = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'aboutimage' and komponen = 'title' ";
+        $aboutimageTitleEN = collect(DB::select($sql))->first();
+
         $sqlId = " SELECT * FROM image WHERE menu = 'image' AND language = 'ID' ORDER BY idx ASC ";
         $dataId = DB::select($sqlId);
 
@@ -207,7 +250,7 @@ class AdminPanelController extends Controller
         $dataEn = DB::select($sqlEn);
 
 
-        return view('admin.image', compact('dataId', 'dataEn'));
+        return view('admin.image', compact('dataId', 'dataEn', 'aboutimageTitle', 'aboutimageTitleEN'));
     }
 
     public function image_post(Request $req)

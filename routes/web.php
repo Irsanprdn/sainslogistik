@@ -43,7 +43,9 @@ Route::prefix('cms_site')->group(function () {
 
         Route::get('/footer', [AdminPanelController::class, 'footer'])->name('footer');
         Route::get('/about', [AdminPanelController::class, 'about'])->name('about');
+        Route::get('/ourservice', [AdminPanelController::class, 'ourservice'])->name('ourservice');
         Route::get('/service', [AdminPanelController::class, 'service'])->name('service');
+        Route::get('/linkedinmedia', [AdminPanelController::class, 'linkedinmedia'])->name('linkedinmedia');
 
         Route::prefix('image')->group(function () {
             Route::get('/', [AdminPanelController::class, 'image'])->name('image');

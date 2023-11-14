@@ -78,8 +78,17 @@
  </ul>
  <div class="tab-content" id="myTabContent">
      <div class="tab-pane fade show active" id="id" role="tabpanel" aria-labelledby="id-tab">
+         <div class="d-flex justify-content-start my-3">
+             <h1 class="text-dark font-weight-bold title-question">
+                 <input type="text" data-lang="id" id="aboutimageTitle" name="aboutimageTitle" value="{{ $aboutimageTitle->isi_komponen ?? '' }}" class="form-custom form-custom-lg text-dark font-weight-bold title-question reset-setting" readonly>
+             </h1>
+             <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#aboutimageTitle')" title="Clik to edit">
+                 <i class="bi bi-pencil"></i>
+             </button>
+         </div>
+
          <div class="table-responsive">
-             <table id="image-data-id" class="table table-striped table-hover" style="width:100%">
+             <table id="image-data-id" class="table table-striped table-hover" width="100%">
                  <thead class="bg-base text-light">
                      <tr>
                          <th>Order</th>
@@ -120,11 +129,19 @@
          </div>
      </div>
      <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="en-tab">
+         <div class="d-flex justify-content-start my-3">
+             <h1 class="text-dark font-weight-bold title-question">
+                 <input type="text" data-lang="en" id="aboutimageTitleen" name="aboutimageTitle" value="{{ $aboutimageTitleEN->isi_komponen ?? '' }}" class="form-custom form-custom-lg text-dark font-weight-bold title-question reset-setting" readonly>
+             </h1>
+             <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#aboutimageTitleen')" title="Clik to edit">
+                 <i class="bi bi-pencil"></i>
+             </button>
+         </div>
          <div class="table-responsive">
-             <table id="image-data-en" class="table table-striped table-hover" style="width:100%">
+             <table id="image-data-en" class="table table-striped table-hover" width="100%">
                  <thead class="bg-base text-light">
                      <tr>
-                        <th>Order</th>
+                         <th>Order</th>
                          <th>Image Title</th>
                          <th>Image Description</th>
                          <th>Image</th>
@@ -136,12 +153,12 @@
                      </tr>
                  </thead>
                  <tbody>
-                 @php
+                     @php
                      $no_en = 1;
                      @endphp
                      @foreach( $dataEn as $d )
                      <tr>
-                     <td class="idx text-center cursor-grab" data-id="{{ $d->image_id }}">{{ $no_en++ }}</td>
+                         <td class="idx text-center cursor-grab" data-id="{{ $d->image_id }}">{{ $no_en++ }}</td>
                          <td class="imageTitle">{{ $d->image_title ?? ''}}</td>
                          <td class="imageDescription">{!! $d->image_description ?? '' !!}</td>
                          <td class="image">
@@ -186,6 +203,15 @@
          }
      });
 
+     document.querySelectorAll('button[data-bs-toggle="tab"]').forEach((el) => {
+         el.addEventListener('shown.bs.tab', () => {
+             dataTableId.tables({
+                 visible: true,
+                 api: true
+             }).columns.adjust();
+         });
+     });
+
      var dataTableEn = new DataTable('#image-data-en', {
          fixedHeader: true,
          paging: false,
@@ -201,6 +227,15 @@
              $('#image-data-en_wrapper').find('#btn-add').removeClass('d-none')
              $('#image-data-en_wrapper').children().children().children().attr('id', 'btn-tambah')
          }
+     });
+
+     document.querySelectorAll('button[data-bs-toggle="tab"]').forEach((el) => {
+         el.addEventListener('shown.bs.tab', () => {
+             dataTableId.tables({
+                 visible: true,
+                 api: true
+             }).columns.adjust();
+         });
      });
 
      dataTableId.on('order.dt', function() {
@@ -278,8 +313,8 @@
      });
 
      function getWidth() {
-        //  alert($('#image-data-id').parent().attr('style'))
-        //  alert($('#image-data-en').parent().attr('style'))
+         //  alert($('#image-data-id').parent().attr('style'))
+         //  alert($('#image-data-en').parent().attr('style'))
      }
 
      tinymce.init({
@@ -347,5 +382,84 @@
              $('#viewImg').attr('src', defaults);
          }
      }
+
+     function editText(btn, e) {
+            if ($(btn).hasClass('btn-warning')) {
+                $('.btn-circle').find('.bi').removeClass('bi-save')
+                $('.btn-circle').find('.bi').addClass('bi-pencil')
+
+                $('.btn-circle').removeClass('btn-primary')
+                $('.btn-circle').addClass('btn-warning')
+
+                $('.btn-circle').attr('title', 'Click to edit')
+
+                $(btn).find('.bi').removeClass('bi-pencil')
+                $(btn).find('.bi').addClass('bi-save')
+
+                $(btn).removeClass('btn-warning')
+                $(btn).addClass('btn-primary')
+                $(btn).attr('title', 'Click to save')
+
+                $(e).focus()
+                $(e).attr('readonly', false);
+            } else {
+                $('.btn-circle').find('.bi').removeClass('bi-save')
+                $('.btn-circle').find('.bi').addClass('bi-pencil')
+
+                $('.btn-circle').removeClass('btn-primary')
+                $('.btn-circle').addClass('btn-warning')
+
+                $(btn).find('.bi').removeClass('bi-save')
+                $(btn).find('.bi').addClass('bi-pencil')
+
+                $(btn).removeClass('btn-primary')
+                $(btn).addClass('btn-warning')
+
+                $('.reset-setting').attr('readonly', true);
+
+                saveText(e)
+            }
+        }
+
+        function saveText(e) {
+            var text = $(e).val()
+            var lang = $(e).attr('data-lang')
+            var komponen = "";
+            if ( lang == 'id' ) {
+                komponen = (e == '#aboutimageTitle' ? 'title' : 'description')            
+            }else{
+                komponen = (e == '#aboutimageTitleen' ? 'title' : 'description')
+            }
+            var data = {
+                _token: '{{ csrf_token() }}',
+                menu: 'aboutimage',
+                komponen: komponen,
+                language: lang,
+                text: text
+            }
+
+            var urle = "{{  route('home.post') }}";
+            var datae = JSON.stringify(data);
+            postData(urle, datae)
+
+        }
+
+        function postData(urle, datae) {
+            $.ajax({
+                type: 'POST',
+                url: urle,
+                contentType: "application/json",
+                processData: false,
+                data: datae,
+                success: function(response) {
+                    // console.log(response)
+                    if (response.code == 200) {
+                        alert('Successfully')
+                    } else {
+                        alert('Failed')
+                    }
+                }
+            });
+        }
  </script>
  @endsection

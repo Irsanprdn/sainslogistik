@@ -28,7 +28,7 @@
     <link href="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.8" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.9" rel="stylesheet">
 </head>
 
 <body>

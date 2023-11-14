@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-lg-6">
                     <form action="" method="post">
-                        <input type="email" name="email">
+                        <input type="email" name="email" class="text-left" style="padding-left: 20px;" placeholder="Drop your email here">
                         <button type="submit">Send <i class="bi bi-send"></i></button>
                     </form>
                 </div>
@@ -26,12 +26,12 @@
                     <h4>
                         <img src="{{ asset('assets') }}/uploads/logo/{{ $footerLogo->isi_komponen ?? '' }}" alt="Logo Sains Logistik" class="img-fluid" width="200">
                     </h4>
-                    <p class="text-justify mb-4">{{ $footerDescription->isi_komponen ?? '' }}</p>
+                    <!-- <p class="text-justify mb-4">{{ $footerDescription->isi_komponen ?? '' }}</p> -->
 
                 </div>
 
 
-                <div class="col-lg-2 offset-lg-5 col-md-6 footer-links">
+                <!-- <div class="col-lg-2 offset-lg-5 col-md-6 footer-links">
                     <h4 class="text-base">Company</h4>
                     <ul>
                         <li class="sosmed"><a class="nav-link scrollto active" href="#hero">{{ __('website.menu0') }}</a></li>
@@ -40,7 +40,7 @@
                         <li class="sosmed"><a class="nav-link scrollto" href="#clients">{{ __('website.menu3') }}</a></li>
                         <li class="sosmed"><a class="nav-link scrollto" href="#contact">{{ __('website.menu4') }}</a></li>
                     </ul>
-                </div>
+                </div> -->
 
             </div>
             <div class="d-flex justify-content-start align-items-center">

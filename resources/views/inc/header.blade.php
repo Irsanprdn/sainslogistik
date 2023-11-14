@@ -12,13 +12,13 @@
                 <li><a class="nav-link scrollto" href="#contact">{{ __('website.menu4') }}</a></li>
                 <li class="dropdown">
                     <a href="#hero" class="d-flex justify-content-start">
-                        <span>{{ __('website.menu5') }}</span> 
-                        <i class="bi bi-translate"></i> 
+                        <span>{!! __('website.menu5') !!}</span> 
+                        <!-- <i class="bi bi-translate"></i>  -->
                         <i class="bi bi-chevron-down"></i>
                     </a>
                     <ul>
                         <li><a href="{{ route('compro.language','id') }}" class="mx-2 d-flex justify-content-between">
-                             <span>ID</span> 
+                            <span>ID</span> 
                             <img src="{{ asset('assets') }}/compro/img/id.png" alt="">
                         </a></li>                        
                         <li><a href="{{ route('compro.language','en') }}" class="mx-2 d-flex justify-content-between">

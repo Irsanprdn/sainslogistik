@@ -36,7 +36,7 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
                             </button>
                         </div>
 
-                        <div class="card mt-3">
+                        <!-- <div class="card mt-3">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="id-tab" data-bs-toggle="tab" data-bs-target="#id" type="button" role="tab" aria-controls="id" aria-selected="true">Indonesia</button>
@@ -63,11 +63,11 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
 
-                    <div class="col-lg-2 footer-links">
+                    <!-- <div class="col-lg-2 footer-links">
                         <h4 class="text-base">Company</h4>
                         <ul>
                             <li class="sosmed"><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -76,7 +76,7 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
                             <li class="sosmed"><a class="nav-link scrollto" href="#clients">Clients</a></li>
                             <li class="sosmed"><a class="nav-link scrollto" href="#contact">Contact</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
                 </div>
                 <div class="d-flex justify-content-start align-items-center">

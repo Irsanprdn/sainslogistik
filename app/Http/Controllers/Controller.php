@@ -65,7 +65,20 @@ class Controller extends BaseController
         $sql = " SELECT * FROM image WHERE menu = 'linkedin' ORDER BY idx ASC ";
         $dataLinkedin = DB::select($sql);
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin'));
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'ourservice' and komponen = 'title' ";
+        $ourserviceTitle = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'ourservice' and komponen = 'description' ";
+        $ourserviceDescription = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'linkedinmedia' and komponen = 'title' ";
+        $linkedinmediaTitle = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'linkedinmedia' and komponen = 'description' ";
+        $linkedinmediaDescription = collect(DB::select($sql))->first();
+
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin', 'ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription'));
     }
 
     public function comproLanguage($language)
@@ -130,7 +143,19 @@ class Controller extends BaseController
         $sql = " SELECT * FROM image WHERE menu = 'linkedin' ORDER BY idx ASC  ";
         $dataLinkedin = DB::select($sql);
 
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'ourservice' and komponen = 'title' ";
+        $ourserviceTitle = collect(DB::select($sql))->first();
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService','dataLinkedin'));
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'ourservice' and komponen = 'description' ";
+        $ourserviceDescription = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'linkedinmedia' and komponen = 'title' ";
+        $linkedinmediaTitle = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'linkedinmedia' and komponen = 'description' ";
+        $linkedinmediaDescription = collect(DB::select($sql))->first();
+
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService','dataLinkedin','ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription'));
     }
 }

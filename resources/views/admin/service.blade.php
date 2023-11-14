@@ -1,5 +1,5 @@
 @extends('admin')
-@section('title', 'Service')
+@section('title', 'Service Image')
 @section('content')
 
 <div class="collapse" id="collapseTambahData">
@@ -203,8 +203,7 @@
     });
 
 
-    dataTableId.on('order.dt', function() {
-        // Your custom logic after reordering rows goes here     
+    dataTableId.on('order.dt', function() {        
         var rowOrderArray = [];
         $('#service-data-id tbody tr').each(function() {
             var rowOrder = $(this).find('.idx')

@@ -9,8 +9,8 @@
                     <div class="card-body py-0 px-md-5">
                         <div class="row d-flex justify-content-start">
                             <div class="col-md-4 py-4-5 px-3">
-                                <h1 class="font-weight-bold our-services-text">Our Services</h1>
-                                <p class="our-services-desc">Kami menyediakan serta menawarkan layanan untuk memenuhi kebutuhan pelanggan</p>
+                                <h1 class="font-weight-bold our-services-text">{!! $ourserviceTitle->isi_komponen ?? '' !!}</h1>
+                                <p class="our-services-desc">{!! $ourserviceDescription->isi_komponen ?? ''  !!}</p>
                             </div>
                             @foreach( $dataService as $ds )
                             <div class="col-md col-4 py-4-5 px-0 our-services cursor-pointer text-center" data-bs-toggle="collapse" onclick="resetCollapse(this)" href="#collapse{{ str_replace(' ','',($ds->image_title ?? '')) }}" role="button" aria-controls="collapse{{ str_replace(' ', '',($ds->image_title ?? '')) }}">

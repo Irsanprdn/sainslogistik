@@ -39,8 +39,8 @@
     <link href="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=3.9" rel="stylesheet">
-    <link href="{{ asset('assets') }}/compro/css/cms.css?v=1.0" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.0" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/cms.css?v=1.1" rel="stylesheet">
     <!-- END FRONT -->
 </head>
 
@@ -93,9 +93,14 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('service') }}" aria-expanded="false">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('ourservice') }}" aria-expanded="false">
 
                                 <span class="hide-menu">Service</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('service') }}" aria-expanded="false">
+
+                                <span class="hide-menu">Service Image</span></a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('about') }}" aria-expanded="false">
@@ -115,9 +120,14 @@
                                 <span class="hide-menu">Client</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('linkedin') }}" aria-expanded="false">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('linkedinmedia') }}" aria-expanded="false">
 
                                 <span class="hide-menu">Linkedin</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('linkedin') }}" aria-expanded="false">
+
+                                <span class="hide-menu">Linkedin Image</span></a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('footer') }}" aria-expanded="false">

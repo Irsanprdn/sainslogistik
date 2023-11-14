@@ -13,7 +13,7 @@
         <h1 class="text-center text-white">{{ $homeTitle->isi_komponen ?? '' }}</h1>
         <p class="text-center text-white">{{ $homeDescription->isi_komponen ?? '' }}</p>
         <!-- Use a button to pause/play the video with JavaScript -->
-        <a href="{{ $homeWAlink->isi_komponen ?? '' }}" target="_blank" class="btn btn-lg btn-contact-us btn-primary rounded-lg font-size-20" >{{ __('website.textButtonWAlink') }}</a>
+        <a href="{{ $homeWAlink->isi_komponen ?? '' }}" target="_blank" class="btn btn-lg btn-contact-us btn-primary rounded-lg font-size-20" > <i class="bi bi-whatsapp"></i> {{ __('website.textButtonWAlink') }}</a>
     </div>
 
 </section><!-- End Hero Section -->

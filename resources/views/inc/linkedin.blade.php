@@ -3,8 +3,8 @@
         <div class="container aos-init aos-animate position-relative" data-aos="fade-up">
 
             <div class="section-title">
-                <h1>Sains Logistik LinkedIn</h1>
-                <p>Newest or lastes our posting in LinkedIn website. You can see news about Sains Logistik Indonesia in there.</p>
+                <h1>{!! $linkedinmediaTitle->isi_komponen ?? '' !!}</h1>
+                <p>{!! $linkedinmediaDescription->isi_komponen ?? '' !!}</p>
             </div>
 
             <div class="swiper mySwiper">

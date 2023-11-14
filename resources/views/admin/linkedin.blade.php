@@ -1,5 +1,5 @@
 @extends('admin')
-@section('title', 'Linkedin')
+@section('title', 'Linkedin Image')
 @section('content')
 
 
