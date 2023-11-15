@@ -38,18 +38,14 @@
                                 <i class="bi bi-pencil"></i>
                             </button>
                         </div>
-                        <div class="row d-flex justify-content-start">
-                            <div class="col-md-10">
-                                <textarea id="mytextarea">
-                                {{ $ourserviceDescription->isi_komponen ?? '' }}
-                                </textarea>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-primary text-light mt-4" onclick="saveTextArea(this)" data-lang="id" title="Clik to Save">
-                                    <i class="bi bi-save"></i> Save
-                                </button>
-                            </div>
-                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p class="text-white w-100">
+                                <input type="text" id="ourserviceDescription" data-lang="id" name="ourserviceDescription" value="{{ $ourserviceDescription->isi_komponen ?? '' }}" class="form-custom font-size-20 text-dark text-center reset-setting " readonly>
+                            </p>
+                            <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#ourserviceDescription')" title="Clik to edit">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </div>                        
                     </div>
                 </div>
             </section>
@@ -67,17 +63,13 @@
                                 <i class="bi bi-pencil"></i>
                             </button>
                         </div>
-                        <div class="row d-flex justify-content-start">
-                            <div class="col-md-10">
-                                <textarea id="mytextareaen">
-                                {{ $ourserviceDescriptionEN->isi_komponen ?? '' }}
-                                </textarea>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-primary text-light mt-4" onclick="saveTextArea(this)" data-lang="en" title="Clik to Save">
-                                    <i class="bi bi-save"></i> Save
-                                </button>
-                            </div>
+                        <div class="d-flex justify-content-center">
+                            <p class="text-white w-100">
+                                <input type="text" id="ourserviceDescriptionen" data-lang="en" name="ourserviceDescriptionen" value="{{ $ourserviceDescriptionen->isi_komponen ?? '' }}" class="form-custom font-size-20 text-dark text-center reset-setting" readonly>
+                            </p>
+                            <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#ourserviceDescriptionen')" title="Clik to edit">
+                                <i class="bi bi-pencil"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

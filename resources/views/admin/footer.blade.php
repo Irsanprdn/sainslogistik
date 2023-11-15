@@ -22,86 +22,54 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
     @endif
     <footer id="footer">
 
-        <div class="footer-top">
+        <div class="footer-all">
             <div class="container">
                 <div class="row">
+                    <div class="col-md-9">
+                        <div class="footer-top">
+                            <div class=" footer-links">
+                                <div class="d-flex justify-content-start">
 
-                    <div class="col-lg-10 footer-links">
-                        <div class="d-flex justify-content-start">
+                                    <img src="{{ asset('assets') }}/uploads/logo/{{ $footerLogo->isi_komponen ?? '' }}" alt="Logo Sains Logistik" class="img-fluid" width="200">
 
-                            <img src="{{ asset('assets') }}/uploads/logo/{{ $footerLogo->isi_komponen ?? '' }}" alt="Logo Sains Logistik" class="img-fluid" width="200">
-
-                            <button type="button" class="mx-2 btn btn-sm btn-warning text-light" data-toggle="modal" data-target="#changeLogo">
-                                Change Logo <i class="bi bi-pencil"></i>
-                            </button>
+                                    <button type="button" class="mx-2 btn btn-sm btn-warning text-light" data-toggle="modal" data-target="#changeLogo">
+                                        Change Logo <i class="bi bi-pencil"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start align-items-center position-relative mb-4">
+                                <i class="bi bi-geo-alt-fill font-size-35 text-base"></i>
+                                <input type="text" id="footerAddress" name="footerAddress" value="{{ $footerAddress->isi_komponen ?? '' }}" class="form-custom text-light reset-setting" readonly>
+                                <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#footerAddress')" title="Clik to edit">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- <div class="card mt-3">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="id-tab" data-bs-toggle="tab" data-bs-target="#id" type="button" role="tab" aria-controls="id" aria-selected="true">Indonesia</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="en-tab" data-bs-toggle="tab" data-bs-target="#en" type="button" role="tab" aria-controls="en" aria-selected="false">English</button>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="id" role="tabpanel" aria-labelledby="id-tab">
-                                    <div class="d-flex justify-content-start">
-                                        <textarea id="footerDescription" data-lang="id" name="footerDescription" rows="7" class="form-custom text-dark reset-setting" readonly>{{ $footerDescription->isi_komponen ?? '' }}</textarea>
-                                        <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#footerDescription')" title="Clik to edit">
-                                            <i class="bi bi-pencil"></i>
-                                        </button>
+
+                        <div class="container position-relative border-top">
+                            <div class="copyright">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        &copy; Copyright <strong><span class="text-base">2023</span> by Sains Logistik.</strong> All Rights Reserved
                                     </div>
-                                </div>
-                                <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="en-tab">
-                                    <div class="d-flex justify-content-start"><textarea id="footerDescriptionen" data-lang="en" name="footerDescription" rows="7" class="form-custom text-dark reset-setting" readonly>{{ $footerDescriptionen->isi_komponen ?? '' }}
-                                        </textarea>
-                                        <button type="button" class=" mx-2 btn btn-warning btn-circle text-light mt-4" onclick="editText(this,'#footerDescriptionen')" title="Clik to edit">
-                                            <i class="bi bi-pencil"></i>
+                                    <div class="col-lg-6 d-flex justify-content-end">
+                                        <div class="social-links">
+                                            <a title="{{ $footerIGlink->isi_komponen ?? '' }}" href="{{ $footerIGlink->isi_komponen ?? '' }}" class="instagram"><i class="text-light font-size-20 bx bxl-instagram"></i></a>
+                                            <a title="{{ $footerLIlink->isi_komponen ?? '' }}" href="{{ $footerLIlink->isi_komponen ?? '' }}" class="linkedin"><i class="text-light font-size-20 bx bxl-linkedin"></i></a>
+                                        </div>
+                                        <button type="button" class="mx-2 btn btn-sm btn-warning text-light" data-toggle="modal" data-target="#changeSocialMedia">
+                                            Change Social Media <i class="bi bi-pencil"></i>
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
-                    </div>
-
-
-                    <!-- <div class="col-lg-2 footer-links">
-                        <h4 class="text-base">Company</h4>
-                        <ul>
-                            <li class="sosmed"><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                            <li class="sosmed"><a class="nav-link scrollto" href="#services">Services</a></li>
-                            <li class="sosmed"><a class="nav-link scrollto" href="#about">About</a></li>
-                            <li class="sosmed"><a class="nav-link scrollto" href="#clients">Clients</a></li>
-                            <li class="sosmed"><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                        </ul>
-                    </div> -->
-
-                </div>
-                <div class="d-flex justify-content-start align-items-center">
-                    <i class="bi bi-geo-alt-fill font-size-35 text-base"></i>
-                    <input type="text" id="footerAddress" name="footerAddress" value="{{ $footerAddress->isi_komponen ?? '' }}" class="form-custom text-light reset-setting" readonly>
-                    <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#footerAddress')" title="Clik to edit">
-                        <i class="bi bi-pencil"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="container-fluid border-top">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-lg-6">
-                        &copy; Copyright <strong><span class="text-base">2023</span> by Sains Logistik.</strong> All Rights Reserved
-                    </div>
-                    <div class="col-lg-6 d-flex justify-content-end">
-                        <div class="social-links">
-                            <a title="{{ $footerIGlink->isi_komponen ?? '' }}" href="{{ $footerIGlink->isi_komponen ?? '' }}" class="instagram"><i class="text-light font-size-20 bx bxl-instagram"></i></a>
-                            <a title="{{ $footerLIlink->isi_komponen ?? '' }}" href="{{ $footerLIlink->isi_komponen ?? '' }}" class="linkedin"><i class="text-light font-size-20 bx bxl-linkedin"></i></a>
                         </div>
-                        <button type="button" class="mx-2 btn btn-sm btn-warning text-light" data-toggle="modal" data-target="#changeSocialMedia">
-                            Change Social Media <i class="bi bi-pencil"></i>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img src="{{ asset('assets') }}/uploads/image/{{ $footerImage->isi_komponen ?? '' }}" alt="PIC" class="position-relative w-100">
+                        <button type="button" class="mx-2 btn btn-sm btn-warning text-light" data-toggle="modal" data-target="#changeImage">
+                            Change Image <i class="bi bi-pencil"></i>
                         </button>
                     </div>
                 </div>
@@ -126,9 +94,40 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
                     <label for="">File input must be format jpg,jpeg,png Max Size( 4 mb )</label>
                     <input type="hidden" name="menu" id="menu" value="footer">
                     <input type="hidden" name="komponen" id="komponen" value="logo">
-                    <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURL(this)">
+                    <input type="file" class="form-control d-none" name="imgFile" id="imgFile" onchange="readURLImage(this)">
                     <div id="preview" class="text-center">
                         <img id="viewImg" src="{{$default}}" alt="Upload Preview" onclick="openFormFile()" style="width: 320px;height:320px;">
+                    </div>
+                    <p>*Click image for browse file</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL Image -->
+<div class="modal fade" id="changeImage" tabindex="-1" role="dialog" aria-labelledby="changeImageLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{{ route('home.post') }}" enctype="multipart/form-data" method="POST" id="formchangeImage"> @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changeImageLabel">Form Change Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="">File input must be format jpg,jpeg,png Max Size( 4 mb )</label>
+                    <input type="hidden" name="menu" id="menu" value="footer">
+                    <input type="hidden" name="komponen" id="komponen" value="image">
+                    <input type="file" class="form-control d-none" name="imgFile" id="imageFile" onchange="readURLImage(this)">
+                    <div id="preview" class="text-center">
+                        <img id="viewImage" src="{{$default}}" alt="Upload Preview" onclick="openFormFileImage()" style="width: 320px;height:320px;">
                     </div>
                     <p>*Click image for browse file</p>
                 </div>
@@ -232,11 +231,11 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
         var lang = $(e).attr('data-lang')
 
         var komponen = "";
-            if ( lang == 'id' ) {
-                komponen = (e == '#footerDescription' ? 'description' : 'address')            
-            }else{
-                komponen = (e == '#footerDescriptionen' ? 'description' : 'address')
-            }
+        if (lang == 'id') {
+            komponen = (e == '#footerDescription' ? 'description' : 'address')
+        } else {
+            komponen = (e == '#footerDescriptionen' ? 'description' : 'address')
+        }
 
         var data = {
             _token: '{{ csrf_token() }}',
@@ -274,6 +273,10 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
         $('#imgFile').click();
     }
 
+    function openFormFileImage() {
+        $('#imageFile').click();
+    }
+
     function readURL(input) {
         var defaults = "{{ $default }}";
         if (input.files && input.files[0]) {
@@ -287,6 +290,22 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
             reader.readAsDataURL(input.files[0]);
         } else {
             $('#viewImg').attr('src', defaults);
+        }
+    }
+
+    function readURLImage(input) {
+        var defaults = "{{ $default }}";
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#viewImage')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            $('#viewImage').attr('src', defaults);
         }
     }
 </script>

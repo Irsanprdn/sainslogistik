@@ -39,8 +39,8 @@
     <link href="{{ asset('assets') }}/compro/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.0" rel="stylesheet">
-    <link href="{{ asset('assets') }}/compro/css/cms.css?v=1.1" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/style.css?v=4.1" rel="stylesheet">
+    <link href="{{ asset('assets') }}/compro/css/cms.css?v=1.2" rel="stylesheet">
     <!-- END FRONT -->
 </head>
 
@@ -87,11 +87,11 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <!-- User Profile-->
-                        <li class="sidebar-item">
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('subscriber') }}" aria-expanded="false">
                                 <span class="hide-menu">Subscriber</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="sidebar-item">
                             <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                                 <span class="hide-menu">Home</span>

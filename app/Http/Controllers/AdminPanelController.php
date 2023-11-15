@@ -82,6 +82,34 @@ class AdminPanelController extends Controller
         }
         //LOGO
 
+        //IF IMAGE
+        if ($req->komponen == 'image') {
+
+            $validator = Validator::make($req->all(), [
+                'imgFile' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4048',
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->route('home')->with('error', 'Format file atau Ukuran file tidak sesuai');
+            }
+
+            $fileLoc = "";
+            $imgFile = $req->file('imgFile');
+
+            if ($imgFile != '') {
+                $fileLoc = 'Image' . time() . '.' . $imgFile->extension();
+
+                $filePath = public_path('/assets/uploads/image/');
+
+                $imgFile->move($filePath, $fileLoc);
+            } else {
+                $fileLoc = "";
+            }
+
+            $text = $req->text ?? $fileLoc;
+        }
+        //IMAGE
+
         //IF VIDEO
         if ($req->komponen == 'video') {
 
@@ -126,7 +154,7 @@ class AdminPanelController extends Controller
         $save = DB::insert(" INSERT INTO cms (menu,komponen,language,isi_komponen,updated_by,updated_date) VALUES ('$req->menu','$req->komponen','$req->language','$text','$user','$date') ON DUPLICATE KEY UPDATE menu = VALUES(menu),komponen = VALUES(komponen),isi_komponen = VALUES(isi_komponen),updated_by = VALUES(updated_by),updated_date = VALUES(updated_date) ");
 
 
-        if ($req->komponen == 'walink' ||  $req->komponen == 'logo' || $req->komponen == 'video') {
+        if ($req->komponen == 'walink' ||  $req->komponen == 'logo' ||  $req->komponen == 'image' || $req->komponen == 'video') {
             if ($save) {
                 return redirect()->route($req->menu)->with('success', 'Successfully');
             } else {
@@ -148,13 +176,10 @@ class AdminPanelController extends Controller
     {
 
         $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'logo' ORDER BY updated_date DESC ";
-        $footerLogo = collect(DB::select($sql))->first();
+        $footerLogo = collect(DB::select($sql))->first();   
 
-        $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'footer' and komponen = 'description' ORDER BY updated_date DESC ";
-        $footerDescription = collect(DB::select($sql))->first();
-
-        $sql = " SELECT * FROM cms WHERE language = 'en' AND menu = 'footer' and komponen = 'description' ORDER BY updated_date DESC ";
-        $footerDescriptionen = collect(DB::select($sql))->first();
+        $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'image' ORDER BY updated_date DESC ";
+        $footerImage = collect(DB::select($sql))->first();
 
         $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'address' ORDER BY updated_date DESC ";
         $footerAddress = collect(DB::select($sql))->first();
@@ -165,7 +190,7 @@ class AdminPanelController extends Controller
         $sql = " SELECT * FROM cms WHERE menu = 'footer' and komponen = 'lilink' ORDER BY updated_date DESC ";
         $footerLIlink = collect(DB::select($sql))->first();
 
-        return view('admin.footer', compact('footerAddress', 'footerDescription', 'footerDescriptionen', 'footerLogo', 'footerIGlink', 'footerLIlink'));
+        return view('admin.footer', compact('footerAddress','footerImage', 'footerLogo', 'footerIGlink', 'footerLIlink'));
     }
 
     public function service()
