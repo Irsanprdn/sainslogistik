@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\WBS;
 use DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class Controller extends BaseController
@@ -87,7 +88,7 @@ class Controller extends BaseController
     public function comproLanguage($language)
     {
 
-        if (!in_array($language, ['en', 'id', 'cms_site'])) {           
+        if (!in_array($language, ['en', 'id', 'cms_site', 'subscriber'])) {
             return redirect()->route('compro');
         }
 
@@ -162,6 +163,23 @@ class Controller extends BaseController
         $aboutimageTitle = collect(DB::select($sql))->first();
 
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService','dataLinkedin','ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription', 'aboutimageTitle'));
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin', 'ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription', 'aboutimageTitle'));
+    }
+
+    public function subscriberMail(Request $request)
+    {
+        $date = date('Y-m-d H:i:s');
+        try {
+            $save = DB::insert(" INSERT INTO subscriber (email,created_at) VALUES ('" . $request->email . "', '" . $date . "') ");
+        if ($save) {
+            return redirect()->route('compro')->with('success', 'Successfully');
+        } else {
+
+            return redirect()->route('compro')->with('error', 'Failed');
+        }
+        } catch (\Throwable $th) {
+            return redirect()->route('compro')->with('success', 'Your email already exist');
+        }
+        
     }
 }

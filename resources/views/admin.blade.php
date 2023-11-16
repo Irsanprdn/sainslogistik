@@ -87,11 +87,11 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <!-- User Profile-->
-                        <!-- <li class="sidebar-item">
+                        <li class="sidebar-item">
                             <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('subscriber') }}" aria-expanded="false">
                                 <span class="hide-menu">Subscriber</span>
                             </a>
-                        </li> -->
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link ml-2 waves-effect waves-dark sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                                 <span class="hide-menu">Home</span>

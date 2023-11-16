@@ -21,6 +21,8 @@ Route::get('/', [Controller::class, 'compro'])->name('compro');
 
 Route::get('/{language}', [Controller::class, 'comproLanguage'])->name('compro.language');
 
+Route::post('/subscriber', [Controller::class, 'subscriberMail'])->name('subscriber.mail');
+
 Route::prefix('cms_site')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'procLogin'])->name('proc.login');
@@ -55,9 +57,8 @@ Route::prefix('cms_site')->group(function () {
         });
 
         Route::prefix('subscriber')->group(function () {
-            Route::get('/', [AdminPanelController::class, 'subscriber'])->name('subscriber');
-            Route::post('/post', [AdminPanelController::class, 'subscriber_post'])->name('subscriber.post');
-            Route::get('/delete/{subscriber_id}/{menu}', [AdminPanelController::class, 'subscriber_delete'])->name('subscriber.delete');
+            Route::get('/', [AdminPanelController::class, 'subscriber'])->name('subscriber');            
+            Route::get('/delete/{subscriber_id}', [AdminPanelController::class, 'subscriber_delete'])->name('subscriber.delete');
         });
 
         Route::prefix('linkedin')->group(function () {

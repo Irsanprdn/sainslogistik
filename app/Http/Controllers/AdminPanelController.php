@@ -431,12 +431,6 @@ class AdminPanelController extends Controller
 
         DB::update(" UPDATE image SET  image = '" . $matchingElementsImg . "',  image_description = '" . $matchingElements . "', updated_by = '" . $user . "', updated_date =  '" . $date . "' WHERE  image_title = '" . $title . "' ");
 
-        // if ($sqlUpd) {
-        //     return redirect()->route('linkedin')->with('success', 'Successfully');
-        // } else {
-
-        //     return redirect()->route('linkedin')->with('error', 'Failed');
-        // }
     }
 
 
@@ -512,6 +506,29 @@ class AdminPanelController extends Controller
         } else {
 
             return redirect()->route('client')->with('error', 'Failed');
+        }
+    }
+
+    public function subscriber(){
+
+        $sql = " SELECT * FROM subscriber ";
+        $data = DB::select($sql);
+
+        return view('admin.subscriber', compact('data'));
+
+    }
+
+    public function subscriber_delete($email)
+    {
+
+        $sqlDel = DB::update(" DELETE FROM subscriber WHERE email = '" . $email . "' ");
+
+        if ($sqlDel) {
+
+            return redirect()->route('subscriber')->with('success', 'Successfully');
+        } else {
+
+            return redirect()->route('subscriber')->with('error', 'Failed');
         }
     }
 }

@@ -2,6 +2,19 @@
 
     <div class="footer-newsletter" id="contact">
         <div class="container position-relative">
+
+            @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <div class="row">
                 <div class="col-lg-6">
                     <h4 class="text-dark font-size-35 font-weight-bold">{{ __('website.textContact1') }}
@@ -9,8 +22,9 @@
                     <p class="text-light font-size-35 font-weight-bold">{{ __('website.textContact2') }}</p>
                 </div>
                 <div class="col-lg-6">
-                    <form action="" method="post">
-                        <input type="email" name="email" class="text-left" style="padding-left: 20px;" placeholder="Drop your email here">
+                    <form action="{{ route('subscriber.mail') }}" method="post">
+                        @csrf
+                        <input type="email" name="email" class="text-left" style="padding-left: 20px;" placeholder="Drop your email here" autocomplete="off" required>
                         <button type="submit">Send <i class="bi bi-send"></i></button>
                     </form>
                 </div>
