@@ -150,32 +150,32 @@
             // when window width is >= 320px
             320: {
                 slidesPerView: 1.2,
-                spaceBetween: 25
+                spaceBetween: 20
             },
             // when window width is >= 480px
             480: {
                 slidesPerView: 1.6,
-                spaceBetween: 25
+                spaceBetween: 20
             },
             768: {
                 slidesPerView: 2.2,
-                spaceBetween: 25,
+                spaceBetween: 20,
             },
             1024: {
                 slidesPerView: 2.8,
-                spaceBetween: 25,
+                spaceBetween: 20,
             },
             1280: {
                 slidesPerView: 3.4,
-                spaceBetween: 25,
+                spaceBetween: 20,
             },
             1600: {
                 slidesPerView: 4,
-                spaceBetween: 25,
+                spaceBetween: 20,
             },
             1900: {
                 slidesPerView: 4.2,
-                spaceBetween: 25,
+                spaceBetween: 20,
             },
 
 
