@@ -44,6 +44,20 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
                                     <i class="bi bi-pencil"></i>
                                 </button>
                             </div>
+                            <div class="d-flex justify-content-start align-items-center position-relative mb-4">
+                                <i class="bi bi-envelope-fill font-size-35 text-base"></i>
+                                <input type="text" id="footerMail" name="footerMail" value="{{ $footerMail->isi_komponen ?? '' }}" class="form-custom text-light reset-setting" readonly>
+                                <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#footerMail')" title="Clik to edit">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </div>
+                            <div class="d-flex justify-content-start align-items-center position-relative mb-4">
+                                <i class="bi bi-phone-fill font-size-35 text-base"></i>
+                                <input type="text" id="footerPhone" name="footerPhone" value="{{ $footerPhone->isi_komponen ?? '' }}" class="form-custom text-light reset-setting" readonly>
+                                <button type="button" class="mx-2 btn btn-warning btn-circle text-light" onclick="editText(this,'#footerPhone')" title="Clik to edit">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </div>
                         </div>
 
 
@@ -230,12 +244,8 @@ $default = ((($footerLogo->isi_komponen ?? '') == '') ? $defaultFoto : ENV('ASSE
         var text = $(e).val()
         var lang = $(e).attr('data-lang')
 
-        var komponen = "";
-        if (lang == 'id') {
-            komponen = (e == '#footerDescription' ? 'description' : 'address')
-        } else {
-            komponen = (e == '#footerDescriptionen' ? 'description' : 'address')
-        }
+        var komponen = e.replace('#footer', '');
+        
 
         var data = {
             _token: '{{ csrf_token() }}',

@@ -16,7 +16,7 @@ body {
     color: #444444;
     font-size: 16px;
     font-weight: 400;
-    line-height: 36px;
+    line-height: normal;
     letter-spacing: 0em;
     text-align: justified;
 }
@@ -2417,7 +2417,7 @@ section {
 }
 
 #footer .footer-top .footer-links {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 #footer .footer-top .footer-links ul {
@@ -2859,6 +2859,10 @@ section {
     text-align: justified;
 }
 
+#footer .helpdesk-img {
+    width: 135%;
+}
+
 @media screen and (max-width: 768px) {
     #hero h1 {
         font-size: 40px;
@@ -2898,6 +2902,18 @@ section {
     #services {
         padding: 40px 0px 0px 0px;
     }
+    #footer .helpdesk-img {
+        width: 100%;
+    }
+    #footer {
+        font-size: 10px;
+    }
+    #footer i {
+        font-size: 16px;
+    }
+    /* #footer .footer-top .footer-links {
+        margin: 0px;
+    } */
 }
 
 #video-dua {

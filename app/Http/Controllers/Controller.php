@@ -81,8 +81,16 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE language = 'id' AND menu = 'aboutimage' and komponen = 'title' ";
         $aboutimageTitle = collect(DB::select($sql))->first();
 
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'image'  ";
+        $footerImage = collect(DB::select($sql))->first();
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin', 'ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription', 'aboutimageTitle'));
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'Phone'  ";
+        $footerPhone = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'Mail'  ";
+        $footerMail = collect(DB::select($sql))->first();
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin', 'ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription', 'aboutimageTitle', 'footerImage', 'footerPhone', 'footerMail'));
     }
 
     public function comproLanguage($language)
@@ -162,8 +170,17 @@ class Controller extends BaseController
         $sql = " SELECT * FROM cms WHERE language = '$language' AND menu = 'aboutimage' and komponen = 'title' ";
         $aboutimageTitle = collect(DB::select($sql))->first();
 
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'image'  ";
+        $footerImage = collect(DB::select($sql))->first();
 
-        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin', 'ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription', 'aboutimageTitle'));
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'Phone'  ";
+        $footerPhone = collect(DB::select($sql))->first();
+
+        $sql = " SELECT * FROM cms WHERE IFNULL(isi_komponen,'') <> '' AND menu = 'footer' and komponen = 'Mail'  ";
+        $footerMail = collect(DB::select($sql))->first();
+
+
+        return view('index', compact('homeTitle', 'homeDescription', 'homeWAlink', 'homeLogo', 'homeVideo', 'footerAddress', 'footerDescription', 'footerLogo', 'footerIGlink', 'footerLIlink', 'ourClient', 'aboutTitle', 'aboutDescription', 'aboutSlide', 'dataService', 'dataLinkedin', 'ourserviceTitle', 'ourserviceDescription', 'linkedinmediaTitle', 'linkedinmediaDescription', 'aboutimageTitle', 'footerImage', 'footerPhone', 'footerMail'));
     }
 
     public function subscriberMail(Request $request)
