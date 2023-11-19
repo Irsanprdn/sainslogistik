@@ -2862,7 +2862,7 @@ section {
     body {
         font-family: "Open Sans", sans-serif;
         color: #444444;
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 400;
         line-height: normal;
         letter-spacing: 0em;
@@ -2872,7 +2872,7 @@ section {
         font-size: 20px;
     }
     #hero p {
-        font-size: 12px;
+        font-size: 10px;
     }
     #hero .btn-play-pause {
         top: 25%;
@@ -2887,8 +2887,9 @@ section {
         font-size: 35px;
     }
     .swiper-about-us img {
-        height: 350px !important;
-        width: auto !important;
+        height: 180px !important;
+        width: 235px !important;
+        border-radius: 10px;
     }
     #hero p {
         width: 100%;
@@ -2919,7 +2920,7 @@ section {
         width: 100%;
     }
     #footer {
-        font-size: 12px;
+        font-size: 10px;
     }
     #footer i {
         font-size: 13px;
@@ -2943,6 +2944,9 @@ section {
     #footer .footer-newsletter h4 {
         text-align: left;
         font-size: 25px;
+    }
+    #icon-services .shadow {
+        box-shadow: none !important;
     }
 }
 

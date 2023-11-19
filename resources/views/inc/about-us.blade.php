@@ -27,7 +27,7 @@
                         @foreach( $aboutSlide as $as )
                         <div class="swiper-slide" >
                             <div class="portfolio-wrap">
-                                <a href="{{ asset('assets') }}/uploads/image/{{ $as->image }}"  target="_blank" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{{ asset('assets') }}/uploads/image/{{ $as->image }}" class="img-fluid border-radius-25" style="height:450px;width:auto;" ></a>
+                                <a href="{{ asset('assets') }}/uploads/image/{{ $as->image }}"  target="_blank" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{{ asset('assets') }}/uploads/image/{{ $as->image }}" class="img-fluid border-radius-25" style="height:400px;width:530px;" ></a>
                             </div>
 
                             <div class="caption d-none">
