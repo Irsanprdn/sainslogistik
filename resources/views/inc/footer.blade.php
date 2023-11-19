@@ -38,7 +38,7 @@
                 <div class="col-md-12">
                     <div class="footer-top">
                         <div class="d-sm-none d-flex justify-content-start footer-links">
-                            <h4 class="text-center mb-0">
+                            <h4 class="text-left mb-0">
                                 <img src="{{ asset('assets') }}/uploads/logo/{{ $footerLogo->isi_komponen ?? '' }}" alt="Logo Sains Logistik" class="img-fluid w-50">
                             </h4>
                         </div>
