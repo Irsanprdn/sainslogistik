@@ -110,8 +110,8 @@
     }
 
     var swiperAbout = new Swiper(".swiper-about-us", {
-        slidesPerView: 1.5,
-        spaceBetween: 25,
+        slidesPerView: 1.3,
+        spaceBetween: 20,
         loop: true,
         grabCursor: false,
         pagination: {
@@ -150,32 +150,32 @@
             // when window width is >= 320px
             320: {
                 slidesPerView: 1.2,
-                spaceBetween: 20
+                spaceBetween: 25
             },
             // when window width is >= 480px
             480: {
                 slidesPerView: 1.6,
-                spaceBetween: 20
+                spaceBetween: 25
             },
             768: {
                 slidesPerView: 2.2,
-                spaceBetween: 20,
+                spaceBetween: 25,
             },
             1024: {
                 slidesPerView: 2.8,
-                spaceBetween: 20,
+                spaceBetween: 25,
             },
             1280: {
                 slidesPerView: 3.4,
-                spaceBetween: 20,
+                spaceBetween: 25,
             },
             1600: {
                 slidesPerView: 4,
-                spaceBetween: 20,
+                spaceBetween: 25,
             },
             1900: {
                 slidesPerView: 4.2,
-                spaceBetween: 20,
+                spaceBetween: 25,
             },
 
 
