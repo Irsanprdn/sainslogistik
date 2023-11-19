@@ -12,9 +12,12 @@
                                 <h1 class="font-weight-bold our-services-text">{!! $ourserviceTitle->isi_komponen ?? '' !!}</h1>
                                 <p class="our-services-desc">{{ $ourserviceDescription->isi_komponen ?? ''  }}</p>
                             </div>
+                            @php 
+                                $no = 1;
+                            @endphp
                             @foreach( $dataService as $ds )
-                            <div class="col-md col-4 py-4-5 px-0 our-services cursor-pointer text-center" data-bs-toggle="collapse" onclick="resetCollapse(this)" href="#collapse{{ str_replace(' ','',($ds->image_title ?? '')) }}" role="button" aria-controls="collapse{{ str_replace(' ', '',($ds->image_title ?? '')) }}">
-                                <div class="border-start">
+                            <div class="col-md col-4 py-4-5 pb-custom-2 px-0 our-services cursor-pointer text-center" data-bs-toggle="collapse" onclick="resetCollapse(this)" href="#collapse{{ str_replace(' ','',($ds->image_title ?? '')) }}" role="button" aria-controls="collapse{{ str_replace(' ', '',($ds->image_title ?? '')) }}">
+                                <div class="{{ ( $no++ == 1 ? 'border-start-desktop' : 'border-start') }}">
                                     <div class="icon">
                                         <img src="{{ asset('assets') }}/uploads/image/{{ $ds->image ?? '' }}" height="70" width="75" alt="Icon {{ $ds->image_title }}" data-type="storage">
                                         <p class="mb-0 mt-2 cursor-pointer our-services-desc text-center">{{ $ds->image_title }}</p>
@@ -30,39 +33,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     @foreach( $dataService as $ds )
-                                    <div class="collapse collapseAll" id="collapse{{ str_replace(' ','',($ds->image_title ?? '')) }}">
-                                        <div class="card card-body border-0 bg-base py-4">
+                                    <div class="collapse collapseAll text-justify" id="collapse{{ str_replace(' ','',($ds->image_title ?? '')) }}">
+                                        <div class="card card-body border-0 bg-base py-4 text-justify">
                                             {!! $ds->image_description !!}
                                         </div>
                                     </div>
-                                    @endforeach
-                                    <div class="collapse collapseAll" id="collapseQuestion">
-                                        <div class="card card-body border-0 bg-base py-4">
-                                            <h5 class="font-weight-bold">Sharing Storage</h5>
-                                            <p>Layanan berbagi tempat penyimpanan barang.</p>
-
-                                            <h5 class="font-weight-bold">Sharing Storage</h5>
-                                            <p>Layanan berbagi tempat penyimpanan barang.</p>
-                                        </div>
-                                    </div>
-                                    <div class="collapse collapseAll" id="collapseDelivery">
-                                        <div class="card card-body border-0 bg-base py-4">
-                                            <h5 class="font-weight-bold">Sharing Storage</h5>
-                                            <p>Layanan berbagi tempat penyimpanan barang.</p>
-
-                                            <h5 class="font-weight-bold">Sharing Storage</h5>
-                                            <p>Layanan berbagi tempat penyimpanan barang.</p>
-                                        </div>
-                                    </div>
-                                    <div class="collapse collapseAll" id="collapseWarehouse">
-                                        <div class="card card-body border-0 bg-base py-4">
-                                            <h5 class="font-weight-bold">Sharing Storage</h5>
-                                            <p>Layanan berbagi tempat penyimpanan barang.</p>
-
-                                            <h5 class="font-weight-bold">Sharing Storage</h5>
-                                            <p>Layanan berbagi tempat penyimpanan barang.</p>
-                                        </div>
-                                    </div>
+                                    @endforeach                                    
                                 </div>
                             </div>
                         </div>
